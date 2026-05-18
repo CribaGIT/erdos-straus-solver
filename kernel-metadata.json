@@ -1,0 +1,10 @@
+{
+  "id": "commencethescourge/erdos-hot-corridor-sieve",
+  "title": "erdos-hot-corridor-sieve",
+  "code_file": "erdos_hot_corridor_kaggle.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_internet": false
+}
