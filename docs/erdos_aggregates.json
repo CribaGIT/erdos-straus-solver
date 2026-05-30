@@ -1,0 +1,711 @@
+{
+  "summary": {
+    "total_solutions": 501000,
+    "unique_n": 500000,
+    "breach": 501000,
+    "stable": 0,
+    "breach_rate": 100.0,
+    "n_range": [
+      32000016,
+      43999992
+    ],
+    "last_updated": "2026-05-28",
+    "work_manifest_solutions_claimed": 8335340,
+    "coverage_pct": 6.0
+  },
+  "mod24_mod9_heatmap": {
+    "0_0": {
+      "mod24": 0,
+      "mod9": 0,
+      "total": 167001,
+      "breach": 167001,
+      "stable": 0,
+      "breach_rate": 100.0
+    },
+    "0_3": {
+      "mod24": 0,
+      "mod9": 3,
+      "total": 167000,
+      "breach": 167000,
+      "stable": 0,
+      "breach_rate": 100.0
+    },
+    "0_6": {
+      "mod24": 0,
+      "mod9": 6,
+      "total": 166999,
+      "breach": 166999,
+      "stable": 0,
+      "breach_rate": 100.0
+    },
+    "1_0": {
+      "mod24": 1,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "1_1": {
+      "mod24": 1,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "1_2": {
+      "mod24": 1,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "1_3": {
+      "mod24": 1,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "1_4": {
+      "mod24": 1,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "1_5": {
+      "mod24": 1,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "1_6": {
+      "mod24": 1,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "1_7": {
+      "mod24": 1,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "1_8": {
+      "mod24": 1,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_0": {
+      "mod24": 5,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_1": {
+      "mod24": 5,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_2": {
+      "mod24": 5,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_3": {
+      "mod24": 5,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_4": {
+      "mod24": 5,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_5": {
+      "mod24": 5,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_6": {
+      "mod24": 5,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_7": {
+      "mod24": 5,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "5_8": {
+      "mod24": 5,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_0": {
+      "mod24": 7,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_1": {
+      "mod24": 7,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_2": {
+      "mod24": 7,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_3": {
+      "mod24": 7,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_4": {
+      "mod24": 7,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_5": {
+      "mod24": 7,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_6": {
+      "mod24": 7,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_7": {
+      "mod24": 7,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "7_8": {
+      "mod24": 7,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_0": {
+      "mod24": 9,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_1": {
+      "mod24": 9,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_2": {
+      "mod24": 9,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_3": {
+      "mod24": 9,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_4": {
+      "mod24": 9,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_5": {
+      "mod24": 9,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_6": {
+      "mod24": 9,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_7": {
+      "mod24": 9,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "9_8": {
+      "mod24": 9,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_0": {
+      "mod24": 11,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_1": {
+      "mod24": 11,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_2": {
+      "mod24": 11,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_3": {
+      "mod24": 11,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_4": {
+      "mod24": 11,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_5": {
+      "mod24": 11,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_6": {
+      "mod24": 11,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_7": {
+      "mod24": 11,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "11_8": {
+      "mod24": 11,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_0": {
+      "mod24": 13,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_1": {
+      "mod24": 13,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_2": {
+      "mod24": 13,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_3": {
+      "mod24": 13,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_4": {
+      "mod24": 13,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_5": {
+      "mod24": 13,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_6": {
+      "mod24": 13,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_7": {
+      "mod24": 13,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "13_8": {
+      "mod24": 13,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_0": {
+      "mod24": 17,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_1": {
+      "mod24": 17,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_2": {
+      "mod24": 17,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_3": {
+      "mod24": 17,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_4": {
+      "mod24": 17,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_5": {
+      "mod24": 17,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_6": {
+      "mod24": 17,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_7": {
+      "mod24": 17,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "17_8": {
+      "mod24": 17,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_0": {
+      "mod24": 19,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_1": {
+      "mod24": 19,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_2": {
+      "mod24": 19,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_3": {
+      "mod24": 19,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_4": {
+      "mod24": 19,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_5": {
+      "mod24": 19,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_6": {
+      "mod24": 19,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_7": {
+      "mod24": 19,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "19_8": {
+      "mod24": 19,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_0": {
+      "mod24": 23,
+      "mod9": 0,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_1": {
+      "mod24": 23,
+      "mod9": 1,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_2": {
+      "mod24": 23,
+      "mod9": 2,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_3": {
+      "mod24": 23,
+      "mod9": 3,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_4": {
+      "mod24": 23,
+      "mod9": 4,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_5": {
+      "mod24": 23,
+      "mod9": 5,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_6": {
+      "mod24": 23,
+      "mod9": 6,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_7": {
+      "mod24": 23,
+      "mod9": 7,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    },
+    "23_8": {
+      "mod24": 23,
+      "mod9": 8,
+      "total": 0,
+      "breach": 0,
+      "stable": 0,
+      "breach_rate": 0
+    }
+  },
+  "node_contributions": [
+    {
+      "source": "full_log",
+      "solutions": 500000,
+      "breach": 500000,
+      "stable": 0,
+      "unique_n": 500000,
+      "breach_rate": 100.0
+    },
+    {
+      "source": "local",
+      "solutions": 1000,
+      "breach": 1000,
+      "stable": 0,
+      "unique_n": 1000,
+      "breach_rate": 100.0
+    }
+  ],
+  "depth_distribution": {
+    "BREACH_MOD9": 501000
+  }
+}

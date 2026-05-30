@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Erdos-Straus · 8.3M Solutions · Aggregates</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--void:#05070a;--bone:#c8d0d8;--cyan:#00e5ff;--amber:#ffaa00;--blood:#ff2244;--green:#00ff88;--glass:rgba(8,12,18,0.88);--dim:rgba(200,208,216,0.35)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--void);color:var(--bone);font-family:'Courier New',monospace;padding:24px}
+h1{color:var(--cyan);font-size:16px;letter-spacing:3px;margin-bottom:4px}
+h2{color:var(--dim);font-size:11px;letter-spacing:1px;margin-bottom:20px;font-weight:400}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:24px}
+.stat{background:var(--glass);border:1px solid rgba(0,229,255,0.1);padding:12px 14px;border-radius:2px}
+.stat .lbl{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:4px}
+.stat .val{font-size:20px;font-weight:700}
+.stat .val.cyan{color:var(--cyan)}.stat .val.amber{color:var(--amber)}.stat .val.blood{color:var(--blood)}.stat .val.green{color:var(--green)}
+
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.chart-box{background:var(--glass);border:1px solid rgba(0,229,255,0.08);padding:16px;border-radius:2px}
+.chart-box.full{grid-column:1/-1}
+.chart-box h3{font-size:10px;letter-spacing:2px;color:var(--dim);margin-bottom:12px;text-transform:uppercase}
+.chart-box canvas{width:100%!important;height:auto!important;max-height:320px}
+
+.node-table{background:var(--glass);border:1px solid rgba(0,229,255,0.08);padding:16px;border-radius:2px;margin-bottom:24px}
+.node-table h3{font-size:10px;letter-spacing:2px;color:var(--dim);margin-bottom:12px;text-transform:uppercase}
+.node-table table{width:100%;border-collapse:collapse;font-size:11px}
+.node-table th{text-align:left;color:var(--dim);letter-spacing:1px;padding:6px 8px;border-bottom:1px solid rgba(0,229,255,0.1);text-transform:uppercase;font-size:9px}
+.node-table td{padding:6px 8px;border-bottom:1px solid rgba(0,0,0,0.3)}
+.node-table tr:last-child td{border-bottom:none}
+
+.depth-dist{background:var(--glass);border:1px solid rgba(0,229,255,0.08);padding:16px;border-radius:2px;margin-bottom:24px}
+.depth-dist h3{font-size:10px;letter-spacing:2px;color:var(--dim);margin-bottom:12px;text-transform:uppercase}
+.depth-grid{display:flex;flex-wrap:wrap;gap:8px}
+.depth-tag{background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.15);padding:6px 12px;border-radius:2px;font-size:11px}
+.depth-tag .count{color:var(--cyan);font-weight:700}
+
+.error{color:var(--blood);padding:20px;text-align:center}
+.loading{color:var(--dim);padding:20px;text-align:center;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{opacity:.4}}
+
+.mod24-labels{display:grid;grid-template-columns:repeat(9,1fr);gap:2px;margin-top:12px}
+.mod24-cell{text-align:center;padding:4px 0;font-size:9px;border-radius:1px;letter-spacing:0.5px}
+.mod9-labels{display:flex;justify-content:space-around;margin-bottom:6px;font-size:8px;color:var(--dim);letter-spacing:1px}
+</style>
+</head>
+<body>
+
+<h1>◈ ERDOS-STRAUS · 8.3M SOLUTIONS</h1>
+<h2>mod24·mod9 sieve · node contributions · depth classification</h2>
+
+<div class="summary-grid" id="summary"></div>
+
+<div class="chart-grid">
+  <div class="chart-box full"><h3>◈ mod24 × mod9 Heatmap — Breach Rate</h3><canvas id="heatmapChart"></canvas></div>
+  <div class="chart-box"><h3>◈ Node Contribution (Solutions)</h3><canvas id="nodeChart"></canvas></div>
+  <div class="chart-box"><h3>◈ Depth Distribution</h3><canvas id="depthChart"></canvas></div>
+</div>
+
+<div class="node-table" id="nodeTable"></div>
+<div class="depth-dist" id="depthDist"></div>
+
+<div id="status" class="loading">Loading erdos_aggregates.json ...</div>
+
+<script>
+(async () => {
+  const status = document.getElementById('status');
+  try {
+    const resp = await fetch('erdos_aggregates.json');
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    status.className = '';
+    status.textContent = '✓ loaded ' + new Date().toISOString();
+
+    const s = data.summary;
+    const summaryEl = document.getElementById('summary');
+    summaryEl.innerHTML = `
+      <div class="stat"><div class="lbl">Total Solutions</div><div class="val cyan">${s.total_solutions.toLocaleString()}</div></div>
+      <div class="stat"><div class="lbl">Unique n</div><div class="val">${s.unique_n.toLocaleString()}</div></div>
+      <div class="stat"><div class="lbl">Breach</div><div class="val blood">${s.breach.toLocaleString()}</div></div>
+      <div class="stat"><div class="lbl">Stable</div><div class="val green">${s.stable.toLocaleString()}</div></div>
+      <div class="stat"><div class="lbl">Breach Rate</div><div class="val amber">${s.breach_rate}%</div></div>
+      <div class="stat"><div class="lbl">n Range</div><div class="val" style="font-size:14px">${s.n_range[0].toLocaleString()} – ${s.n_range[1].toLocaleString()}</div></div>
+      <div class="stat"><div class="lbl">Claimed Total</div><div class="val" style="font-size:14px">${s.work_manifest_solutions_claimed.toLocaleString()}</div></div>
+      <div class="stat"><div class="lbl">Coverage</div><div class="val">${s.coverage_pct}%</div></div>
+    `;
+
+    // --- Heatmap: mod24 × mod9 breach rate ---
+    const heatmap = data.mod24_mod9_heatmap;
+    const validMod24 = [1,5,7,9,11,13,17,19,23];
+    const validMod9 = [0,1,2,3,4,5,6,7,8];
+    const hmData = [];
+    const hmLabels = [];
+    for (const m24 of validMod24) {
+      for (const m9 of validMod9) {
+        const key = `${m24}_${m9}`;
+        const cell = heatmap[key] || {total:0,breach:0,breach_rate:0};
+        hmData.push(cell.breach_rate);
+        hmLabels.push(`${m24},${m9}`);
+      }
+    }
+
+    new Chart(document.getElementById('heatmapChart'), {
+      type: 'bar',
+      data: {
+        labels: hmLabels,
+        datasets: [{
+          label: 'Breach Rate %',
+          data: hmData,
+          backgroundColor: hmData.map(v =>
+            v >= 90 ? '#ff2244' :
+            v >= 50 ? '#ffaa00' :
+            v > 0  ? '#00e5ff' :
+                     '#0f141a'
+          ),
+          borderWidth: 0,
+          borderRadius: 1,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => `(${ctx.label.replace(',',', ')})  ${ctx.raw}% breach`
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: 'rgba(200,208,216,0.4)', font: {size:8}, maxRotation: 90 },
+            grid: { display: false }
+          },
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { color: 'rgba(200,208,216,0.3)', font: {size:9}, callback: v => v + '%' },
+            grid: { color: 'rgba(0,229,255,0.05)' }
+          }
+        }
+      }
+    });
+
+    // --- Node Contribution ---
+    const nodes = data.node_contributions || [];
+    const nodeCtx = document.getElementById('nodeChart');
+    new Chart(nodeCtx, {
+      type: 'doughnut',
+      data: {
+        labels: nodes.map(n => n.source),
+        datasets: [{
+          data: nodes.map(n => n.solutions),
+          backgroundColor: ['#00e5ff', '#ffaa00', '#00ff88', '#ff2244', '#c8d0d8'],
+          borderWidth: 0,
+        }]
+      },
+      options: {
+        responsive: true,
+        parsing: { key: 'solutions' },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { color: 'rgba(200,208,216,0.6)', font: {size:10}, padding:12 }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.label}: ${ctx.parsed.toLocaleString()} solutions`
+            }
+          }
+        }
+      }
+    });
+
+    // --- Depth Distribution ---
+    const depths = data.depth_distribution || {};
+    const depthLabels = Object.keys(depths);
+    const depthData = Object.values(depths);
+    const depthColors = depthLabels.map(d =>
+      d.includes('BREACH') ? '#ff2244' :
+      d.includes('STABLE') ? '#00ff88' :
+      d.includes('MOD9')   ? '#ffaa00' :
+                             '#00e5ff'
+    );
+
+    new Chart(document.getElementById('depthChart'), {
+      type: 'polarArea',
+      data: {
+        labels: depthLabels,
+        datasets: [{
+          data: depthData,
+          backgroundColor: depthColors.map(c => c + '88'),
+          borderColor: depthColors,
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: 'rgba(200,208,216,0.6)', font: {size:10} } },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.label}: ${ctx.parsed.toLocaleString()} (${(ctx.parsed / s.total_solutions * 100).toFixed(1)}%)`
+            }
+          }
+        },
+        scales: {
+          r: {
+            grid: { color: 'rgba(0,229,255,0.08)' },
+            ticks: { display: false }
+          }
+        }
+      }
+    });
+
+    // --- Node table ---
+    const nodeTableEl = document.getElementById('nodeTable');
+    nodeTableEl.innerHTML = `
+      <h3>◈ Node Contributions</h3>
+      <table>
+        <thead><tr>
+          <th>Source</th>
+          <th>Solutions</th>
+          <th>Breach</th>
+          <th>Stable</th>
+          <th>Unique n</th>
+          <th>Breach Rate</th>
+        </tr></thead>
+        <tbody>
+          ${nodes.map(n => `
+            <tr>
+              <td style="color:var(--cyan)">${n.source}</td>
+              <td>${n.solutions.toLocaleString()}</td>
+              <td style="color:var(--blood)">${n.breach.toLocaleString()}</td>
+              <td style="color:var(--green)">${n.stable.toLocaleString()}</td>
+              <td>${n.unique_n.toLocaleString()}</td>
+              <td style="color:var(--amber)">${n.breach_rate}%</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+
+    // --- Depth distribution tags ---
+    const depthEl = document.getElementById('depthDist');
+    depthEl.innerHTML = `
+      <h3>◈ Depth Classification</h3>
+      <div class="depth-grid">
+        ${depthLabels.map((d, i) => `
+          <div class="depth-tag">
+            ${d}: <span class="count">${depthData[i].toLocaleString()}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+  } catch (e) {
+    status.className = 'error';
+    status.textContent = '✗ Error: ' + e.message;
+  }
+})();
+</script>
+</body>
+</html>
