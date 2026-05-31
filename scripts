@@ -1,0 +1,113 @@
+import sys
+import re
+import ast
+
+def levenshtein_distance(s1, s2):
+    if len(s1) < len(s2):
+        return levenshtein_distance(s2, s1)
+    if len(s2) == 0:
+        return len(s1)
+    previous_row = range(len(s2) + 1)
+    for i, c1 in enumerate(s1):
+        current_row = [i + 1]
+        for j, c2 in enumerate(s2):
+            insertions = previous_row[j + 1] + 1
+            deletions = current_row[j] + 1
+            substitutions = previous_row[j] + (c1 != c2)
+            current_row.append(min(insertions, deletions, substitutions))
+        previous_row = current_row
+    return previous_row[-1]
+
+class SyntaxSonar:
+    def __init__(self, target_file):
+        self.target_file = target_file
+        with open(target_file, 'r', encoding='utf-8') as f:
+            self.code_lines = f.readlines()
+        
+    def sweep(self):
+        print(f"\n[SYNTAX SONAR] Initiating sweep on {self.target_file}")
+        print("=" * 60)
+        self._lexical_sweep()
+        self._spatial_sweep()
+        print("=" * 60)
+
+    def _lexical_sweep(self):
+        """Scans for Lexical Proximity (Levenshtein distance) amongst variables."""
+        variables = {}
+        
+        # Simple AST extraction of assigned variables
+        try:
+            tree = ast.parse("".join(self.code_lines))
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Store):
+                    if node.id not in variables:
+                        variables[node.id] = []
+                    variables[node.id].append(node.lineno)
+        except SyntaxError as e:
+            print(f">> AST Sweep Failed: Structural syntax error at line {e.lineno}.")
+            return
+            
+        names = list(variables.keys())
+        flagged = set()
+        
+        for i in range(len(names)):
+            for j in range(i+1, len(names)):
+                n1, n2 = names[i], names[j]
+                # Filter out short names
+                if len(n1) < 4 or len(n2) < 4:
+                    continue
+                dist = levenshtein_distance(n1, n2)
+                # If they are suspiciously close (e.g., dist == 1 or 2 for long strings)
+                if dist == 1 or (dist == 2 and len(n1) > 7):
+                    flagged.add((n1, n2))
+
+        if flagged:
+            print("[LEXICAL PROXIMITY FLAG] Morphological drift detected.")
+            for (n1, n2) in flagged:
+                print(f"   >> Collision Risk: '{n1}' (lines {variables[n1]}) and '{n2}' (lines {variables[n2]}).")
+                print("      Operator Synthesis: High probability of localized typo or cognitive overlap.")
+        else:
+            print("[LEXICAL SWEEP] Clear. No morphological drift detected.")
+
+    def _spatial_sweep(self):
+        """Scans for Spatial Proximity (Clustered identical blocks or repetitive errors)."""
+        # We will look for structural repetition that implies blind copy-pasting.
+        # Simple heuristic: exact matching non-empty lines occurring multiple times within a narrow window.
+        clusters = []
+        window_size = 15
+        
+        stripped_lines = [l.strip() for l in self.code_lines]
+        for i, line in enumerate(stripped_lines):
+            if len(line) < 10 or line.startswith('#'):
+                continue
+            
+            # Look ahead in the window
+            end_idx = min(len(stripped_lines), i + window_size)
+            matches = [i + 1]
+            for j in range(i + 1, end_idx):
+                if stripped_lines[j] == line:
+                    matches.append(j + 1)
+            
+            if len(matches) >= 3:
+                clusters.append((line, matches))
+                
+        # Deduplicate clusters
+        unique_clusters = {}
+        for line, matches in clusters:
+            unique_clusters[line] = tuple(matches)
+            
+        if unique_clusters:
+            print("\n[SPATIAL PROXIMITY FLAG] Geometric clustering detected.")
+            for line, match_tuple in unique_clusters.items():
+                print(f"   >> Repetition Singularity: The block `{line[:30]}...` appears {len(match_tuple)} times between lines {match_tuple[0]} and {match_tuple[-1]}.")
+            print("      Operator Synthesis: Developer fatigue or copy-paste cascade in this sector. Recommend abstraction or loop refactor.")
+        else:
+            print("\n[SPATIAL SWEEP] Clear. No structural fatigue clusters detected.")
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python syntax_sonar.py <target_file.py>")
+        sys.exit(1)
+    
+    sonar = SyntaxSonar(sys.argv[1])
+    sonar.sweep()

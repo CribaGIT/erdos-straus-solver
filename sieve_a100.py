@@ -14,8 +14,9 @@ try:
     GPU = True
     print(f'CuPy on A100: {cp.cuda.runtime.getDeviceCount()} GPU(s)')
 except:
+    import numpy as cp
     GPU = False
-    cp = np
+    cp.asnumpy = lambda x: np.array(x) if not isinstance(x, np.ndarray) else x
     print('CuPy unavailable — using NumPy CPU')
 
 CHUNK = 10_000_000
@@ -36,50 +37,101 @@ breach_count = 0
 
 def sieve_batch(n_vals):
     results = []
-    for n in n_vals:
-        n4 = 4.0 / n
-        x_min = int(n/4) + 1
-        x_max = min(int(3*n/4), int(n*n*0.3))
-        
-        if x_max <= x_min:
-            results.append({'n': int(n), 'solutions': 0, 'classification': 'VOID',
-                           'mod9': n % 9, 'ts': datetime.now().isoformat()})
-            continue
-        
-        found = 0
-        mod9 = n % 9
-        probe_limit = 200 if mod9 in (0, 3, 6) else 800
-        
-        for x in range(x_min, min(x_min + probe_limit, x_max)):
-            x4 = 4*x - n
-            if x4 <= 0:
-                continue
-            if (n*x) % x4 != 0:
-                continue
-            
-            z = (n*x) // x4
-            y_lim = min(int(2*n*x/x4) + 1, int(n*n*0.3))
-            
-            for y in range(x, y_lim):
-                denom = x4*y - n*x
-                if denom <= 0:
-                    continue
-                if (n*x*y) % denom == 0:
-                    found += 1
-                    if found >= 3:
-                        break
-            if found >= 3:
-                break
-        
-        if found > 0:
-            classification = 'STABLE' if found >= 3 else 'BREACH'
-            results.append({
-                'n': int(n), 'solutions': found,
-                'classification': classification,
-                'mod9': mod9,
-                'ts': datetime.now().isoformat()
-            })
+    if not n_vals:
+        return results
+
+    # 1D Material Tensor Injection
+    N = cp.array(n_vals, dtype=cp.int64)
+    mod9 = N % 9
     
+    # Identify probe limits based on Mod9 classification
+    is_hot = (mod9 == 0) | (mod9 == 3) | (mod9 == 6)
+    probe_limits = cp.where(is_hot, 200, 800)
+    MAX_PROBE = int(cp.max(probe_limits))
+    
+    X_min = (N // 4) + 1
+    X_max_limit = cp.minimum(3 * N // 4, cp.clip((N.astype(cp.float64)**2 * 0.3).astype(cp.int64), 0, 10_000_000_000))
+    
+    # Evaluate X domain in parallel (BATCH, MAX_PROBE)
+    X_offset = cp.arange(MAX_PROBE, dtype=cp.int64)
+    X = X_min[:, None] + X_offset[None, :]
+    
+    valid_X_mask = (X < X_max_limit[:, None]) & (X_offset[None, :] < probe_limits[:, None])
+    
+    X4 = 4 * X - N[:, None]
+    valid_X_mask &= (X4 > 0)
+    
+    # Safe division mod check
+    # Avoid div by zero in modulo by setting invalid X4 to 1
+    safe_X4 = cp.where(valid_X_mask, X4, 1)
+    NX = N[:, None] * X
+    valid_X_mask &= ((NX % safe_X4) == 0)
+    
+    # For survived X tensors, we need to find Y
+    # Extract the surviving (N_index, X_val) pairs
+    N_indices, X_offsets = cp.nonzero(valid_X_mask)
+    
+    # We will track solutions per N
+    found_counts = cp.zeros(len(N), dtype=cp.int32)
+    
+    # To avoid memory explosions on Y, we process the survived X sequentially or grouped
+    # Since the number of valid X is small, we can fallback to Python loop for the Y domain 
+    # OR vectorize Y. We'll do a bounded Y search for the valid pairs.
+    
+    # Move to CPU for the sparse Y search (much faster than looping in CuPy scalar)
+    N_idx_cpu = cp.asnumpy(N_indices)
+    X_off_cpu = cp.asnumpy(X_offsets)
+    
+    # Precompute host arrays for fast access
+    N_host = cp.asnumpy(N)
+    mod9_host = cp.asnumpy(mod9)
+    X_min_host = cp.asnumpy(X_min)
+    
+    for i in range(len(N_idx_cpu)):
+        idx = N_idx_cpu[i]
+        if found_counts[idx] >= 3:
+            continue # already STABLE
+            
+        n = int(N_host[idx])
+        x = int(X_min_host[idx] + X_off_cpu[i])
+        
+        x4 = 4 * x - n
+        if x4 <= 0: continue
+        
+        z_approx = (n * x) // x4
+        y_lim = min(int(2 * n * x / x4) + 1, int(n * n * 0.3))
+        
+        y_start = max(x, (n * x) // x4 + 1)
+        # Y domain search
+        for y in range(y_start, y_lim):
+            denom = x4 * y - n * x
+            if denom <= 0: continue
+            if (n * x * y) % denom == 0:
+                found_counts[idx] += 1
+                if found_counts[idx] >= 3:
+                    break
+                    
+    found_host = cp.asnumpy(found_counts)
+    
+    ts = datetime.now().isoformat()
+    for i in range(len(N_host)):
+        f_cnt = int(found_host[i])
+        m9 = int(mod9_host[i])
+        if f_cnt > 0:
+            classification = 'STABLE' if f_cnt >= 3 else 'BREACH'
+            results.append({
+                'n': int(N_host[i]), 'solutions': f_cnt,
+                'classification': classification,
+                'mod9': m9,
+                'ts': ts
+            })
+        elif X_max_limit[i] <= X_min_host[i]:
+            results.append({
+                'n': int(N_host[i]), 'solutions': 0,
+                'classification': 'VOID',
+                'mod9': m9, 'ts': ts
+            })
+            
     return results
 
 

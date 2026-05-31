@@ -1,0 +1,663 @@
+{
+  "source": "lightning_a100",
+  "start_n": 32000000,
+  "last_n": 32000099,
+  "solutions_found": 93,
+  "stable": 93,
+  "breach": 0,
+  "runtime_seconds": 0.002504110336303711,
+  "solutions": [
+    {
+      "n": 32000000,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000001,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000002,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000003,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 8,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000004,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000006,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000007,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000008,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000009,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000010,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000011,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000012,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 8,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000013,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000014,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000015,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000016,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000017,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000018,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000019,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000020,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000022,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000023,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000024,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000025,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000026,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000027,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000028,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000029,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000030,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 8,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000031,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000032,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000033,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000034,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000035,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000036,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000037,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000038,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000039,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 8,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000040,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000041,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000042,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000043,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000044,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000045,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000046,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000047,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000048,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 8,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000049,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000050,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000051,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000052,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000054,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000055,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000056,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000058,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000059,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000060,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000061,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000062,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000063,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000064,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000066,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 8,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000067,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000068,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000069,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000070,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000071,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000072,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000073,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000074,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000075,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 8,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000076,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000077,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000078,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000079,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000080,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000082,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000083,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000084,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 8,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000085,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000086,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000087,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000088,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000089,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000090,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000091,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 6,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000092,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 7,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000094,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 0,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000095,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 1,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000096,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 2,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000097,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 3,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000098,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 4,
+      "ts": "2026-05-31T18:54:46.144112"
+    },
+    {
+      "n": 32000099,
+      "solutions": 3,
+      "classification": "STABLE",
+      "mod9": 5,
+      "ts": "2026-05-31T18:54:46.144112"
+    }
+  ],
+  "timestamp": "2026-05-31T18:54:46.144112"
+}
