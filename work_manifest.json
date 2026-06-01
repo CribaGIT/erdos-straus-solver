@@ -1,0 +1,21 @@
+{
+  "version": "v113",
+  "axiom": "STATUTORY_SIEVE_v3",
+  "created": "2026-06-01T09:12:54.164208",
+  "total_range": 1000000000000,
+  "current_progress": 1000,
+  "solutions_total": 1000,
+  "stable_regions": 0,
+  "breach_regions": 1000,
+  "nodes": {
+    "local_victus": {
+      "status": "active",
+      "last_chunk": 1000,
+      "last_solutions": 1000,
+      "last_stable": 0,
+      "last_breach": 1000,
+      "last_run": "2026-06-01T09:12:54.166746"
+    }
+  },
+  "last_orchestration": "2026-06-01T09:12:58.490842"
+}
