@@ -1,0 +1,38 @@
+# Erdos-Straus Sieve & Solver Git Ignore Configuration (CP41 / MT41)
+
+# Large mathematical data and database files (NEVER commit to GitHub)
+*.db
+*.db-journal
+*.jsonl
+erdos_full_log.json
+erdos_output.json
+erdos_manifest.json
+erdos_a100_classification.json
+erdos_aggregates.json
+work_manifest.json.bak
+
+# Exclude all logs and caches except the clean daily_logs folder
+daily_logs/classify_*.json
+daily_logs/archive_*
+
+# Python build and env cache artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# System specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.bak
+*.tmp
+*.zip
+*.tar.gz
+*.tgz

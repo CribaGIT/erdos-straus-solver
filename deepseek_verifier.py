@@ -59,6 +59,29 @@ def ask_deepseek(n, api_key):
     except Exception as e:
         return f"API error: {e}"
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+def process_record(line, api_key):
+    """Worker thread target to verify a single JSONL record."""
+    try:
+        record = json.loads(line)
+        n_val = record.get("vector", [0])[0] if "vector" in record else 0
+        steps = record.get("steps", 0)
+        overlap = record.get("harmonic_overlap", "?")
+        
+        if n_val and n_val > 0:
+            result = ask_deepseek(n_val, api_key)
+            return {
+                "n": n_val,
+                "steps": steps,
+                "overlap": overlap,
+                "deepseek_response": result.strip(),
+                "timestamp": datetime.now().isoformat()
+            }
+    except Exception as e:
+        return {"error": str(e)}
+    return None
+
 def main():
     api_key = get_deepseek_key()
     if not api_key:
@@ -75,41 +98,33 @@ def main():
         return
     
     lines = output_file.read_text().strip().split("\n")
-    print(f"Records: {len(lines)}")
+    print(f"Total Records: {len(lines)}")
     
     verified = []
     sample_size = min(5, len(lines))
+    records_to_process = lines[-sample_size:]
     
-    for line in lines[-sample_size:]:
-        try:
-            record = json.loads(line)
-            n_val = record.get("vector", [0])[0] if "vector" in record else 0
-            steps = record.get("steps", 0)
-            overlap = record.get("harmonic_overlap", "?")
-            
-            print(f"\n  n={n_val} steps={steps} [{overlap}]")
-            
-            # Verify mathematically
-            if n_val and n_val > 0:
-                result = ask_deepseek(n_val, api_key)
-                print(f"  DeepSeek: {result[:120]}...")
-                
-                verified.append({
-                    "n": n_val,
-                    "steps": steps,
-                    "overlap": overlap,
-                    "deepseek_response": result[:200],
-                    "timestamp": datetime.now().isoformat()
-                })
-        except:
-            continue
+    print(f"Verifying latest {sample_size} records in parallel (max 5 threads)...")
+    
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {executor.submit(process_record, line, api_key): line for line in records_to_process}
+        for future in as_completed(futures):
+            res = future.result()
+            if res and "error" not in res:
+                print(f"  ✓ Verified n={res['n']} | DeepSeek: {res['deepseek_response'][:100]}...")
+                verified.append(res)
+            elif res and "error" in res:
+                print(f"  ✗ Verification error: {res['error']}")
     
     # Save verified solutions
-    with open(OUTPUT_LOG, 'a') as f:
-        for v in verified:
-            f.write(json.dumps(v) + "\n")
+    if verified:
+        with open(OUTPUT_LOG, 'a') as f:
+            for v in verified:
+                f.write(json.dumps(v) + "\n")
+        print(f"\n✓ Saved {len(verified)} verified solutions to chronicle log")
+    else:
+        print("\n⚠ No solutions verified successfully during this pass")
     
-    print(f"\n✓ Verified {len(verified)} solutions")
     print(f"  Log: {OUTPUT_LOG}")
 
 if __name__ == "__main__":
