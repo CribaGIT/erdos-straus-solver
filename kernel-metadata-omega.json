@@ -1,0 +1,10 @@
+{
+  "id": "commencethescourge/omega-solver-delta",
+  "title": "omega-solver-delta",
+  "code_file": "omega_solver_delta.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_internet": false
+}
