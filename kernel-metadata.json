@@ -1,9 +1,12 @@
 {
   "id": "commencethescourge/erdos-hot-corridor-sieve",
-  "title": "erdos-hot-corridor-sieve",
-  "code_file": "erdos_hot_corridor_kaggle.ipynb",
+  "title": "Erdos-Straus Hot Corridor Sieve v114",
+  "source_type": "script",
+  "dataset_sources": ["commencethescourge/erdos-solutions"],
+  "competition_sources": [],
+  "code_file": "sieve_l40s_hot_corridor.py",
   "language": "python",
-  "kernel_type": "notebook",
+  "kernel_type": "script",
   "is_private": false,
   "enable_gpu": true,
   "enable_internet": false

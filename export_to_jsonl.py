@@ -1,9 +1,11 @@
 """Convert SQLite solutions to JSONL for Kaggle dataset publish."""
 import sqlite3, json, os, sys
+from pathlib import Path
 
-erdos_dir = os.path.expanduser(r'~/Projects/erdos-straus')
-db_path = os.path.join(erdos_dir, 'erdos_solutions.db')
-out_path = os.path.join(erdos_dir, 'kaggle_dataset', 'erdos_solutions.jsonl')
+BASE = Path(__file__).resolve().parent
+db_path = BASE / "erdos_solutions.db"
+out_path = BASE / "kaggle_dataset" / "erdos_solutions.jsonl"
+out_path.parent.mkdir(parents=True, exist_ok=True)
 
 conn = sqlite3.connect(db_path)
 conn.row_factory = sqlite3.Row

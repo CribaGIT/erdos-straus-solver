@@ -12,8 +12,8 @@ from pathlib import Path
 from datetime import datetime
 
 NOTEBOOK_KERNELS = [
-    'commencethescourge/erdos-p100-notebook',
-    'commencethescourge/erdos-t4-sieve',
+    'commencethescourge/erdos-hot-corridor-sieve',
+    'commencethescourge/erdos-straus-solver',
 ]
 PULL_DIR = Path(r'C:\Users\dasha\Projects\erdos-straus\kaggle_output')
 

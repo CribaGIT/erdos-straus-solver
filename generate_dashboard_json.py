@@ -6,12 +6,14 @@ Produces: erdos_aggregates.json with:
   - daily_totals: timestamp -> {solutions, breach, stable}
   - summary: {total_solutions, unique_n, breach_rate, last_updated}
 """
-
 import sqlite3, json, os
 from collections import defaultdict
+from datetime import datetime
+from pathlib import Path
 
-erdos_dir = os.path.expanduser(r'~/Projects/erdos-straus')
-db_path = os.path.join(erdos_dir, 'erdos_solutions.db')
+BASE = Path(__file__).resolve().parent
+db_path = BASE / "erdos_solutions.db"
+manifest_path = BASE / "work_manifest.json"
 
 conn = sqlite3.connect(db_path)
 
@@ -91,6 +93,14 @@ total_stable = conn.execute("SELECT COUNT(*) FROM solutions WHERE depth LIKE '%S
 max_n = conn.execute("SELECT MAX(n) FROM solutions").fetchone()[0]
 min_n = conn.execute("SELECT MIN(n) FROM solutions").fetchone()[0]
 
+# Read claimed total from manifest if available
+try:
+    with open(manifest_path) as f:
+        manifest = json.load(f)
+    claimed_total = manifest.get("solutions_total", 0) or manifest.get("total_solutions", 0)
+except Exception:
+    claimed_total = 0
+
 summary = {
     "total_solutions": total_sols,
     "unique_n": unique_n,
@@ -98,9 +108,9 @@ summary = {
     "stable": total_stable,
     "breach_rate": round(total_breach / total_sols * 100, 1) if total_sols > 0 else 0,
     "n_range": [min_n, max_n],
-    "last_updated": "2026-05-28",
-    "work_manifest_solutions_claimed": 8335340,
-    "coverage_pct": round(total_sols / 8335340 * 100, 1) if 8335340 > 0 else 0
+    "last_updated": datetime.now().strftime("%Y-%m-%d"),
+    "work_manifest_solutions_claimed": claimed_total,
+    "coverage_pct": round(total_sols / claimed_total * 100, 1) if claimed_total > 0 else 100.0
 }
 
 aggregates = {
@@ -110,7 +120,7 @@ aggregates = {
     "depth_distribution": depth_distribution
 }
 
-output_path = os.path.join(erdos_dir, 'erdos_aggregates.json')
+output_path = BASE / "erdos_aggregates.json"
 with open(output_path, 'w') as f:
     json.dump(aggregates, f, indent=2)
 

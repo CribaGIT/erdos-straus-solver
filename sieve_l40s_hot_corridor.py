@@ -12,20 +12,13 @@ from pathlib import Path
 # ─── CONFIG ───
 OUTPUT = Path("./erdos_output.json")     # writable — cwd
 MANIFEST = Path("./work_manifest.json")  # writable — cwd
-CHUNK_SIZE = 500_000_000  # 500M per run
+JSONL_OUTPUT = Path("./KAGGLE_OUTPUT_RECORD.jsonl")  # append-only stream
+TARGET_LIMIT = 10_000_000_000  # 10^10
+SAVE_INTERVAL = 500_000      # Save every 500K candidates
 HOT_MOD9 = {0, 3, 6}      # mod9 values that produce breaches
 HOT_MOD24 = 0              # mod24=0 is the breach corridor
-SAVE_INTERVAL = 500_000      # Save every 500K candidates (was 1M raw, now stride-aware)
 
 RUN_START = time.time()
-
-print("=" * 60)
-print("ERDOS L40S — HOT CORRIDOR SIEVE")
-print(f"Start: {datetime.now().isoformat()}")
-print(f"GPU: L40S — 48GB VRAM — $2.89/hr")
-print(f"Target: mod24=0, mod9∈{HOT_MOD9}")
-print(f"Chunk: {CHUNK_SIZE:,} per run")
-print("=" * 60)
 
 # ─── LOAD PRIOR STATE ───
 if OUTPUT.exists():
@@ -33,12 +26,23 @@ if OUTPUT.exists():
     start_n = state.get("last_n", 32_000_000)
     solutions = state.get("solutions", [])
     stats = state.get("stats", {"stable": 0, "breach": 0, "neutral": 0, "total_checked": 0})
-    print(f"Resuming from n={start_n:,} — {len(solutions)} existing solutions")
+    if "total_solutions" not in stats:
+        stats["total_solutions"] = stats["stable"] + stats["breach"]
+    print(f"Resuming from n={start_n:,} - {stats['total_solutions']:,} total solutions ({len(solutions)} in memory cache)")
 else:
     start_n = 32_000_000
     solutions = []
-    stats = {"stable": 0, "breach": 0, "neutral": 0, "total_checked": 0}
+    stats = {"stable": 0, "breach": 0, "neutral": 0, "total_checked": 0, "total_solutions": 0}
     print(f"Fresh start from n={start_n:,}")
+
+CHUNK_SIZE = TARGET_LIMIT - start_n
+
+print("=" * 60)
+print("ERDOS L40S - HOT CORRIDOR SIEVE")
+print(f"Start: {datetime.now().isoformat()}")
+print(f"Target: mod24=0, mod9 in {HOT_MOD9}")
+print(f"Limit: {TARGET_LIMIT:,}")
+print("=" * 60)
 
 # Per-chunk tracking (stats.total_checked is cumulative)
 chunk_candidates_base = stats["total_checked"]  # Snapshot before this chunk
@@ -166,6 +170,14 @@ try:
                 "timestamp": datetime.now().isoformat()
             }
             solutions.append(entry)
+            if len(solutions) > 1000:
+                solutions.pop(0)
+
+            stats["total_solutions"] += 1
+
+            # Append directly to JSONL stream file
+            with open(JSONL_OUTPUT, "a", encoding="utf-8") as f_jsonl:
+                f_jsonl.write(json.dumps(entry) + "\n")
 
             if "STABLE" in depth: stats["stable"] += 1
             elif "BREACH" in depth: stats["breach"] += 1
@@ -182,7 +194,7 @@ try:
 
             state = {
                 "last_n": n,
-                "solutions": solutions[-1000:],  # Keep last 1000 in state
+                "solutions": solutions,  # Capped at 1000 in memory
                 "stats": stats,
                 "rate_per_sec": round(rate),
                 "timestamp": datetime.now().isoformat(),
@@ -191,10 +203,10 @@ try:
                 "anomalies": len(anomalies)
             }
 
-            # Save full log
+            # Save full log (metadata summary only, raw data is in JSONL)
             full_log = {
                 "last_n": n,
-                "solutions": solutions,
+                "total_solutions": stats["total_solutions"],
                 "stats": stats,
                 "anomalies": anomalies,
                 "timestamp": datetime.now().isoformat()
@@ -207,11 +219,15 @@ try:
             # Update manifest for dashboard
             if MANIFEST.exists():
                 m = json.loads(MANIFEST.read_text())
+                if "nodes" not in m:
+                    m["nodes"] = {}
+                if "lightning_l40s" not in m["nodes"]:
+                    m["nodes"]["lightning_l40s"] = {}
                 m["nodes"]["lightning_l40s"]["last_chunk"] = n
-                m["nodes"]["lightning_l40s"]["total_solutions"] = len(solutions)
+                m["nodes"]["lightning_l40s"]["total_solutions"] = stats["total_solutions"]
                 m["nodes"]["lightning_l40s"]["last_run"] = datetime.now().isoformat()
                 m["nodes"]["lightning_l40s"]["status"] = "active"
-                m["solutions_total"] = len(solutions)
+                m["solutions_total"] = stats["total_solutions"]
                 m["stable_regions"] = stats["stable"]
                 m["breach_regions"] = stats["breach"]
                 m["last_updated"] = datetime.now().isoformat()
@@ -254,14 +270,14 @@ OUTPUT.write_text(json.dumps(final_state, indent=2))
 
 total_runtime = time.time() - RUN_START
 candidates_total = stats["total_checked"]
-hit_rate = len(solutions) / max(1, candidates_total) * 100
+hit_rate = stats["total_solutions"] / max(1, candidates_total) * 100
 
 print("\n" + "=" * 60)
-print("ERDOS L40S — RUN COMPLETE")
+print("ERDOS L40S - RUN COMPLETE")
 print(f"Runtime: {total_runtime/3600:.2f}h ({total_runtime:.0f}s)")
-print(f"Candidates checked: {candidates_total:,} (mod24=0, mod9∈{{0,3,6}})")
+print(f"Candidates checked: {candidates_total:,} (mod24=0, mod9 in {{0,3,6}})")
 print(f"Range spanned: {candidates_total * 24:,} raw n")
-print(f"Solutions found: {len(solutions)} ({hit_rate:.1f}% hit rate)")
+print(f"Solutions found: {stats['total_solutions']:,} ({hit_rate:.1f}% hit rate)")
 print(f"STABLE: {stats['stable']} | BREACH: {stats['breach']} | NEUTRAL: {stats['neutral']}")
 print(f"ANOMALIES: {len(anomalies)}")
 if anomalies:
@@ -276,7 +292,7 @@ print(json.dumps({
     "stable": stats["stable"],
     "breach": stats["breach"],
     "anomalies": len(anomalies),
-    "total_solutions": len(solutions),
+    "total_solutions": stats["total_solutions"],
     "candidates_checked": candidates_total,
     "hit_rate_pct": round(hit_rate, 2),
     "last_n": end_n,

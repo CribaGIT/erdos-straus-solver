@@ -101,6 +101,19 @@ def try_kaggle_push():
     """Attempt Kaggle kernel push via CLI (may fail)."""
     print("[kaggle_t4] Attempting kernel push...")
     try:
+        # Pre-flight: dry-run to catch metadata/auth errors without interactive hang
+        dry = subprocess.run(
+            ["kaggle", "kernels", "push", "--dry-run"],
+            capture_output=True, text=True, timeout=30,
+            cwd=str(BASE)
+        )
+        if dry.returncode != 0:
+            print(f"  ✗ Dry-run failed: {dry.stderr[:200]}")
+            if "403" in dry.stderr or "401" in dry.stderr:
+                print("    → Auth error: check KAGGLE_API_TOKEN")
+            elif "metadata" in dry.stderr.lower():
+                print("    → Metadata error: check kernel-metadata.json")
+            return False
         result = subprocess.run(
             ["kaggle", "kernels", "push"],
             capture_output=True, text=True, timeout=30,
