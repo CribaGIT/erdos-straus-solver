@@ -72,6 +72,7 @@ Same vinculum operator, applied to integers instead of GPU fields.
 
 - **Kaggle**: `commencethescourge/erdos-p100-hot-corridor-sieve` — P100 GPU, daily schedule
 - **Colab**: [erdos_colab_gpu_sieve.ipynb](file:///C:/Users/dasha/Projects/erdos-straus-solver/erdos_colab_gpu_sieve.ipynb) — CuPy-accelerated hot corridor sieve for T4/L4/A100 GPU runtimes with Google Drive auto-resume support.
+- **Colab LLM Verifier**: [erdos_colab_llm_verifier.ipynb](file:///C:/Users/dasha/Projects/erdos-straus-solver/erdos_colab_llm_verifier.ipynb) — Verification and math resonance analysis utilizing Google Gemini API keys to cross-check solutions and compile markdown reports.
 - **Local**: Bare-metal runs with configurable thread count
 
 ## Entity
