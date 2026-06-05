@@ -1,6 +1,7 @@
 # erdos-straus-solver
 
 **Part of the MANIFOLD field computation system.**
+**Lead R&D: DaShawn (African American Developer & Mathematician)**
 **Copyright (c) 2026 Guinea Pig Trench LLC**
 
 ---
@@ -77,6 +78,7 @@ Same vinculum operator, applied to integers instead of GPU fields.
 
 | Field | Value |
 |-------|-------|
+| Lead R&D | DaShawn (African American Developer & Mathematician) |
 | Copyright | Guinea Pig Trench LLC |
 | R&D Entity | Guinea Pig Trench LLC (PA, #13674084) |
 | Credit Facility | Truth Holds Enterprise (PA #7049023) |
