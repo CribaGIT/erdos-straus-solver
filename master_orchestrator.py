@@ -28,19 +28,30 @@ OUTPUT_PATH = BASE / "output"
 # ═══════════════════════════════════════════════════════
 
 def check_codex() -> dict:
-    """Check Codex node status — local AI agent + media processor.
-    Codex is always local; check if CLI is reachable."""
+    """Check Codex node status - local AI agent + media processor.
+    Codex is always local; check if CLI is reachable via subprocess (self-contained)."""
+    import subprocess, json
     try:
-        from codex_node import orchestrator_status
-        return orchestrator_status()
-    except ImportError:
-        return {
-            "node": "codex",
-            "status": "not_importable",
-            "error": "codex_node.py not on PYTHONPATH",
-            "fix": "Add ~/Projects/trench_builder to PYTHONPATH",
-        }
-
+        result = subprocess.run(
+            ["codex", "status", "--json"],
+            capture_output=True, text=True, timeout=5
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return {"node": "codex", "status": "reachable", "raw": json.loads(result.stdout)}
+        result = subprocess.run(
+            ["codex", "--version"],
+            capture_output=True, text=True, timeout=3
+        )
+        if result.returncode == 0:
+            return {
+                "node": "codex",
+                "status": "cli_available",
+                "cli_version": result.stdout.strip(),
+                "note": "status --json not supported or empty"
+            }
+        return {"node": "codex", "status": "cli_not_found"}
+    except (FileNotFoundError, subprocess.TimeoutExpired, json.JSONDecodeError) as e:
+        return {"node": "codex", "status": "error", "error": str(e)}
 def run_local_victus():
     """Run CLASSIFICATION on existing solutions (fast, seconds).
     The full GPU sieve runs on Kaggle T4. Here we just classify
