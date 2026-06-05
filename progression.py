@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from atomic_writer import safe_read
 
-BASE = Path.home() / "Projects/erdos-straus"
+BASE = Path(__file__).resolve().parent
 MANIFEST = BASE / "work_manifest.json"
 OUTPUT = BASE / "KAGGLE_OUTPUT_RECORD.jsonl"
 
@@ -24,11 +24,50 @@ def load_manifest():
     return None
 
 def count_output():
-    lines = safe_read()
-    total = len(lines)
-    stable = sum(1 for l in lines if '"harmonic_overlap":"STABLE"' in l)
-    breach = sum(1 for l in lines if '"harmonic_overlap":"BREACH"' in l)
+    # Attempt to read from erdos_output.json (updated live by sieve)
+    output_json = BASE / "erdos_output.json"
+    if output_json.exists():
+        try:
+            with open(output_json) as f:
+                data = json.load(f)
+            stats = data.get("stats", {})
+            total = stats.get("total_solutions", 0) or stats.get("breach", 0) + stats.get("stable", 0)
+            if total > 0:
+                return total, stats.get("stable", 0), stats.get("breach", 0)
+        except Exception:
+            pass
+
+    # Fallback to work_manifest.json
+    manifest_json = BASE / "work_manifest.json"
+    if manifest_json.exists():
+        try:
+            with open(manifest_json) as f:
+                m = json.load(f)
+            total = m.get("solutions_total", 0)
+            if total > 0:
+                return total, m.get("stable_regions", 0), m.get("breach_regions", 0)
+        except Exception:
+            pass
+
+    # Ultimate fallback: stream count (memory safe)
+    if not OUTPUT.exists():
+        return 0, 0, 0
+    total = 0
+    stable = 0
+    breach = 0
+    try:
+        with open(OUTPUT, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    total += 1
+                    if "STABLE" in line:
+                        stable += 1
+                    elif "BREACH" in line:
+                        breach += 1
+    except Exception:
+        pass
     return total, stable, breach
+
 
 # ═══════════════════════════════════════════════════════
 # 2. TERMINAL PROGRESS BAR
@@ -39,14 +78,12 @@ def terminal_bar(label, current, total, width=40, color="white"):
     filled = int(width * pct / 100)
     empty = width - filled
     
-    bars = [" ", "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█"]
+    bars = [" ", "#", "#", "#", "#", "#", "#", "#", "#"]
     
-    full_blocks = filled // 8
-    remainder = filled % 8
+    full_blocks = filled
     
-    bar = "█" * full_blocks
-    if remainder > 0: bar += bars[remainder]
-    bar += "░" * empty
+    bar = "#" * full_blocks
+    bar += "-" * empty
     
     color_codes = {
         "green":  "\033[92m", "yellow": "\033[93m",
@@ -72,12 +109,12 @@ def terminal_dashboard():
     current = m["current_progress"]
     overall_pct = (current / target) * 100 if target > 0 else 0
     
-    print("╔══════════════════════════════════════════════════════════════╗")
-    print("║        ERDOS–STRAUS SIEVE — PROGRESSION DASHBOARD          ║")
-    print("╠══════════════════════════════════════════════════════════════╣")
-    print(f"║  Target: {target:>20,}  │  Progress: {overall_pct:.6f}%          ║")
-    print(f"║  Solutions: {total_sols:>17,}  │  STABLE: {stable:<6} BREACH: {breach:<6} ║")
-    print("╚══════════════════════════════════════════════════════════════╝")
+    print("+--------------------------------------------------------------+")
+    print("|        ERDOS-STRAUS SIEVE -- PROGRESSION DASHBOARD           |")
+    print("+--------------------------------------------------------------+")
+    print(f"|  Target: {target:>20,}  |  Progress: {overall_pct:.6f}%          |")
+    print(f"|  Solutions: {total_sols:>17,}  |  STABLE: {stable:<6} BREACH: {breach:<6} |")
+    print("+--------------------------------------------------------------+")
     print()
     
     # Overall progress
@@ -86,24 +123,24 @@ def terminal_dashboard():
     
     # Per-node progress
     if "nodes" in m:
-        print("═══ NODE PROGRESS ═══")
+        print("=== NODE PROGRESS ===")
         for name, node in m["nodes"].items():
             chunks_per = node.get("chunks_per_run", 1)
             last_chunk = node.get("last_chunk", 0) or 0
             sols = node.get("total_solutions", 0) or 0
             status = node.get("status", "unknown")
             
-            icon = "✅" if status == "active" else "⚠️" if status == "manual" else "💤"
+            icon = "[+]" if status == "active" else "[!]" if status == "manual" else "[-]"
             print(f"  {icon} {name:>20}: chunk_at {last_chunk:>15,} | {sols:>8,} sols | {status}")
     
     print()
-    print("═══ SOLUTION DISTRIBUTION ═══")
+    print("=== SOLUTION DISTRIBUTION ===")
     if total_sols > 0:
         stable_bar_width = int(40 * stable / total_sols)
         breach_bar_width = int(40 * breach / total_sols)
         void = 40 - stable_bar_width - breach_bar_width
-        print(f"  STABLE: {'█' * stable_bar_width}{'░' * (40 - stable_bar_width)} {stable} ({stable/total_sols*100:.1f}%)")
-        print(f"  BREACH: {'█' * breach_bar_width}{'░' * (40 - breach_bar_width)} {breach} ({breach/total_sols*100:.1f}%)")
+        print(f"  STABLE: {'#' * stable_bar_width}{'-' * (40 - stable_bar_width)} {stable} ({stable/total_sols*100:.1f}%)")
+        print(f"  BREACH: {'#' * breach_bar_width}{'-' * (40 - breach_bar_width)} {breach} ({breach/total_sols*100:.1f}%)")
 
 # ═══════════════════════════════════════════════════════
 # 3. HTML PROGRESS DASHBOARD

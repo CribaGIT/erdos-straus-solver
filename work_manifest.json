@@ -4,9 +4,9 @@
   "created": "2026-06-01T09:12:54.164208",
   "total_range": 1000000000000,
   "current_progress": 1000,
-  "solutions_total": 177000020,
+  "solutions_total": 180500020,
   "stable_regions": 0,
-  "breach_regions": 177000020,
+  "breach_regions": 180500020,
   "nodes": {
     "local_victus": {
       "status": "active",
@@ -17,12 +17,12 @@
       "last_run": "2026-06-01T09:12:54.166746"
     },
     "lightning_l40s": {
-      "last_chunk": 4280001216,
-      "total_solutions": 177000020,
-      "last_run": "2026-06-05T15:11:51.549056",
+      "last_chunk": 4364001216,
+      "total_solutions": 180500020,
+      "last_run": "2026-06-05T15:26:26.356139",
       "status": "active"
     }
   },
   "last_orchestration": "2026-06-01T09:12:58.490842",
-  "last_updated": "2026-06-05T15:11:51.549056"
+  "last_updated": "2026-06-05T15:26:26.356139"
 }

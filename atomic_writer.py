@@ -6,8 +6,8 @@ Windows-compatible: uses temp file + atomic rename (no fcntl needed).
 import os, json, time
 from pathlib import Path
 
-OUTPUT = Path.home() / "Projects/erdos-straus/KAGGLE_OUTPUT_RECORD.jsonl"
-LOCK = Path.home() / "Projects/erdos-straus/.sieve.lock"
+OUTPUT = Path(__file__).resolve().parent / "KAGGLE_OUTPUT_RECORD.jsonl"
+LOCK = Path(__file__).resolve().parent / ".sieve.lock"
 
 def acquire_lock(timeout=30):
     """Windows-compatible lock using temp file marker."""

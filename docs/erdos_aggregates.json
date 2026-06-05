@@ -1,43 +1,19 @@
 {
   "summary": {
-    "total_solutions": 501000,
-    "unique_n": 500000,
-    "breach": 501000,
+    "total_solutions": 179000020,
+    "unique_n": 179000020,
+    "breach": 179000020,
     "stable": 0,
     "breach_rate": 100.0,
     "n_range": [
-      32000016,
-      43999992
+      32000000,
+      4328001216
     ],
-    "last_updated": "2026-05-28",
-    "work_manifest_solutions_claimed": 8335340,
-    "coverage_pct": 6.0
+    "last_updated": "2026-06-05",
+    "work_manifest_solutions_claimed": 179000020,
+    "coverage_pct": 100.0
   },
   "mod24_mod9_heatmap": {
-    "0_0": {
-      "mod24": 0,
-      "mod9": 0,
-      "total": 167001,
-      "breach": 167001,
-      "stable": 0,
-      "breach_rate": 100.0
-    },
-    "0_3": {
-      "mod24": 0,
-      "mod9": 3,
-      "total": 167000,
-      "breach": 167000,
-      "stable": 0,
-      "breach_rate": 100.0
-    },
-    "0_6": {
-      "mod24": 0,
-      "mod9": 6,
-      "total": 166999,
-      "breach": 166999,
-      "stable": 0,
-      "breach_rate": 100.0
-    },
     "1_0": {
       "mod24": 1,
       "mod9": 0,
@@ -685,27 +661,52 @@
       "breach": 0,
       "stable": 0,
       "breach_rate": 0
+    },
+    "0_0": {
+      "mod24": 0,
+      "mod9": 0,
+      "total": 59666673,
+      "breach": 59666673,
+      "stable": 0,
+      "breach_rate": 100.0
+    },
+    "0_3": {
+      "mod24": 0,
+      "mod9": 3,
+      "total": 59666673,
+      "breach": 59666673,
+      "stable": 0,
+      "breach_rate": 100.0
+    },
+    "0_6": {
+      "mod24": 0,
+      "mod9": 6,
+      "total": 59666673,
+      "breach": 59666673,
+      "stable": 0,
+      "breach_rate": 100.0
     }
   },
   "node_contributions": [
     {
-      "source": "full_log",
-      "solutions": 500000,
-      "breach": 500000,
-      "stable": 0,
-      "unique_n": 500000,
-      "breach_rate": 100.0
-    },
-    {
-      "source": "local",
+      "source": "local_victus",
       "solutions": 1000,
       "breach": 1000,
       "stable": 0,
       "unique_n": 1000,
       "breach_rate": 100.0
+    },
+    {
+      "source": "lightning_l40s",
+      "solutions": 178999020,
+      "breach": 178999020,
+      "stable": 0,
+      "unique_n": 178999020,
+      "breach_rate": 100.0
     }
   ],
   "depth_distribution": {
-    "BREACH_MOD9": 501000
+    "BREACH_MOD9": 179000020,
+    "STABLE_MOD9": 0
   }
 }

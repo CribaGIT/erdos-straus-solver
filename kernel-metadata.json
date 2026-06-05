@@ -2,7 +2,7 @@
   "id": "commencethescourge/erdos-hot-corridor-sieve",
   "title": "Erdos-Straus Hot Corridor Sieve v114",
   "source_type": "script",
-  "dataset_sources": ["commencethescourge/erdos-solutions"],
+  "dataset_sources": ["commencethescourge/erdos-straus-solutions"],
   "competition_sources": [],
   "code_file": "sieve_l40s_hot_corridor.py",
   "language": "python",
