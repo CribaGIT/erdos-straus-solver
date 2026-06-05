@@ -71,7 +71,7 @@ Same vinculum operator, applied to integers instead of GPU fields.
 ## Deployment
 
 - **Kaggle**: `commencethescourge/erdos-p100-hot-corridor-sieve` — P100 GPU, daily schedule
-- **Colab**: Hot corridor notebook for T4/V100 runtime
+- **Colab**: [erdos_colab_gpu_sieve.ipynb](file:///C:/Users/dasha/Projects/erdos-straus-solver/erdos_colab_gpu_sieve.ipynb) — CuPy-accelerated hot corridor sieve for T4/L4/A100 GPU runtimes with Google Drive auto-resume support.
 - **Local**: Bare-metal runs with configurable thread count
 
 ## Entity
