@@ -1,16 +1,16 @@
 {
   "summary": {
-    "total_solutions": 179000020,
-    "unique_n": 179000020,
-    "breach": 179000020,
+    "total_solutions": 180500020,
+    "unique_n": 180500020,
+    "breach": 180500020,
     "stable": 0,
     "breach_rate": 100.0,
     "n_range": [
       32000000,
-      4328001216
+      4364001216
     ],
     "last_updated": "2026-06-05",
-    "work_manifest_solutions_claimed": 179000020,
+    "work_manifest_solutions_claimed": 180500020,
     "coverage_pct": 100.0
   },
   "mod24_mod9_heatmap": {
@@ -665,24 +665,24 @@
     "0_0": {
       "mod24": 0,
       "mod9": 0,
-      "total": 59666673,
-      "breach": 59666673,
+      "total": 60166673,
+      "breach": 60166673,
       "stable": 0,
       "breach_rate": 100.0
     },
     "0_3": {
       "mod24": 0,
       "mod9": 3,
-      "total": 59666673,
-      "breach": 59666673,
+      "total": 60166673,
+      "breach": 60166673,
       "stable": 0,
       "breach_rate": 100.0
     },
     "0_6": {
       "mod24": 0,
       "mod9": 6,
-      "total": 59666673,
-      "breach": 59666673,
+      "total": 60166673,
+      "breach": 60166673,
       "stable": 0,
       "breach_rate": 100.0
     }
@@ -698,15 +698,15 @@
     },
     {
       "source": "lightning_l40s",
-      "solutions": 178999020,
-      "breach": 178999020,
+      "solutions": 180499020,
+      "breach": 180499020,
       "stable": 0,
-      "unique_n": 178999020,
+      "unique_n": 180499020,
       "breach_rate": 100.0
     }
   ],
   "depth_distribution": {
-    "BREACH_MOD9": 179000020,
+    "BREACH_MOD9": 180500020,
     "STABLE_MOD9": 0
   }
 }

@@ -75,7 +75,11 @@ depth_distribution = {
     "STABLE_MOD9": stable
 }
 
-last_n = output_state.get("last_n", 4302717888)
+last_n = output_state.get("last_n")
+if not last_n and "nodes" in manifest:
+    last_n = max((node.get("last_chunk", 0) for node in manifest["nodes"].values()), default=4316001216)
+if not last_n:
+    last_n = 4316001216
 summary = {
     "total_solutions": total_sols,
     "unique_n": total_sols,
