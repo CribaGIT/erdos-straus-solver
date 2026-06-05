@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+# Ensure repo root is importable from tests dir
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 import pytest
 from sieve_l40s_hot_corridor import erdos_straus_int, erdos_straus
 
