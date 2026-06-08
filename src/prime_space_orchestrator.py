@@ -1,6 +1,26 @@
 """
 Prime-space orchestrator for 4/n = 1/x + 1/y + 1/z verification.
 GOVERNOR: consumed by erdos_straus_solver and CLI entrypoints.
+
+vinculum: search_coverage / computational_cost
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  TOP: n in [lo, hi)  the search interval                       │
+  │  BOTTOM: mp.Process  the compute budget to verify it           │
+  │  BAR: chunk_size     how the interval is partitioned           │
+  └─────────────────────────────────────────────────────────────────┘
+  preserve: Exhaustive coverage of the search range. Every n in
+    [2, max_n] is tested by exactly one process. No n is skipped,
+    no n is double-counted. The parallel transport (seed+survivor
+    list -> identical partition across nodes) guarantees partition
+    determinism regardless of hardware topology.
+  sacrifice: No early termination. The orchestrator must complete
+    the entire range even if the conjecture holds for all tested n.
+    There is no "stop when counterexample found" optimization
+    because the sieve only finds solutions (confirming the conjecture),
+    never disproves it. This is the orange peel: we preserve
+    exhaustive coverage at the cost of unconditional runtime.
+  cross-domain: terrain->economy as audit_span->audit_cost;
+    terrain->swarm as search_radius->sensor_battery
 """
 from __future__ import annotations
 import multiprocessing as mp
