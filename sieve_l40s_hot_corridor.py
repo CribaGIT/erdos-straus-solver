@@ -34,62 +34,11 @@ from collections import defaultdict, Counter
 from pathlib import Path
 import argparse
 
-# ─── CONFIG & ARGUMENTS ───
-parser = argparse.ArgumentParser(description="ERDOS L40S — HOT CORRIDOR DEEP SIEVE")
-parser.add_argument("--v", type=int, default=32000000, help="Variable offset (seed start)")
-parser.add_argument("--depth", type=int, default=20833333, help="Corridor depth (number of strides)")
-parser.add_argument("--stride", type=int, default=24, help="Stride distance (default 24)")
-args = parser.parse_args()
-
-OUTPUT = Path(f"./erdos_output_{args.v}.json")     # writable — cwd
-MANIFEST = Path("./work_manifest.json")  # writable — cwd
-JSONL_OUTPUT = Path("./KAGGLE_OUTPUT_RECORD.jsonl")  # append-only stream
-TARGET_LIMIT = 10_000_000_000  # 10^10
-SAVE_INTERVAL = 500_000      # Save every 500K candidates
+# ─── MODULE-LEVEL CONSTANTS (import-safe) ───
 HOT_MOD9 = {0, 3, 6}      # mod9 values that produce breaches
 HOT_MOD24 = 0              # mod24=0 is the breach corridor
-
-RUN_START = time.time()
-
-print("=" * 60)
-print("ERDOS L40S — HOT CORRIDOR SIEVE")
-print(f"Start: {datetime.now().isoformat()}")
-print(f"GPU: L40S — 48GB VRAM — $2.89/hr")
-print(f"Target: mod24=0, mod9 in {HOT_MOD9}")
-print(f"Chunk: {args.depth:,} per run")
-print("=" * 60)
-
-# ─── LOAD PRIOR STATE ───
-if OUTPUT.exists():
-    state = json.loads(OUTPUT.read_text())
-    start_n = state.get("last_n", args.v)
-    solutions = state.get("solutions", [])
-    stats = state.get("stats", {"stable": 0, "breach": 0, "neutral": 0, "total_checked": 0})
-    if "total_solutions" not in stats:
-        stats["total_solutions"] = stats["stable"] + stats["breach"]
-    print(f"Resuming from n={start_n:,} - {stats['total_solutions']:,} total solutions ({len(solutions)} in memory cache)")
-else:
-    start_n = args.v
-    solutions = []
-    stats = {"stable": 0, "breach": 0, "neutral": 0, "total_checked": 0, "total_solutions": 0}
-    print(f"Fresh start from v={args.v:,}")
-
-CHUNK_SIZE = TARGET_LIMIT - start_n
-
-# Per-chunk tracking (stats.total_checked is cumulative)
-chunk_candidates_base = stats["total_checked"]  # Snapshot before this chunk
-candidates_at_last_save = stats["total_checked"]  # For rate calc on first save
-
-print("=" * 60)
-print("ERDOS L40S - HOT CORRIDOR SIEVE")
-print(f"Start: {datetime.now().isoformat()}")
-print(f"Target: mod24=0, mod9 in {HOT_MOD9}")
-print(f"Limit: {TARGET_LIMIT:,}")
-print("=" * 60)
-
-# Per-chunk tracking (stats.total_checked is cumulative)
-chunk_candidates_base = stats["total_checked"]  # Snapshot before this chunk
-candidates_at_last_save = stats["total_checked"]  # For rate calc on first save
+TARGET_LIMIT = 10_000_000_000  # 10^10
+SAVE_INTERVAL = 500_000      # Save every 500K candidates
 
 # ─── ERDOS-STRAUS: INTEGER ARITHMETIC SOLVER ───
 # Problem: 4/n = 1/x + 1/y + 1/z with x ≤ y ≤ z integers
@@ -184,161 +133,212 @@ def erdos_straus(n):
     else:
         return False, "ANOMALY", (), 0
 
-# ─── MAIN LOOP (Deterministic Partitioning) ───
-v = args.v
-s = args.stride
-n_depth = args.depth
-checkpoint_time = time.time()
-anomalies = []  # Track any n where solver fails (should be empty for mod24=0)
 
-print(f"Deterministic Sieve Partition:")
-print(f"  Entry point (v): {v:,}")
-print(f"  Depth (n):       {n_depth:,}")
-print(f"  Stride (s):      {s}")
+# ─── MAIN — only runs when script is executed directly ───
+def main():
+    parser = argparse.ArgumentParser(description="ERDOS L40S — HOT CORRIDOR DEEP SIEVE")
+    parser.add_argument("--v", type=int, default=32000000, help="Variable offset (seed start)")
+    parser.add_argument("--depth", type=int, default=20833333, help="Corridor depth (number of strides)")
+    parser.add_argument("--stride", type=int, default=24, help="Stride distance (default 24)")
+    args = parser.parse_args()
 
-try:
-    for n_idx in range(1, n_depth + 1):
-        n = v + (n_idx - 1) * s
-        has_sol, depth, triple, num_sol = erdos_straus(n)
-        stats["total_checked"] += 1
+    OUTPUT = Path(f"./erdos_output_{args.v}.json")
+    MANIFEST = Path("./work_manifest.json")
+    JSONL_OUTPUT = Path("./KAGGLE_OUTPUT_RECORD.jsonl")
 
-        if has_sol:
-            entry = {
-                "n": n,
-                "mod9": n % 9,
-                "mod24": n % 24,
-                "depth": depth,
-                "triple": list(triple),
-                "num_solutions": num_sol,
-                "timestamp": datetime.now().isoformat()
-            }
-            solutions.append(entry)
-            if len(solutions) > 1000:
-                solutions.pop(0)
+    RUN_START = time.time()
 
-            stats["total_solutions"] += 1
+    print("=" * 60)
+    print("ERDOS L40S — HOT CORRIDOR SIEVE")
+    print(f"Start: {datetime.now().isoformat()}")
+    print(f"GPU: L40S — 48GB VRAM — $2.89/hr")
+    print(f"Target: mod24=0, mod9 in {HOT_MOD9}")
+    print(f"Chunk: {args.depth:,} per run")
+    print("=" * 60)
 
-            # Append directly to JSONL stream file
-            with open(JSONL_OUTPUT, "a", encoding="utf-8") as f_jsonl:
-                f_jsonl.write(json.dumps(entry) + "\n")
+    # ─── LOAD PRIOR STATE ───
+    if OUTPUT.exists():
+        state = json.loads(OUTPUT.read_text())
+        start_n = state.get("last_n", args.v)
+        solutions = state.get("solutions", [])
+        stats = state.get("stats", {"stable": 0, "breach": 0, "neutral": 0, "total_checked": 0})
+        if "total_solutions" not in stats:
+            stats["total_solutions"] = stats["stable"] + stats["breach"]
+        print(f"Resuming from n={start_n:,} - {stats['total_solutions']:,} total solutions ({len(solutions)} in memory cache)")
+    else:
+        start_n = args.v
+        solutions = []
+        stats = {"stable": 0, "breach": 0, "neutral": 0, "total_checked": 0, "total_solutions": 0}
+        print(f"Fresh start from v={args.v:,}")
 
-            if "STABLE" in depth: stats["stable"] += 1
-            elif "BREACH" in depth: stats["breach"] += 1
-            else: stats["neutral"] += 1
-        elif depth == "ANOMALY":
-            anomalies.append(n)
-            stats["neutral"] += 1
+    CHUNK_SIZE = TARGET_LIMIT - start_n
 
-        # Periodic save (candidate-based, not raw n distance)
-        candidates_since_save = stats["total_checked"] - candidates_at_last_save
-        if candidates_since_save >= SAVE_INTERVAL:
-            interval_elapsed = time.time() - checkpoint_time
-            rate = candidates_since_save / interval_elapsed if interval_elapsed > 0 else 0
+    # Per-chunk tracking (stats.total_checked is cumulative)
+    chunk_candidates_base = stats["total_checked"]
+    candidates_at_last_save = stats["total_checked"]
 
-            state = {
-                "last_n": n,
-                "solutions": solutions,  # Capped at 1000 in memory
-                "stats": stats,
-                "rate_per_sec": round(rate),
-                "timestamp": datetime.now().isoformat(),
-                "gpu": "L40S",
-                "cost_per_hr": 2.89,
-                "anomalies": len(anomalies)
-            }
+    print("=" * 60)
+    print("ERDOS L40S - HOT CORRIDOR SIEVE")
+    print(f"Start: {datetime.now().isoformat()}")
+    print(f"Target: mod24=0, mod9 in {HOT_MOD9}")
+    print(f"Limit: {TARGET_LIMIT:,}")
+    print("=" * 60)
 
-            # Save full log (metadata summary only, raw data is in JSONL)
-            full_log = {
-                "last_n": n,
-                "total_solutions": stats["total_solutions"],
-                "stats": stats,
-                "anomalies": anomalies,
-                "timestamp": datetime.now().isoformat()
-            }
-            Path("./erdos_full_log.json").write_text(json.dumps(full_log))
+    chunk_candidates_base = stats["total_checked"]
+    candidates_at_last_save = stats["total_checked"]
 
-            # Update working state
-            OUTPUT.write_text(json.dumps(state, indent=2))
+    v = args.v
+    s = args.stride
+    n_depth = args.depth
+    checkpoint_time = time.time()
+    anomalies = []  # Track any n where solver fails (should be empty for mod24=0)
 
-            # Update manifest for dashboard
-            if MANIFEST.exists():
-                m = json.loads(MANIFEST.read_text())
-                if "nodes" not in m:
-                    m["nodes"] = {}
-                if "lightning_l40s" not in m["nodes"]:
-                    m["nodes"]["lightning_l40s"] = {}
-                m["nodes"]["lightning_l40s"]["last_chunk"] = n
-                m["nodes"]["lightning_l40s"]["total_solutions"] = stats["total_solutions"]
-                m["nodes"]["lightning_l40s"]["last_run"] = datetime.now().isoformat()
-                m["nodes"]["lightning_l40s"]["status"] = "active"
-                m["solutions_total"] = stats["total_solutions"]
-                m["stable_regions"] = stats["stable"]
-                m["breach_regions"] = stats["breach"]
-                m["last_updated"] = datetime.now().isoformat()
-                MANIFEST.write_text(json.dumps(m, indent=2))
+    print(f"Deterministic Sieve Partition:")
+    print(f"  Entry point (v): {v:,}")
+    print(f"  Depth (n):       {n_depth:,}")
+    print(f"  Stride (s):      {s}")
 
-            # Progress: % of THIS chunk's candidates, not cumulative
-            total_candidates = n_depth
-            chunk_checked = stats["total_checked"] - chunk_candidates_base
-            progress_pct = chunk_checked / max(1, total_candidates) * 100
-            effective_n_range = stats["total_checked"] * 24  # Cumulative raw n spanned
-            cost = 2.89 * (time.time() - checkpoint_time) / 3600
-            print(f"  [{progress_pct:.1f}%] n={n:,} (~{effective_n_range:,} spanned) | "
-                  f"{len(solutions)} sols | S:{stats['stable']} B:{stats['breach']} | "
-                  f"{rate:.0f} cand/s | ${cost:.4f} spent")
+    try:
+        for n_idx in range(1, n_depth + 1):
+            n = v + (n_idx - 1) * s
+            has_sol, depth, triple, num_sol = erdos_straus(n)
+            stats["total_checked"] += 1
 
-            candidates_at_last_save = stats["total_checked"]
-            checkpoint_time = time.time()
+            if has_sol:
+                entry = {
+                    "n": n,
+                    "mod9": n % 9,
+                    "mod24": n % 24,
+                    "depth": depth,
+                    "triple": list(triple),
+                    "num_solutions": num_sol,
+                    "timestamp": datetime.now().isoformat()
+                }
+                solutions.append(entry)
+                if len(solutions) > 1000:
+                    solutions.pop(0)
 
-except KeyboardInterrupt:
-    print("\nInterrupted — saving state...")
-except Exception as e:
-    print(f"\nError: {e}")
-    import traceback
-    traceback.print_exc()
+                stats["total_solutions"] += 1
 
-# ─── FINAL SAVE ───
-final_state = {
-    "last_n": v + (n_depth - 1) * s,
-    "solutions": solutions,
-    "stats": stats,
-    "anomalies": anomalies,
-    "completed_chunk": True,
-    "timestamp": datetime.now().isoformat(),
-    "gpu": "L40S",
-    "cost_per_hr": 2.89,
-    "chunk_size": n_depth,
-    "candidates_checked": stats["total_checked"]
-}
-OUTPUT.write_text(json.dumps(final_state, indent=2))
+                with open(JSONL_OUTPUT, "a", encoding="utf-8") as f_jsonl:
+                    f_jsonl.write(json.dumps(entry) + "\n")
 
-total_runtime = time.time() - RUN_START
-candidates_total = stats["total_checked"]
-hit_rate = stats["total_solutions"] / max(1, candidates_total) * 100
+                if "STABLE" in depth: stats["stable"] += 1
+                elif "BREACH" in depth: stats["breach"] += 1
+                else: stats["neutral"] += 1
+            elif depth == "ANOMALY":
+                anomalies.append(n)
+                stats["neutral"] += 1
 
-print("\n" + "=" * 60)
-print("ERDOS L40S - RUN COMPLETE")
-print(f"Runtime: {total_runtime/3600:.2f}h ({total_runtime:.0f}s)")
-print(f"Candidates checked: {candidates_total:,} (mod24=0, mod9 in {{0,3,6}})")
-print(f"Range spanned: {candidates_total * 24:,} raw n")
-print(f"Solutions found: {stats['total_solutions']:,} ({hit_rate:.1f}% hit rate)")
-print(f"STABLE: {stats['stable']} | BREACH: {stats['breach']} | NEUTRAL: {stats['neutral']}")
-print(f"ANOMALIES: {len(anomalies)}")
-if anomalies:
-    print(f"  Anomaly n values: {anomalies[:20]}")
-print(f"Last n: {v + (n_depth - 1) * s:,}")
-print(f"Cost: ${2.89 * total_runtime / 3600:.4f}")
-print(f"Output: {OUTPUT.resolve()}")
-print("=" * 60)
+            candidates_since_save = stats["total_checked"] - candidates_at_last_save
+            if candidates_since_save >= SAVE_INTERVAL:
+                interval_elapsed = time.time() - checkpoint_time
+                rate = candidates_since_save / interval_elapsed if interval_elapsed > 0 else 0
 
-# Inline JSON for cron capture
-print(json.dumps({
-    "stable": stats["stable"],
-    "breach": stats["breach"],
-    "anomalies": len(anomalies),
-    "total_solutions": stats["total_solutions"],
-    "candidates_checked": candidates_total,
-    "hit_rate_pct": round(hit_rate, 2),
-    "last_n": v + (n_depth - 1) * s,
-    "runtime_h": round(total_runtime / 3600, 2),
-    "cost": round(2.89 * total_runtime / 3600, 4)
-}))
+                state = {
+                    "last_n": n,
+                    "solutions": solutions,
+                    "stats": stats,
+                    "rate_per_sec": round(rate),
+                    "timestamp": datetime.now().isoformat(),
+                    "gpu": "L40S",
+                    "cost_per_hr": 2.89,
+                    "anomalies": len(anomalies)
+                }
+
+                full_log = {
+                    "last_n": n,
+                    "total_solutions": stats["total_solutions"],
+                    "stats": stats,
+                    "anomalies": anomalies,
+                    "timestamp": datetime.now().isoformat()
+                }
+                Path("./erdos_full_log.json").write_text(json.dumps(full_log))
+
+                OUTPUT.write_text(json.dumps(state, indent=2))
+
+                if MANIFEST.exists():
+                    m = json.loads(MANIFEST.read_text())
+                    if "nodes" not in m:
+                        m["nodes"] = {}
+                    if "lightning_l40s" not in m["nodes"]:
+                        m["nodes"]["lightning_l40s"] = {}
+                    m["nodes"]["lightning_l40s"]["last_chunk"] = n
+                    m["nodes"]["lightning_l40s"]["total_solutions"] = stats["total_solutions"]
+                    m["nodes"]["lightning_l40s"]["last_run"] = datetime.now().isoformat()
+                    m["nodes"]["lightning_l40s"]["status"] = "active"
+                    m["solutions_total"] = stats["total_solutions"]
+                    m["stable_regions"] = stats["stable"]
+                    m["breach_regions"] = stats["breach"]
+                    m["last_updated"] = datetime.now().isoformat()
+                    MANIFEST.write_text(json.dumps(m, indent=2))
+
+                total_candidates = n_depth
+                chunk_checked = stats["total_checked"] - chunk_candidates_base
+                progress_pct = chunk_checked / max(1, total_candidates) * 100
+                effective_n_range = stats["total_checked"] * 24
+                cost = 2.89 * (time.time() - checkpoint_time) / 3600
+                print(f"  [{progress_pct:.1f}%] n={n:,} (~{effective_n_range:,} spanned) | "
+                      f"{len(solutions)} sols | S:{stats['stable']} B:{stats['breach']} | "
+                      f"{rate:.0f} cand/s | ${cost:.4f} spent")
+
+                candidates_at_last_save = stats["total_checked"]
+                checkpoint_time = time.time()
+
+    except KeyboardInterrupt:
+        print("\nInterrupted — saving state...")
+    except Exception as e:
+        print(f"\nError: {e}")
+        import traceback
+        traceback.print_exc()
+
+    # ─── FINAL SAVE ───
+    final_state = {
+        "last_n": v + (n_depth - 1) * s,
+        "solutions": solutions,
+        "stats": stats,
+        "anomalies": anomalies,
+        "completed_chunk": True,
+        "timestamp": datetime.now().isoformat(),
+        "gpu": "L40S",
+        "cost_per_hr": 2.89,
+        "chunk_size": n_depth,
+        "candidates_checked": stats["total_checked"]
+    }
+    OUTPUT.write_text(json.dumps(final_state, indent=2))
+
+    total_runtime = time.time() - RUN_START
+    candidates_total = stats["total_checked"]
+    hit_rate = stats["total_solutions"] / max(1, candidates_total) * 100
+
+    print("\n" + "=" * 60)
+    print("ERDOS L40S - RUN COMPLETE")
+    print(f"Runtime: {total_runtime/3600:.2f}h ({total_runtime:.0f}s)")
+    print(f"Candidates checked: {candidates_total:,} (mod24=0, mod9 in {{0,3,6}})")
+    print(f"Range spanned: {candidates_total * 24:,} raw n")
+    print(f"Solutions found: {stats['total_solutions']:,} ({hit_rate:.1f}% hit rate)")
+    print(f"STABLE: {stats['stable']} | BREACH: {stats['breach']} | NEUTRAL: {stats['neutral']}")
+    print(f"ANOMALIES: {len(anomalies)}")
+    if anomalies:
+        print(f"  Anomaly n values: {anomalies[:20]}")
+    print(f"Last n: {v + (n_depth - 1) * s:,}")
+    print(f"Cost: ${2.89 * total_runtime / 3600:.4f}")
+    print(f"Output: {OUTPUT.resolve()}")
+    print("=" * 60)
+
+    # Inline JSON for cron capture
+    print(json.dumps({
+        "stable": stats["stable"],
+        "breach": stats["breach"],
+        "anomalies": len(anomalies),
+        "total_solutions": stats["total_solutions"],
+        "candidates_checked": candidates_total,
+        "hit_rate_pct": round(hit_rate, 2),
+        "last_n": v + (n_depth - 1) * s,
+        "runtime_h": round(total_runtime / 3600, 2),
+        "cost": round(2.89 * total_runtime / 3600, 4)
+    }))
+
+
+if __name__ == "__main__":
+    main()

@@ -203,3 +203,70 @@ The Erdos-Straus conjecture, viewed through the vinculum lens:
 - **What the Omega solver sacrifices**: Structural insight — it finds solutions without explaining why they exist
 - **What the Bradford solver preserves**: Algebraic structure — the solution is derived, not found
 - **What the Bradford solver sacrifices**: Coverage — the parametric families are incomplete
+
+---
+
+## Vinculum-Driven Innovations
+
+The vinculum framework is not just a measurement tool — it is an **active search heuristic**. Below are innovations derived from the vinculum lens, implemented in this repository.
+
+### 1. Vinculum Navigator — `vinculum_navigator.py`
+
+**The insight:** Instead of fixed stride-24 sieving, compute vinculum ratios in real-time and let them drive corridor selection.
+
+| Ratio | Navigation Rule |
+|-------|----------------|
+| solutions / candidates > 0.9 | Continue current corridor — extend depth |
+| solutions / candidates 0.5–0.9 | Expand to neighboring mod9 classes |
+| solutions / candidates < 0.5 | Shift corridor — current exhausted |
+| anomalies / candidates > 0 | Halt and investigate |
+
+**Vinculum:** `search_efficiency / corridor_density` — the ratio itself becomes the feedback signal. Instead of a human deciding where to search next, the search space geometry (as measured by hit rate) determines the next step.
+
+- **Preserves:** Compute efficiency — GPU cycles only go to dense corridors
+- **Sacrifices:** Exhaustive exploration — the navigator may never leave a productive corridor
+
+### 2. Vinculum Reporter — `vinculum_reporter.py`
+
+**The insight:** Every output file already contains vinculum data. The reporter aggregates all sources (erdos_output_*.json, work_manifest.json, KAGGLE_OUTPUT_RECORD.jsonl) into a unified ratio dashboard with preserves/sacrifices annotations.
+
+Generates `VINCULUM_REPORT.md` — a live document listing 10 standard ratios with their interpretations.
+
+- **Preserves:** All existing output formats — no schema changes needed
+- **Sacrifices:** Latency — aggregation is post-hoc, not real-time
+
+### 3. Ratio-Composed Navigation
+
+The deepest innovation: vinculum ratios can be **composed**. The composition of two vinculums is itself a vinculum:
+
+```
+search_velocity / hit_rate = throughput_per_solution
+
+(candidates/s) / (solutions/candidates) = candidates² / (solutions × s)
+```
+
+This composed vinculum measures **cost per discovery** — the true efficiency metric. When the navigator targets high hit rate at the expense of velocity, it optimizes for confidence. When it prioritizes velocity, it optimizes for breadth. The composed vinculum reveals the tradeoff numerically.
+
+- **Preserves:** Dimensional analysis — ratios of ratios preserve structure
+- **Sacrifices:** Interpretability — nested vinculums require familiarity with the framework
+
+### 4. Cross-Substrate Transport
+
+The same vinculum navigator pattern applies to:
+- **Collatz exploration** — trajectory_length / seed_n replaces solutions / candidates
+- **Hyperpoly terrain** — LOD_budget / polygon_count replaces stride / n
+
+The navigator's logic is substrate-agnostic: only the ratio labels change. This is the vinculum as universal search strategy.
+
+- **Preserves:** Search logic — the algorithm is identical across domains
+- **Sacrifices:** Domain-specific optimizations — the generic navigator may miss GPU-specific batching
+
+### Future Directions
+
+| Innovation | Vinculum | Status |
+|------------|----------|--------|
+| Real-time vinculum dashboard (HTML) | All ratios auto-refreshing | Planned |
+| Auto-corridor expansion | hit_rate < 0.5 → next mod9 class | Planned |
+| Cost-aware navigation | (velocity / hit_rate) × GPU_cost | Theoretical |
+| Lean formalization | (proof_term / conjecture) → 1 | Research |
+| Distributed vinculum sync | node_ratios / global_ratios → variance | Planned |
