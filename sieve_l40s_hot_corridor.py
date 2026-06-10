@@ -120,9 +120,12 @@ def erdos_straus(n):
     """Unified interface: returns (has_solution, depth, best_triple, num_solutions)"""
     mod9 = n % 9
 
-    # Only hot corridor
+    # Only hot corridor (n divisible by 24)
     if n % 24 != 0:
         return False, "SKIP", (), 0
+    # NOTE: The mod9 check below is REDUNDANT. Since 24 = 8*3, any n divisible
+    # by 24 is automatically divisible by 3, so n % 9 in {0, 3, 6} always.
+    # Kept for explicitness and to match the documented "hot corridor" definition.
     if mod9 not in HOT_MOD9:
         return False, "SKIP", (), 0
 

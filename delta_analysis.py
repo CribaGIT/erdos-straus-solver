@@ -82,10 +82,30 @@ def _omega_check(n: int, max_harmonics: int, strict: bool) -> Optional[dict]:
 def omega_solve(n: int, max_harmonics: int = 100) -> Optional[dict]:
     """
     Omega Solver: For n = 1 mod 4, try A = 4m+3.
-    x = (n+A)/4. Find d such that d = -nx (mod A) and d | nx².
+    x = (n+A)/4. Find d such that d = -nx (mod A) and d | nx^2.
     Then y = (nx+d)/A, z = (nx + (nx)^2/d)/A.
-    
-    Two-phase: fast strict check (d|x) first; fall back to complete check (d|nx²).
+
+    Interleaved: per-m, try strict (d|x) then non-strict (d|nx^2). Returns minimal A.
+    """
+    if n % 4 != 1:
+        return None
+    for m in range(max_harmonics):
+        A = 4 * m + 3
+        if (n + A) % 4 != 0:
+            continue
+        for strict in [True, False]:
+            result = _omega_check(n, m + 1, strict=strict)
+            if result is not None:
+                return result
+    return None
+
+
+def omega_solve_legacy_two_phase(n: int, max_harmonics: int = 100) -> Optional[dict]:
+    """
+    LEGACY two-phase solver (BUGGY: returns non-minimal A). Kept for comparison.
+    Two-phase: strict for ALL m first, then non-strict for ALL m.
+    BUG: If strict finds A=511 at m=127, returns that even when non-strict
+    would find A=7 at m=1. Use omega_solve() for correct minimal A.
     """
     if n % 4 != 1:
         return None
@@ -93,6 +113,7 @@ def omega_solve(n: int, max_harmonics: int = 100) -> Optional[dict]:
     if result is not None:
         return result
     return _omega_check(n, max_harmonics, strict=False)
+
 
 # =====================================================================
 # BRADFORD TYPE II — Parametric Covering (arXiv 2602.11774)

@@ -1,0 +1,10 @@
+{
+  "id": "commencethescourge/erdos-straus-scale-prover",
+  "title": "Erdos-Straus Scale Prover — 10^9 Sieve",
+  "code_file": "erdos_kaggle_scale_prover.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_internet": false
+}
