@@ -1,5 +1,5 @@
 """
-Covering Lemma Prover — Final Version
+Covering Lemma Prover --- Final Version
 ======================================
 Proves that minimal working A for exceptional Tier 3 primes
 depends only on p modulo M = 12 x lcm(7, 11, 5, 13, 17, 37) = 37,777,740.
@@ -139,7 +139,7 @@ def compute_period_bound_for_A(A):
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("COVERING LEMMA PROVER — FINAL")
+    print("COVERING LEMMA PROVER --- FINAL")
     print("=" * 70)
     print()
     
@@ -273,7 +273,7 @@ if __name__ == "__main__":
         
         # Print the mapping as a formal table
         print("Formal residue mapping table:")
-        print(f"  (Covers all exceptional primes p ≡ 1 mod 12 up to {limit:,})")
+        print(f"  (Covers all exceptional primes p = 1 mod 12 up to {limit:,})")
         print(f"  Modulus M = {M_best:,}")
         print(f"  {len(mapping)} residue classes, {len(A_residues)} distinct A values")
         print()
