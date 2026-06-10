@@ -108,14 +108,14 @@ Choose `A ≡ 3 (mod 4)`. Set `x = (p² + A)/4`. The remaining sum `R = 4A / (p�
 - Verified: all 22 such primes up to 500.
 
 ### Tier 3 (p ≡ 1 mod 12, c has NO divisor ≡ 2 mod 3)
-`A` ranges over a bounded set `{7, 11, 15, 19, 23, 31, 39, 43, 47, 51, 59, 67, 71, 79, 83, 87, 103, ...}`. The minimal working `A` is determined by a modular decision tree rooted at `p mod 7`:
+`A` ranges over a bounded set `{7, 11, 15, 19, 23, 31, 39, 43, 47, 51, 59, 67, 71, 79, 83, 87, 95, 103, 107, 111, 127, 159}`. The minimal working `A` is determined by a modular decision tree rooted at `p mod 7`:
 
 ```
-p mod 7 ∈ {3, 5, 6} → A = 7   (49.6%)
+p mod 7 ∈ {3, 5, 6} → A = 7   (49.47%)
 p mod 7 ∈ {1, 2, 4}:
-  p mod 11 ∈ {2, 6, 7, 10} → A = 11   (22.5%)
+  p mod 11 ∈ {2, 6, 7, 10} → A = 11   (22.55%)
   p mod 11 ∈ {1, 3, 4, 5, 9}:
-    p mod 5 distinguishes A ∈ {15, 19, 23, 31, 39, 43, 47, 51, 59, ...}
+    p mod 5 distinguishes A ∈ {15, 19, 23, 31, 39, 43, 47, 51, 59, 67, 71, 79, 83, 87, 95, 103, 107, 111, 127, 159}
 ```
 
 **Computational evidence for Bounded-A conjecture:** ALL 289,372 exceptional primes up to 10⁸ are solved with A ≤ 159 (max m = 39). Mean minimal m = 2.25. Zero failures across all tested ranges. The full distribution:
@@ -155,5 +155,5 @@ p mod 7 ∈ {1, 2, 4}:
 2. Does Omega's coverage remain 100% as `n → ∞`, or is there a harmonic bound?
 3. Can the `(y,z)` pairs from the two families be used to triangulate a third factorization family?
 4. Why are certain A values (27, 35, 47) systematically skipped as minimal solutions? Is there a structural obstruction?
-5. Does the bounded-A conjecture for Tier 3 (A ≤ 51 for all p) follow from p-adic properties of the divisor-congruence condition?
+5. Does the bounded-A conjecture for Tier 3 (A ≤ 159 for all p, supported by 10^8 data) follow from p-adic properties of the divisor-congruence condition?
 6. Prove that Tier 1 (A = p) and Tier 2 (A = 3p) are exact classifications: the condition on c = (p+3)/4 is both necessary and sufficient.

@@ -19,7 +19,7 @@ This is the vinculum operating on integers instead of fields — same algebraic 
 | Claim | Status |
 |-------|--------|
 | All exceptional primes (p≡1 mod 12, c no 2mod3 factor) solved | **289,372/289,372 up to 10⁸ (100%)** |
-| 12-portal classification covers all exceptional primes | **22 A-values, max A=159** |
+| 22-portal classification covers all exceptional primes | **22 A-values, max A=159** |
 | Zero failures at any scale | **10⁶: 4,540/4,540, 10⁷: 35,750/35,750, 10⁸: 289,372/289,372** |
 | Mean minimal m = 2.25 | Tightly bounded |
 | A=7 dominates at ~49.5% | Stable fraction across all scales |
@@ -28,9 +28,13 @@ This is the vinculum operating on integers instead of fields — same algebraic 
 | Squareful barrier: Bradford fails on ALL squareful n | Structural, not implementation artifact |
 | Xu (May 2026): 9 wild primes for m≤30,000 | **All 9 fall within 12-portal classification** |
 
-**The 12 Portals (A-values):** 7, 11, 15, 19, 23, 31, 39, 43, 47, 51, 59, 67, 71, 79, 83, 87, 95, 103, 107, 111, 127, 159
+**The 22 A-values (the "12 portals" plus higher terms):** 7, 11, 15, 19, 23, 31, 39, 43, 47, 51, 59, 67, 71, 79, 83, 87, 95, 103, 107, 111, 127, 159
 
-**OEIS Submission:** Pending — sequence of minimal additive shifts for exceptional primes
+**OEIS Submission:** Prepared — ready for submission to oeis.org/Submit
+  - Data file: `oeis_a_values_data.txt` (distribution counts)
+  - b-file: `oeis_b_file.txt` (22 distinct A-values)
+  - b-file: `bfile_exceptional_1000.txt` (A per exceptional prime, first 1000)
+  - Generator: `gen_oeis_bfile.py` (produces b-file for N exceptional primes)
 
 ## Architecture
 
