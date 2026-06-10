@@ -33,63 +33,58 @@ jobs:
     - name: Run delta analysis (small range)
       run: |
         python -c "
-import sys; sys.path.insert(0, '.')
-from delta_analysis import run_delta_analysis
-report = run_delta_analysis(max_n=10000, max_harmonics=50, max_k=50)
-assert report.omega_coverage == 100.0, 'Omega coverage must be 100%'
-assert report.neither_solved == 0, 'No unsolved cases'
-print('All assertions passed.')
-"
+        import sys; sys.path.insert(0, '.')
+        from delta_analysis import run_delta_analysis
+        report = run_delta_analysis(max_n=10000, max_harmonics=50, max_k=50)
+        assert report.omega_coverage == 100.0, 'Omega coverage must be 100%'
+        assert report.neither_solved == 0, 'No unsolved cases'
+        print('All assertions passed.')
+        "
 
     - name: Verify OEIS sequence values
       run: |
         python -c "
-import sys; sys.path.insert(0, '.')
-from delta_analysis import omega_solve
+        import sys; sys.path.insert(0, '.')
+        from delta_analysis import omega_solve
 
-# OEIS sequence: minimal A for exceptional primes
-OEIS_A = [7, 11, 15, 19, 23, 31, 39, 43, 47, 51, 59, 67, 71, 79, 83, 87, 95, 103, 107, 111, 127, 159]
+        OEIS_A = [7, 11, 15, 19, 23, 31, 39, 43, 47, 51, 59, 67, 71, 79, 83, 87, 95, 103, 107, 111, 127, 159]
 
-# Verify first 100 exceptional primes have A in OEIS set
-p = 13
-count = 0
-while count < 100:
-    import math
-    # Check if exceptional
-    if any(p % q in (3,5,6) for q in [7]) and p % 12 == 1:
-        pass  # simplified check
-    # Use the actual solver
-    c = (p + 3) // 4
-    m = c
-    is_exceptional = True
-    q = 2
-    while q * q <= m:
-        if m % q == 0:
-            if q % 3 == 2:
-                is_exceptional = False
-                break
-            while m % q == 0:
-                m //= q
-        q += 1 if q == 2 else 2
-    if is_exceptional and m > 1 and m % 3 == 2:
-        is_exceptional = False
-    
-    if is_exceptional and p % 12 == 1:
-        n = p * p
-        A = None
-        for m_val in range(200):
-            A_candidate = 4 * m_val + 3
-            if (n + A_candidate) % 4 == 0:
-                ok, _ = check_simple(p, A_candidate)
-                if ok:
-                    A = A_candidate
-                    break
-        if A is not None and A not in OEIS_A:
-            print(f'FAIL: p={p}, A={A} not in OEIS set')
-            sys.exit(1)
-        count += 1
-    p += 2
+        def is_exceptional_prime(p):
+            if p % 12 != 1:
+                return False
+            c = (p + 3) // 4
+            m = c
+            q = 2
+            while q * q <= m:
+                if m % q == 0:
+                    if q % 3 == 2:
+                        return False
+                    while m % q == 0:
+                        m //= q
+                q += 1 if q == 2 else 2
+            if m > 1 and m % 3 == 2:
+                return False
+            return True
 
-print(f'Verified {count} exceptional primes: all A in OEIS set.')
-print('OEIS verification PASSED.')
+        count = 0
+        p = 13
+        while count < 100:
+            if is_exceptional_prime(p):
+                n = p * p
+                A = None
+                for m_val in range(200):
+                    A_candidate = 4 * m_val + 3
+                    if (n + A_candidate) % 4 == 0:
+                        result = omega_solve(n, max_harmonics=m_val + 1)
+                        if result and result['A'] == A_candidate:
+                            A = A_candidate
+                            break
+                if A is not None and A not in OEIS_A:
+                    print(f'FAIL: p={p}, A={A} not in OEIS set')
+                    sys.exit(1)
+                count += 1
+            p += 2
+
+        print(f'Verified {count} exceptional primes: all A in OEIS set.')
+        print('OEIS verification PASSED.')
         "
