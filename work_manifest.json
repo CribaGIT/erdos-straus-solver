@@ -4,9 +4,9 @@
   "created": "2026-06-01T09:12:54.164208",
   "total_range": 1000000000000,
   "current_progress": 1000,
-  "solutions_total": 279501020,
+  "solutions_total": 279503020,
   "stable_regions": 0,
-  "breach_regions": 559333837,
+  "breach_regions": 1119001471,
   "nodes": {
     "local_victus": {
       "status": "active",
@@ -18,7 +18,7 @@
     },
     "lightning_l40s": {
       "last_chunk": 10000000000,
-      "total_solutions": 279501020,
+      "total_solutions": 279503020,
       "last_run": "2026-06-05T22:26:18.242567",
       "status": "active"
     }

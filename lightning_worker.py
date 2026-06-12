@@ -165,7 +165,7 @@ def update_manifest(output_path=None):
     with open(manifest_path, 'w') as f:
         json.dump(manifest, f, indent=2)
     
-    print("✓ Manifest updated with Lightning results")
+    print("[+] Manifest updated with Lightning results")
 
 if __name__ == "__main__":
     if "--status" in sys.argv:
