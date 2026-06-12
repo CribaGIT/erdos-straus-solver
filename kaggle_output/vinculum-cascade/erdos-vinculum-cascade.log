@@ -1,0 +1,137 @@
+[{"stream_name":"stderr","time":8.062254044,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":8.062317828,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":9.257298711,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.257337487,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.257342984,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.257346633,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":10.042655818,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.04269109,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.042696657,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.042701274,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.382028376,"data":"GPU: CPU\n"}
+,{"stream_name":"stdout","time":11.382088359,"data":"VINCULUM CASCADE -- Start: 2026-06-01T17:48:30.961430\n"}
+,{"stream_name":"stdout","time":11.399099707,"data":"CHROMA CASCADE: 9 layers | VERBS: ['EXTRUDE', 'BEVEL', 'WELD', 'PAINT']\n"}
+,{"stream_name":"stdout","time":11.417013639,"data":"Target: mod24=0, mod9 in {0, 3, 6}\n"}
+,{"stream_name":"stdout","time":11.41705885,"data":"Range: 32,000,000 -\u003e 44,000,000\n"}
+,{"stream_name":"stdout","time":11.417064706,"data":"Solver ready -- parametric identities only\n"}
+,{"stream_name":"stdout","time":11.603828607,"data":"Stride-24: 32,000,016 -\u003e 44,000,000 (500,000 candidates)\n"}
+,{"stream_name":"stdout","time":11.992543785,"data":"  [10%] n=33,199,992 | 100,000 sols | 264,107 sol/s\n"}
+,{"stream_name":"stdout","time":12.377178517,"data":"  [20%] n=34,399,992 | 200,000 sols | 260,878 sol/s\n"}
+,{"stream_name":"stdout","time":12.675131247,"data":"  [30%] n=35,599,992 | 300,000 sols | 282,675 sol/s\n"}
+,{"stream_name":"stdout","time":12.990113924,"data":"  [40%] n=36,799,992 | 400,000 sols | 291,858 sol/s\n"}
+,{"stream_name":"stdout","time":13.378613108,"data":"  [50%] n=37,999,992 | 500,000 sols | 293,261 sol/s\n"}
+,{"stream_name":"stdout","time":13.90917087,"data":"  [60%] n=39,199,992 | 600,000 sols | 287,499 sol/s\n"}
+,{"stream_name":"stdout","time":14.142256665,"data":"  [70%] n=40,399,992 | 700,000 sols | 278,738 sol/s\n"}
+,{"stream_name":"stdout","time":14.142295185,"data":"  [80%] n=41,599,992 | 800,000 sols | 299,213 sol/s\n"}
+,{"stream_name":"stdout","time":14.697133454,"data":"  [90%] n=42,799,992 | 900,000 sols | 284,488 sol/s\n"}
+,{"stream_name":"stdout","time":14.697172263,"data":"  [100%] n=43,999,992 | 1,000,000 sols | 300,738 sol/s\n"}
+,{"stream_name":"stdout","time":14.697177807,"data":"\n"}
+,{"stream_name":"stdout","time":14.69718159,"data":"Sieve complete: 1,000,000 solutions in 3.3s\n"}
+,{"stream_name":"stdout","time":15.01750351,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":15.017543151,"data":"CHROMA CASCADE -- Mod9 Distribution\n"}
+,{"stream_name":"stdout","time":15.017565153,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":15.017569431,"data":"  mod9=0 [    INFRARED] BREACH      333,334 ( 33.3%) ════════════════\n"}
+,{"stream_name":"stdout","time":15.017573716,"data":"  mod9=3 [      YELLOW] BREACH      333,334 ( 33.3%) ════════════════\n"}
+,{"stream_name":"stdout","time":15.017576461,"data":"  mod9=6 [      INDIGO] BREACH      333,332 ( 33.3%) ════════════════\n"}
+,{"stream_name":"stdout","time":15.725209189,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":15.725248058,"data":"FRACTYPE COMPRESSION\n"}
+,{"stream_name":"stdout","time":15.725253511,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":15.725257919,"data":"  Apparent solutions:        1,000,000\n"}
+,{"stream_name":"stdout","time":15.725262076,"data":"  Unique triples:            1,000,000\n"}
+,{"stream_name":"stdout","time":15.725265721,"data":"  Unique n values:             500,000\n"}
+,{"stream_name":"stdout","time":15.725269508,"data":"  Triple redundancy:             0.0%\n"}
+,{"stream_name":"stdout","time":15.725272805,"data":"  Compression ratio:             1.00x\n"}
+,{"stream_name":"stdout","time":15.72527611,"data":"  Pattern compression:    1,000,000:1 (all solutions -\u003e 1 rule: n=4k -\u003e 3k,3k,3k)\n"}
+,{"stream_name":"stdout","time":15.725280731,"data":"  Sample triple (raw):    '24000012/24000012/24000012' (26 chars)\n"}
+,{"stream_name":"stdout","time":15.725284818,"data":"  FracType glyphs:        3 glyphs (saving 23 chars, 88% reduction)\n"}
+,{"stream_name":"stdout","time":15.743094439,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":15.743135413,"data":"DELETION TEST\n"}
+,{"stream_name":"stdout","time":15.743140513,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":15.743144492,"data":"  Entries tested: 1,000,000\n"}
+,{"stream_name":"stdout","time":15.743148467,"data":"\n"}
+,{"stream_name":"stdout","time":15.743152081,"data":"  GAUGE fields (safe to delete):\n"}
+,{"stream_name":"stdout","time":15.743155917,"data":"    - triple          (human-facing display)\n"}
+,{"stream_name":"stdout","time":15.743159669,"data":"    - num_solutions   (redundant with len(triples))\n"}
+,{"stream_name":"stdout","time":15.743163331,"data":"    - timestamp       (metadata, not structural)\n"}
+,{"stream_name":"stdout","time":15.743167428,"data":"\n"}
+,{"stream_name":"stdout","time":15.743170955,"data":"  GOVERNOR fields (deletion BREAKS pipeline):\n"}
+,{"stream_name":"stdout","time":15.743218271,"data":"    - n               (root identifier)\n"}
+,{"stream_name":"stdout","time":15.743222427,"data":"    - mod9            (gates CHROMA CASCADE layer)\n"}
+,{"stream_name":"stdout","time":15.743226343,"data":"    - mod24           (gates corridor selection)\n"}
+,{"stream_name":"stdout","time":15.743230228,"data":"    - depth           (gates classification path)\n"}
+,{"stream_name":"stdout","time":15.74323412,"data":"\n"}
+,{"stream_name":"stdout","time":15.743237276,"data":"  Vinculum bar: mod9 {0, 3, 6} -\u003e CHROMA[INFRARED, YELLOW, INDIGO]\n"}
+,{"stream_name":"stdout","time":15.743241563,"data":"  Verdict: 3 GAUGE / 4 GOVERNOR fields -- 43% of payload is deletable display\n"}
+,{"stream_name":"stdout","time":16.090421227,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.090481733,"data":"x3 UNIVERSAL BREACH DETECTOR\n"}
+,{"stream_name":"stdout","time":16.090488056,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.090492114,"data":"  Tested:       1,000,000\n"}
+,{"stream_name":"stdout","time":16.090496158,"data":"  Verified:     1,000,000 (100.00%)\n"}
+,{"stream_name":"stdout","time":16.090500137,"data":"  Failures:             0\n"}
+,{"stream_name":"stdout","time":16.090503793,"data":"  Verdict: 100% consistent -- ALL solutions are true BREACH\n"}
+,{"stream_name":"stdout","time":16.09050752,"data":"  x3 detector confirms: mod24=0 corridor is locked in BREACH\n"}
+,{"stream_name":"stdout","time":16.108263188,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.108303228,"data":"MOD9 PROPAGATION HYPERCYCLE\n"}
+,{"stream_name":"stdout","time":16.108308543,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.108312954,"data":"\n"}
+,{"stream_name":"stdout","time":16.108316982,"data":"  mod9=0 [INFRARED]:\n"}
+,{"stream_name":"stdout","time":16.108320832,"data":"    x2 -\u003e mod9=0 [INFRARED    ] BREACH   EXTRUDE  ✗\n"}
+,{"stream_name":"stdout","time":16.108325602,"data":"    x3 -\u003e mod9=0 [INFRARED    ] BREACH   BEVEL    ✗\n"}
+,{"stream_name":"stdout","time":16.108329363,"data":"    x5 -\u003e mod9=0 [INFRARED    ] BREACH   WELD     ✗\n"}
+,{"stream_name":"stdout","time":16.108332989,"data":"    x7 -\u003e mod9=0 [INFRARED    ] BREACH   PAINT    ✗\n"}
+,{"stream_name":"stdout","time":16.108336422,"data":"\n"}
+,{"stream_name":"stdout","time":16.108339649,"data":"  mod9=3 [YELLOW]:\n"}
+,{"stream_name":"stdout","time":16.108343131,"data":"    x2 -\u003e mod9=6 [INDIGO      ] BREACH   EXTRUDE  ✗\n"}
+,{"stream_name":"stdout","time":16.108347201,"data":"    x3 -\u003e mod9=0 [INFRARED    ] BREACH   BEVEL    ✗\n"}
+,{"stream_name":"stdout","time":16.10836889,"data":"    x5 -\u003e mod9=6 [INDIGO      ] BREACH   WELD     ✗\n"}
+,{"stream_name":"stdout","time":16.108372292,"data":"    x7 -\u003e mod9=3 [YELLOW      ] BREACH   PAINT    ✗\n"}
+,{"stream_name":"stdout","time":16.108375908,"data":"\n"}
+,{"stream_name":"stdout","time":16.108379169,"data":"  mod9=6 [INDIGO]:\n"}
+,{"stream_name":"stdout","time":16.108382461,"data":"    x2 -\u003e mod9=3 [YELLOW      ] BREACH   EXTRUDE  ✗\n"}
+,{"stream_name":"stdout","time":16.108385859,"data":"    x3 -\u003e mod9=0 [INFRARED    ] BREACH   BEVEL    ✗\n"}
+,{"stream_name":"stdout","time":16.108389799,"data":"    x5 -\u003e mod9=3 [YELLOW      ] BREACH   WELD     ✗\n"}
+,{"stream_name":"stdout","time":16.108393437,"data":"    x7 -\u003e mod9=6 [INDIGO      ] BREACH   PAINT    ✗\n"}
+,{"stream_name":"stdout","time":16.108397093,"data":"\n"}
+,{"stream_name":"stdout","time":16.108400439,"data":"  CASCADE SUMMARY:\n"}
+,{"stream_name":"stdout","time":16.108403988,"data":"    x3 BEVEL: ALL mod9 -\u003e 0 (INFRA) -- universal collapse\n"}
+,{"stream_name":"stdout","time":16.10840768,"data":"    x5 WELD:  0-\u003e0 (locked), 3\u003c-\u003e6 (oscillation)\n"}
+,{"stream_name":"stdout","time":16.108411409,"data":"    x2 EXTRUDE / x7 PAINT: preserve BREACH -- no escape to STABLE\n"}
+,{"stream_name":"stdout","time":16.12634004,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.126379207,"data":"MYCELIAL HYPHAE\n"}
+,{"stream_name":"stdout","time":16.126384339,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.126405564,"data":"  Solutions:         1,000,000\n"}
+,{"stream_name":"stdout","time":16.126409486,"data":"  Unique n:            500,000\n"}
+,{"stream_name":"stdout","time":16.126412889,"data":"  Ancestor rules: 1 (n=4k parametric identity)\n"}
+,{"stream_name":"stdout","time":16.12641617,"data":"  Hypha factor:   1,000,000x (star topology: root -\u003e all leaves)\n"}
+,{"stream_name":"stdout","time":16.12642037,"data":"  Structure:      trivial -- one identity solves entire corridor\n"}
+,{"stream_name":"stdout","time":16.126423952,"data":"\n"}
+,{"stream_name":"stdout","time":16.126427345,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.126430677,"data":"PROPAGATION TO OTHER SYSTEMS\n"}
+,{"stream_name":"stdout","time":16.126433952,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.126437588,"data":"  CHROMA: INFRARED(333,334), YELLOW(333,334), INDIGO(333,332)\n"}
+,{"stream_name":"stdout","time":16.126441292,"data":"  BUILD:  EXTRUDE only safe verb for BREACH corridor\n"}
+,{"stream_name":"stdout","time":16.126444656,"data":"  ERDOS:  mod24=0 corridor is structurally trivial (100% param identity)\n"}
+,{"stream_name":"stdout","time":16.126448188,"data":"  FRACTYPE: 1,000,000:1 pattern compression (all solutions -\u003e 1 rule)\n"}
+,{"stream_name":"stdout","time":16.126451642,"data":"  HARDWARE: P100/T4 bottleneck is non-parametric corridors, not this one\n"}
+,{"stream_name":"stdout","time":16.148406261,"data":"\n"}
+,{"stream_name":"stdout","time":16.148452995,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.148457927,"data":"VINCULUM CASCADE -- COMPLETE\n"}
+,{"stream_name":"stdout","time":16.148462132,"data":"Runtime: 4.8s | GPU: CPU\n"}
+,{"stream_name":"stdout","time":16.148465853,"data":"Output: /kaggle/working/erdos_vinculum_cascade.json (2,200 bytes)\n"}
+,{"stream_name":"stdout","time":16.148469439,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":16.14847378,"data":"{\n"}
+,{"stream_name":"stdout","time":16.148477335,"data":"  \"type\": \"GOVERNOR\",\n"}
+,{"stream_name":"stdout","time":16.148481651,"data":"  \"state\": \"BREACH corridor fully classified\",\n"}
+,{"stream_name":"stdout","time":16.148485475,"data":"  \"significance\": \"mod24=0 corridor structurally trivial (100% param identity hit rate)\",\n"}
+,{"stream_name":"stdout","time":16.148490011,"data":"  \"deletability\": \"NOT deletable -- gates CHROMA CASCADE layer assignment\",\n"}
+,{"stream_name":"stdout","time":16.148494646,"data":"  \"next_target\": \"mod24=9 resistant corridor (313 outliers, 10M-11M)\"\n"}
+,{"stream_name":"stdout","time":16.148499219,"data":"}\n"}
+,{"stream_name":"stderr","time":20.3930152,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":20.393053379,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":20.60668859,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":20.606723416,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":21.414281805999998,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":21.83855966,"data":"[NbConvertApp] Writing 31575 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":25.056730995,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":26.196085795,"data":"[NbConvertApp] Writing 349697 bytes to __results__.html\n"}
+]

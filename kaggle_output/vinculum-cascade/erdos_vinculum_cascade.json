@@ -1,0 +1,88 @@
+{
+  "framework": "VINCULUM CASCADE v1.0",
+  "timestamp": "2026-06-01T17:48:35.726699",
+  "runtime_s": 4.78,
+  "gpu": "CPU",
+  "sieve": {
+    "range": "32,000,000 -> 44,000,000",
+    "stride": 24,
+    "target_mod9": [
+      0,
+      3,
+      6
+    ],
+    "total_solutions": 1000000,
+    "unique_n": 500000,
+    "hit_rate_pct": 200.0
+  },
+  "chroma_cascade": {
+    "0": {
+      "count": 333334,
+      "pct": 33.33,
+      "layer": "INFRARED",
+      "state": "BREACH",
+      "desc": "self-destructive"
+    },
+    "3": {
+      "count": 333334,
+      "pct": 33.33,
+      "layer": "YELLOW",
+      "state": "BREACH",
+      "desc": "caution zone"
+    },
+    "6": {
+      "count": 333332,
+      "pct": 33.33,
+      "layer": "INDIGO",
+      "state": "BREACH",
+      "desc": "transition edge"
+    }
+  },
+  "fractype": {
+    "apparent_solutions": 1000000,
+    "unique_triples": 1000000,
+    "unique_n": 500000,
+    "triple_redundancy_pct": 0.0,
+    "compression_ratio": 1.0,
+    "pattern_compression": "1,000,000:1 -> n=4k parametric identity"
+  },
+  "deletion_test": {
+    "gauge_fields": [
+      "triple",
+      "num_solutions",
+      "timestamp"
+    ],
+    "governor_fields": [
+      "n",
+      "mod9",
+      "mod24",
+      "depth"
+    ],
+    "verdict": "3 GAUGE (deletable), 4 GOVERNOR (essential)"
+  },
+  "x3_breach_detector": {
+    "tested": 1000000,
+    "verified_breach": 1000000,
+    "failures": 0,
+    "consistent": true
+  },
+  "propagation": {
+    "x2_EXTRUDE": "preserves BREACH corridor -- safe",
+    "x3_BEVEL": "universal collapse to INFRA -- NEVER on BREACH",
+    "x5_WELD": "mod9=0 locked, 3<->6 oscillation -- conditional",
+    "x7_PAINT": "preserves BREACH as-is -- safe"
+  },
+  "mycelial_hyphae": {
+    "ancestor_patterns": 1,
+    "root_rule": "n=4k -> (3k, 3k, 3k)",
+    "hypha_factor": 1000000,
+    "topology": "star -- one root, all leaves"
+  },
+  "vinculum_verdict": {
+    "type": "GOVERNOR",
+    "state": "BREACH corridor fully classified",
+    "significance": "mod24=0 corridor structurally trivial (100% param identity hit rate)",
+    "deletability": "NOT deletable -- gates CHROMA CASCADE layer assignment",
+    "next_target": "mod24=9 resistant corridor (313 outliers, 10M-11M)"
+  }
+}

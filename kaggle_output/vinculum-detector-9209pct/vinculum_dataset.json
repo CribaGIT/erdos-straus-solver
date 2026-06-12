@@ -1,0 +1,746 @@
+{
+  "original_examples": [
+    {
+      "text": "a+b/c",
+      "domain": "math",
+      "label": "vinculum",
+      "explanation": "/ binds b and c before addition"
+    },
+    {
+      "text": "(a+b)/c",
+      "domain": "math",
+      "label": "vinculum",
+      "explanation": "() binds a+b into numerator"
+    },
+    {
+      "text": "\u221a(x\u00b2+y\u00b2)",
+      "domain": "math",
+      "label": "vinculum",
+      "explanation": "\u221a overline binds expression under root"
+    },
+    {
+      "text": "\u03a3\u1d62\u208c\u2081\u207f x\u1d62",
+      "domain": "math",
+      "label": "vinculum",
+      "explanation": "\u03a3 binds terms into one sum"
+    },
+    {
+      "text": "\u222b\u2090\u1d47 f(x)dx",
+      "domain": "math",
+      "label": "vinculum",
+      "explanation": "\u222b binds function over interval"
+    },
+    {
+      "text": "lim_{x\u2192\u221e} f(x)",
+      "domain": "math",
+      "label": "vinculum",
+      "explanation": "lim binds approach to value"
+    },
+    {
+      "text": "\u2202f/\u2202x",
+      "domain": "math",
+      "label": "vinculum",
+      "explanation": "\u2202 binds function to variable"
+    },
+    {
+      "text": "a+b",
+      "domain": "math",
+      "label": "connection",
+      "explanation": "mere addition, no binding instruction"
+    },
+    {
+      "text": "3.14159",
+      "domain": "math",
+      "label": "connection",
+      "explanation": "decimal point is notation, not binding"
+    },
+    {
+      "text": "f(x)=y",
+      "domain": "math",
+      "label": "connection",
+      "explanation": "equals is relation, not semantic binding"
+    },
+    {
+      "text": "if(x){y();z();}",
+      "domain": "code",
+      "label": "vinculum",
+      "explanation": "{} binds statements into one block"
+    },
+    {
+      "text": "function f(){return x}",
+      "domain": "code",
+      "label": "vinculum",
+      "explanation": "{} binds function body"
+    },
+    {
+      "text": "[1,2,3].map(f)",
+      "domain": "code",
+      "label": "vinculum",
+      "explanation": "[] binds elements into array, .map binds transform"
+    },
+    {
+      "text": "\"hello world\"",
+      "domain": "code",
+      "label": "vinculum",
+      "explanation": "\"\" binds characters into one string"
+    },
+    {
+      "text": "<div><p>text</p></div>",
+      "domain": "code",
+      "label": "vinculum",
+      "explanation": "<> binds elements into one component"
+    },
+    {
+      "text": "x,y = 1,2",
+      "domain": "code",
+      "label": "connection",
+      "explanation": "comma separates, does not bind semantically"
+    },
+    {
+      "text": "import os, sys",
+      "domain": "code",
+      "label": "connection",
+      "explanation": "comma lists imports, no new entity created"
+    },
+    {
+      "text": "x + y",
+      "domain": "code",
+      "label": "connection",
+      "explanation": "operator combines but does not bind into new entity"
+    },
+    {
+      "text": "state-of-the-art",
+      "domain": "language",
+      "label": "vinculum",
+      "explanation": "hyphens bind words into one adjective"
+    },
+    {
+      "text": "once-in-a-lifetime",
+      "domain": "language",
+      "label": "vinculum",
+      "explanation": "hyphens create single concept"
+    },
+    {
+      "text": "I-know-you-are-lying look",
+      "domain": "language",
+      "label": "vinculum",
+      "explanation": "hyphens bind phrase into modifier"
+    },
+    {
+      "text": "devil-may-care attitude",
+      "domain": "language",
+      "label": "vinculum",
+      "explanation": "hyphens compress emotion into descriptor"
+    },
+    {
+      "text": "\"To be or not to be\"",
+      "domain": "language",
+      "label": "vinculum",
+      "explanation": "quotes bind words into one utterance"
+    },
+    {
+      "text": "the SHARED-TRAUMA bond",
+      "domain": "language",
+      "label": "vinculum",
+      "explanation": "hyphen+capitals bind concept into entity"
+    },
+    {
+      "text": "cold water",
+      "domain": "language",
+      "label": "connection",
+      "explanation": "adjective modifies but does not create new entity"
+    },
+    {
+      "text": "very interesting",
+      "domain": "language",
+      "label": "connection",
+      "explanation": "adverb intensifies, no semantic rebinding"
+    },
+    {
+      "text": "C-E-G chord",
+      "domain": "music",
+      "label": "vinculum",
+      "explanation": "chord binds notes into one harmonic unit"
+    },
+    {
+      "text": "slur over 4 notes",
+      "domain": "music",
+      "label": "vinculum",
+      "explanation": "slur binds notes into one phrase"
+    },
+    {
+      "text": "tie across bar",
+      "domain": "music",
+      "label": "vinculum",
+      "explanation": "tie binds two notes into one duration"
+    },
+    {
+      "text": "repeat :||",
+      "domain": "music",
+      "label": "vinculum",
+      "explanation": "repeat signs bind section into loop"
+    },
+    {
+      "text": "consecutive notes C D E",
+      "domain": "music",
+      "label": "connection",
+      "explanation": "sequence, no binding into entity"
+    },
+    {
+      "text": "Section 4(a)(ii)",
+      "domain": "law",
+      "label": "vinculum",
+      "explanation": "nested parens bind sub-clauses into one provision"
+    },
+    {
+      "text": "Notwithstanding the foregoing",
+      "domain": "law",
+      "label": "vinculum",
+      "explanation": "phrase binds exceptions into override"
+    },
+    {
+      "text": "party of the first part",
+      "domain": "law",
+      "label": "vinculum",
+      "explanation": "archaic phrasing binds identity to role"
+    },
+    {
+      "text": "the contract as a whole",
+      "domain": "law",
+      "label": "vinculum",
+      "explanation": "document binds clauses into one obligation"
+    },
+    {
+      "text": "two separate agreements",
+      "domain": "law",
+      "label": "connection",
+      "explanation": "separate documents, no binding entity"
+    },
+    {
+      "text": "training montage",
+      "domain": "film",
+      "label": "vinculum",
+      "explanation": "montage binds scenes into one transformation"
+    },
+    {
+      "text": "match-cut bone\u2192spaceship",
+      "domain": "film",
+      "label": "vinculum",
+      "explanation": "cut binds two eras into one idea"
+    },
+    {
+      "text": "long take through house",
+      "domain": "film",
+      "label": "vinculum",
+      "explanation": "unbroken shot binds spaces into one reality"
+    },
+    {
+      "text": "dissolve transition",
+      "domain": "film",
+      "label": "vinculum",
+      "explanation": "dissolve binds two moments into one passage of time"
+    },
+    {
+      "text": "two scenes in different locations",
+      "domain": "film",
+      "label": "connection",
+      "explanation": "separate scenes, no binding mechanism"
+    },
+    {
+      "text": "wedding ceremony",
+      "domain": "ritual",
+      "label": "vinculum",
+      "explanation": "ceremony binds two people into one union"
+    },
+    {
+      "text": "breaking bread together",
+      "domain": "ritual",
+      "label": "vinculum",
+      "explanation": "shared ritual binds participants into one body"
+    },
+    {
+      "text": "\"I do\"",
+      "domain": "ritual",
+      "label": "vinculum",
+      "explanation": "two words bind two lives into one contract"
+    },
+    {
+      "text": "people in the same room",
+      "domain": "ritual",
+      "label": "connection",
+      "explanation": "proximity, no ritual binding"
+    },
+    {
+      "text": "chunking 7\u00b12 items",
+      "domain": "cognition",
+      "label": "vinculum",
+      "explanation": "working memory binds items into one chunk"
+    },
+    {
+      "text": "gestalt perception",
+      "domain": "cognition",
+      "label": "vinculum",
+      "explanation": "brain binds parts into one whole"
+    },
+    {
+      "text": "metaphor: TIME IS MONEY",
+      "domain": "cognition",
+      "label": "vinculum",
+      "explanation": "metaphor binds domains into one understanding"
+    },
+    {
+      "text": "remembering a face",
+      "domain": "cognition",
+      "label": "vinculum",
+      "explanation": "memory binds features into one identity"
+    },
+    {
+      "text": "seeing individual pixels",
+      "domain": "cognition",
+      "label": "connection",
+      "explanation": "no binding \u2014 just raw data"
+    },
+    {
+      "text": "tab group",
+      "domain": "ui",
+      "label": "vinculum",
+      "explanation": "tabs bind pages into one navigation unit"
+    },
+    {
+      "text": "card component",
+      "domain": "ui",
+      "label": "vinculum",
+      "explanation": "card binds data+actions into one unit"
+    },
+    {
+      "text": "modal overlay",
+      "domain": "ui",
+      "label": "vinculum",
+      "explanation": "modal binds content+backdrop into one focus"
+    },
+    {
+      "text": "buttons next to each other",
+      "domain": "ui",
+      "label": "connection",
+      "explanation": "proximity without semantic binding"
+    },
+    {
+      "text": "word embedding",
+      "domain": "data",
+      "label": "vinculum",
+      "explanation": "embedding binds meaning into one vector"
+    },
+    {
+      "text": "ML pipeline",
+      "domain": "data",
+      "label": "vinculum",
+      "explanation": "pipeline binds steps into one workflow"
+    },
+    {
+      "text": "ensemble model",
+      "domain": "data",
+      "label": "vinculum",
+      "explanation": "ensemble binds predictors into one decision"
+    },
+    {
+      "text": "attention head",
+      "domain": "data",
+      "label": "vinculum",
+      "explanation": "attention binds tokens into one context"
+    },
+    {
+      "text": "raw data points",
+      "domain": "data",
+      "label": "connection",
+      "explanation": "unstructured, no binding into entity"
+    }
+  ],
+  "synthetic_examples": [
+    {
+      "text": "never-ending-story",
+      "domain": "language",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "out-of-body",
+      "domain": "language",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "matter-of-fact",
+      "domain": "language",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "the old man",
+      "domain": "language",
+      "label": "connection",
+      "source": "template"
+    },
+    {
+      "text": "one-of-a-kind",
+      "domain": "language",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "she walked slowly home",
+      "domain": "language",
+      "label": "connection",
+      "source": "template"
+    },
+    {
+      "text": "if(x){y}",
+      "domain": "code",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "arr.map(f)",
+      "domain": "code",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "a + b",
+      "domain": "code",
+      "label": "connection",
+      "source": "template"
+    },
+    {
+      "text": "function f(x){return x}",
+      "domain": "code",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "(a+b)/c",
+      "domain": "math",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "a+b/c",
+      "domain": "math",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "x+y+z",
+      "domain": "math",
+      "label": "connection",
+      "source": "template"
+    },
+    {
+      "text": "sqrt(x\u00b2+y\u00b2)",
+      "domain": "math",
+      "label": "vinculum",
+      "source": "template"
+    },
+    {
+      "text": "mind[]data",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind--structure",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "data[]mind",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "pattern<>signal",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "pattern<>system",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "signal()()signal",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "structure[]mind",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind--code",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "system<>pattern",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "code--code",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "structure{}system",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "system//system",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "code__data",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "signal()()mind",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "network//mind",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "pattern--data",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind<>network",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind<>structure",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "data//network",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "network<>network",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "network()()system",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "structure//structure",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "pattern[]structure",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "code<>code",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "pattern--pattern",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "code{}structure",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "code//code",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "code__system",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "system{}mind",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind//code",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "signal<>structure",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "code()()mind",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "pattern//network",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "signal()()pattern",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "network--network",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind()()network",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "structure//code",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "network__pattern",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "data--system",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "system[]system",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "data__data",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind()()signal",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind\"\"structure",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind()()mind",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "structure__pattern",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "data\"\"signal",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "network\"\"network",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind__code",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "signal[]network",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    },
+    {
+      "text": "mind{}pattern",
+      "domain": "data",
+      "label": "vinculum",
+      "source": "classifier"
+    }
+  ],
+  "total_labeled": 123,
+  "vinculum_definition": "A structural device that compels multiple elements to be interpreted as a single unified entity. An instruction about perception."
+}

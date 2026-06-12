@@ -1,0 +1,186 @@
+{
+  "domains": [
+    "math",
+    "code",
+    "language",
+    "music",
+    "law",
+    "film",
+    "ritual",
+    "cognition",
+    "ui",
+    "data"
+  ],
+  "total_vinculums": 44,
+  "total_connections": 15,
+  "total_examples": 59,
+  "operators_by_domain": {
+    "math": [
+      "/",
+      "overline",
+      "\u221a",
+      "\u03a3",
+      "\u222b",
+      "\u220f",
+      "lim",
+      "\u2202"
+    ],
+    "code": [
+      "{}",
+      "()",
+      "[]",
+      "<>",
+      "\"\"",
+      "''",
+      "indent",
+      "::"
+    ],
+    "language": [
+      "-",
+      "\u2014",
+      "\u2026",
+      "()",
+      "\"\"",
+      "italics",
+      "CAPITALS"
+    ],
+    "music": [
+      "chord",
+      "slur",
+      "tie",
+      "repeat",
+      "da capo",
+      "fermata"
+    ],
+    "law": [
+      "contract",
+      "clause",
+      "section",
+      "precedent",
+      "oath"
+    ],
+    "film": [
+      "montage",
+      "cut",
+      "dissolve",
+      "match-cut",
+      "long-take"
+    ],
+    "ritual": [
+      "ceremony",
+      "sacrament",
+      "oath",
+      "blessing",
+      "covenant"
+    ],
+    "cognition": [
+      "chunking",
+      "gestalt",
+      "schema",
+      "metaphor",
+      "analogy"
+    ],
+    "ui": [
+      "tab",
+      "group",
+      "panel",
+      "card",
+      "modal",
+      "accordion"
+    ],
+    "data": [
+      "vector",
+      "matrix",
+      "tensor",
+      "embedding",
+      "pipeline",
+      "ensemble"
+    ]
+  },
+  "feature_names": [
+    "text_length",
+    "word_count",
+    "has_/",
+    "has_(",
+    "has_)",
+    "has_-",
+    "has_{",
+    "has_}",
+    "has_[",
+    "has_]",
+    "has_<",
+    "has_>",
+    "has_\"",
+    "has_'",
+    "has_.",
+    "has_\u2014",
+    "has__",
+    "has_\u2026",
+    "has_\u221a",
+    "has_\u03a3",
+    "has_\u222b",
+    "domain_math",
+    "domain_code",
+    "domain_language",
+    "domain_music",
+    "domain_law",
+    "domain_film",
+    "domain_ritual",
+    "domain_cognition",
+    "domain_ui",
+    "domain_data",
+    "has_parens",
+    "has_braces",
+    "has_brackets",
+    "has_hyphen",
+    "has_quotes",
+    "has_slash",
+    "has_operator",
+    "has_multiple_words"
+  ],
+  "model_accuracy": 0.7333,
+  "top_features": [
+    {
+      "name": "text_length",
+      "importance": 0.23956438681216005
+    },
+    {
+      "name": "word_count",
+      "importance": 0.14737690565259495
+    },
+    {
+      "name": "has_operator",
+      "importance": 0.0649945850862248
+    },
+    {
+      "name": "domain_code",
+      "importance": 0.04346167605903105
+    },
+    {
+      "name": "has_-",
+      "importance": 0.04291267975820771
+    },
+    {
+      "name": "domain_language",
+      "importance": 0.0390359972810776
+    },
+    {
+      "name": "domain_law",
+      "importance": 0.03327974336981889
+    },
+    {
+      "name": "has_hyphen",
+      "importance": 0.03203605140003006
+    },
+    {
+      "name": "domain_cognition",
+      "importance": 0.030801051858445054
+    },
+    {
+      "name": "has_multiple_words",
+      "importance": 0.03003210292553882
+    }
+  ],
+  "9209pct_target": 5492,
+  "synthetic_generated": 64
+}

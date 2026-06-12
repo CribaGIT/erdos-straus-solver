@@ -1,0 +1,14 @@
+{
+  "id": "commencethescourge/vinculum-delivery-audit-v2-trench-builder-assets",
+  "title": "Vinculum Delivery Audit v2 — Trench-Builder Assets",
+  "code_file": "vinculum-delivery-audit-v2.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "model_sources": [],
+  "keywords": []
+}

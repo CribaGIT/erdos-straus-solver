@@ -1,0 +1,192 @@
+[{"stream_name":"stderr","time":10.564323041,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":10.564417916,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":12.271863074,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":12.271903317,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":12.271909123,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":12.271913704,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":13.221752064,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":13.221796621,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":13.221802355,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":13.221806799,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.792656463,"data":"VINCULUM ASSET DELTA — 2026-06-01T18:04:33.320188\n"}
+,{"stream_name":"stdout","time":14.792692238,"data":"Method: deletion-test + x3 breach + FracType compression + mod9 corridor\n"}
+,{"stream_name":"stdout","time":14.809159231,"data":"GROUND TRUTH (git tree audit):\n"}
+,{"stream_name":"stdout","time":14.809195902999999,"data":"  3D models: 52 total (33 STL + 19 GLB — all mechanical)\n"}
+,{"stream_name":"stdout","time":14.809202723,"data":"  PBR textures: 0 (plan claims 49 in material_library.py — CODE-ONLY)\n"}
+,{"stream_name":"stdout","time":14.809207201,"data":"  HDRIs: 0\n"}
+,{"stream_name":"stdout","time":14.80921094,"data":"  Game-ready environmental assets: 0\n"}
+,{"stream_name":"stdout","time":14.831381054,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.831419488,"data":"CP     NAME                   NOW   TGT  x3 MOD9 TYPE       VINCULUM\n"}
+,{"stream_name":"stdout","time":14.831426454,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.83143153,"data":"CP1    Furniture Library        5    50        6 BREACH     10x expansion — verify source exists\n"}
+,{"stream_name":"stdout","time":14.831437351,"data":"CP2    Appliance System         0    12        0 BREACH     12x expansion — verify source exists\n"}
+,{"stream_name":"stdout","time":14.831442005,"data":"CP3    Tool Library             0    25        3 BREACH     25x expansion — verify source exists\n"}
+,{"stream_name":"stdout","time":14.831446453,"data":"CP4    Weapon System            0    20        6 BREACH     20x expansion — verify source exists\n"}
+,{"stream_name":"stdout","time":14.831450666,"data":"CP5    Vehicle System           0     8        6 BREACH     8x expansion — verify source exists\n"}
+,{"stream_name":"stdout","time":14.83145514,"data":"CP6    Resource System         49    30        0 GAUGE-ERR  49 'materials' are code params, zero PBR files — TYPE ERROR\n"}
+,{"stream_name":"stdout","time":14.831459557,"data":"CP7    Crafting System          0    40        3 GOVERNOR   gates all CP1-6 — delete CP7, crafting breaks\n"}
+,{"stream_name":"stdout","time":14.831482458,"data":"CP8    Infrastructure           0    15        0 BREACH     15x expansion — verify source exists\n"}
+,{"stream_name":"stdout","time":14.831486963,"data":"CP9    Underground              0     3        0 BREACH     3x expansion — verify source exists\n"}
+,{"stream_name":"stdout","time":14.83149288,"data":"CP10   Cross-Game Ref           0   100        3 GAUGE      catalog is display; gap ranking is GOVERNOR\n"}
+,{"stream_name":"stdout","time":14.831497004,"data":"\n"}
+,{"stream_name":"stdout","time":14.831502879,"data":"SUMMARY: 1 GOVERNOR, 1 GAUGE, 7 BREACH, 1 TYPE-ERROR\n"}
+,{"stream_name":"stdout","time":14.850067283,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.85010737,"data":"SELF-AUDIT: My prior delta claims vs ground truth\n"}
+,{"stream_name":"stdout","time":14.850111348,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.850114403,"data":"  ✗ [WRONG       ] Quaternius Furniture = 50+ GLBs\n"}
+,{"stream_name":"stdout","time":14.85011809,"data":"     Actual: 20 models, NOT animated\n"}
+,{"stream_name":"stdout","time":14.850120905,"data":"     Gap: 2.5x overcount\n"}
+,{"stream_name":"stdout","time":14.850123585,"data":"  ? [UNVERIFIED  ] OS3A = 991+ CC0 GLB props\n"}
+,{"stream_name":"stdout","time":14.850126374,"data":"     Actual: 991+ claimed on site — unverified count\n"}
+,{"stream_name":"stdout","time":14.850129431,"data":"     Gap: search summary, not ground truth\n"}
+,{"stream_name":"stdout","time":14.850132153,"data":"  ~ [CLOSE       ] ambientCG = 2000+ PBR mats\n"}
+,{"stream_name":"stdout","time":14.85013479,"data":"     Actual: 1,995 listed — essentially correct\n"}
+,{"stream_name":"stdout","time":14.850137467,"data":"     Gap: rounding error\n"}
+,{"stream_name":"stdout","time":14.850140256,"data":"  ✗ [WRONG       ] Poly Haven = 500+ HDRIs\n"}
+,{"stream_name":"stdout","time":14.850142903,"data":"     Actual: 1,042 total, 972 displayed\n"}
+,{"stream_name":"stdout","time":14.850145565,"data":"     Gap: 2x undercount — actual is double\n"}
+,{"stream_name":"stdout","time":14.850148207,"data":"  ✗ [WRONG       ] Kenney Prototype Kit = modular walls\n"}
+,{"stream_name":"stdout","time":14.850151092,"data":"     Actual: tags: prototype, animal, wheelchair, character — NOT modular construction\n"}
+,{"stream_name":"stdout","time":14.850153889,"data":"     Gap: wrong pack description\n"}
+,{"stream_name":"stdout","time":14.850157077,"data":"  ✗ [TYPE-ERROR  ] CP6 has 49 PBR materials\n"}
+,{"stream_name":"stdout","time":14.850184887,"data":"     Actual: 49 entries in material_library.py — ZERO texture files in repo\n"}
+,{"stream_name":"stdout","time":14.850190221,"data":"     Gap: code params ≠ real PBR maps\n"}
+,{"stream_name":"stdout","time":14.850194993,"data":"  ✗ [BREACH      ] Furniture covered by Quaternius\n"}
+,{"stream_name":"stdout","time":14.850199446,"data":"     Actual: Quaternius = 20 furniture. Plan needs 50. Gap = 30 unfilled\n"}
+,{"stream_name":"stdout","time":14.850203199,"data":"     Gap: 30 furniture assets have no identified source\n"}
+,{"stream_name":"stdout","time":14.850207211,"data":"  ? [UNVERIFIED  ] Appliances from OS3A\n"}
+,{"stream_name":"stdout","time":14.850211089,"data":"     Actual: OS3A appliance coverage UNVERIFIED\n"}
+,{"stream_name":"stdout","time":14.850215057,"data":"     Gap: no actual check of appliance models\n"}
+,{"stream_name":"stdout","time":14.850219075,"data":"  ? [UNVERIFIED  ] Tools from Kenney Tool Pack\n"}
+,{"stream_name":"stdout","time":14.850243159,"data":"     Actual: Kenney has tool packs — but plan needs 25 specific tools. Coverage UNVERIFIED\n"}
+,{"stream_name":"stdout","time":14.850268151,"data":"     Gap: 25 specific tools, pack contents unchecked\n"}
+,{"stream_name":"stdout","time":14.850273569,"data":"\n"}
+,{"stream_name":"stdout","time":14.850277297,"data":"SELF-AUDIT SCORE: 5 WRONG, 3 UNVERIFIED, 1 CLOSE — out of 9 claims\n"}
+,{"stream_name":"stdout","time":14.850281867,"data":"Accuracy: 11% verified-correct\n"}
+,{"stream_name":"stdout","time":14.873787127,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.873828331,"data":"VERIFIED DELTA: Plan Needs × Verified Sources\n"}
+,{"stream_name":"stdout","time":14.873834651,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.873838979,"data":"  ◐ CP1 Furniture      need=45    -\u003e Quaternius Furniture      covers=20     gap=25 [PARTIAL]\n"}
+,{"stream_name":"stdout","time":14.873849987,"data":"  ✗ CP2 Appliances     need=12    -\u003e OS3A (UNVERIFIED)         covers=?      gap=12 [NO SOURCE]\n"}
+,{"stream_name":"stdout","time":14.873854765,"data":"  ✗ CP3 Tools          need=25    -\u003e Kenney (UNVERIFIED)       covers=?      gap=25 [NO SOURCE]\n"}
+,{"stream_name":"stdout","time":14.873858218,"data":"  ✓ CP4 Weapons        need=20    -\u003e Quaternius Weapons        covers=50     gap=0 [COVERED]\n"}
+,{"stream_name":"stdout","time":14.873861147,"data":"  ✓ CP5 Vehicles       need=8     -\u003e Quaternius Vehicles       covers=20     gap=0 [COVERED]\n"}
+,{"stream_name":"stdout","time":14.873864063,"data":"  ✓ CP6 Resources      need=PBR_maps -\u003e ambientCG                 covers=1995   gap=0 [COVERED — but plan has code-only mats]\n"}
+,{"stream_name":"stdout","time":14.873866988,"data":"  — CP7 Crafting       need=data_only -\u003e N/A                       covers=N/A    gap=0 [PURE LOGIC]\n"}
+,{"stream_name":"stdout","time":14.873869931,"data":"  — CP8 Infrastructure need=generators -\u003e Poly Haven (reference)    covers=300    gap=0 [PROCEDURAL — no direct asset need]\n"}
+,{"stream_name":"stdout","time":14.873872909,"data":"  — CP9 Underground    need=generators -\u003e N/A                       covers=N/A    gap=0 [PURE PROCEDURAL]\n"}
+,{"stream_name":"stdout","time":14.873875755,"data":"  — CP10 Cross-Ref     need=data_only -\u003e N/A                       covers=N/A    gap=0 [PURE RESEARCH]\n"}
+,{"stream_name":"stdout","time":14.873878772,"data":"\n"}
+,{"stream_name":"stdout","time":14.873881486,"data":"  COVERED: 3  PARTIAL: 1  NO SOURCE: 2  N/A: 4\n"}
+,{"stream_name":"stdout","time":14.890893244,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.890933497,"data":"FRACTYPE COMPRESSION: 10 Checkpoints → Dependency Tiers\n"}
+,{"stream_name":"stdout","time":14.890940579,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.890945945,"data":"\n"}
+,{"stream_name":"stdout","time":14.890950156,"data":"  T0 — FOUNDATION:\n"}
+,{"stream_name":"stdout","time":14.890954813,"data":"    - CP6 Resources (PBR mats from ambientCG)\n"}
+,{"stream_name":"stdout","time":14.890960527,"data":"    - CP10 Cross-Ref (data)\n"}
+,{"stream_name":"stdout","time":14.890965085,"data":"\n"}
+,{"stream_name":"stdout","time":14.890969616,"data":"  T1 — ASSETS:\n"}
+,{"stream_name":"stdout","time":14.890973696,"data":"    - CP1 Furniture (partial: 20/50)\n"}
+,{"stream_name":"stdout","time":14.89097801,"data":"    - CP3 Tools (unverified)\n"}
+,{"stream_name":"stdout","time":14.891001829,"data":"    - CP4 Weapons (covered)\n"}
+,{"stream_name":"stdout","time":14.891006039,"data":"    - CP5 Vehicles (covered)\n"}
+,{"stream_name":"stdout","time":14.891010125,"data":"\n"}
+,{"stream_name":"stdout","time":14.89101427,"data":"  T2 — SYSTEMS:\n"}
+,{"stream_name":"stdout","time":14.891018677,"data":"    - CP2 Appliances (needs CP6 + CP7)\n"}
+,{"stream_name":"stdout","time":14.891023707,"data":"    - CP7 Crafting (needs CP6)\n"}
+,{"stream_name":"stdout","time":14.891027654,"data":"\n"}
+,{"stream_name":"stdout","time":14.891031536,"data":"  T3 — GENERATORS:\n"}
+,{"stream_name":"stdout","time":14.891035641,"data":"    - CP8 Infrastructure (procedural)\n"}
+,{"stream_name":"stdout","time":14.891039793000001,"data":"    - CP9 Underground (procedural)\n"}
+,{"stream_name":"stdout","time":14.891043882,"data":"\n"}
+,{"stream_name":"stdout","time":14.891048084,"data":"  Compression: 10 CPs → 4 tiers (2.5x)\n"}
+,{"stream_name":"stdout","time":14.89105302,"data":"  Immediately addressable: CP4, CP5, CP6 (after fix), CP7 = 4/10\n"}
+,{"stream_name":"stdout","time":14.891057415,"data":"  Blocked by unverified sources: CP1 (partial), CP2, CP3 = 3/10\n"}
+,{"stream_name":"stdout","time":14.891061776,"data":"  Procedural (no external assets needed): CP8, CP9 = 2/10\n"}
+,{"stream_name":"stdout","time":14.891065765,"data":"  Pure data: CP10 = 1/10\n"}
+,{"stream_name":"stdout","time":14.907512861,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.907549277,"data":"x3 BREACH DETECTOR: Structural risks in the delta\n"}
+,{"stream_name":"stdout","time":14.907555687,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.907560295,"data":"  ☠ [CRITICAL  ] CP6 TYPE ERROR\n"}
+,{"stream_name":"stdout","time":14.907565187,"data":"     49 materials in code ≠ real PBR maps. If shader expects texture and gets code param: render failure.\n"}
+,{"stream_name":"stdout","time":14.907569719,"data":"  ⚠ [HIGH      ] Furniture gap 30\n"}
+,{"stream_name":"stdout","time":14.907573918,"data":"     Quaternius covers 20/50. 30 furniture types need another source. Procedural generation via Blender bpy is the plan's fallback.\n"}
+,{"stream_name":"stdout","time":14.907578553,"data":"  ⚠ [HIGH      ] Appliance source VACANT\n"}
+,{"stream_name":"stdout","time":14.907582811,"data":"     No verified source for 12 appliance GLBs. OS3A unverified. Blender bpy generation is viable but untested.\n"}
+,{"stream_name":"stdout","time":14.907587149,"data":"  ◈ [MEDIUM    ] Tool spec mismatch\n"}
+,{"stream_name":"stdout","time":14.907591044,"data":"     Plan needs 25 specific tools (axe, pickaxe, shovel, sickle, fishing_rod...). Generic 'tool pack' may not cover all 25.\n"}
+,{"stream_name":"stdout","time":14.907595061,"data":"  ◈ [MEDIUM    ] 5→50 furniture = 10x expansion\n"}
+,{"stream_name":"stdout","time":14.907599103999999,"data":"     ×3 breach test: 50 × 3 = 150 → mod9=6 (BREACH). The jump from 5 to 50 is structurally a breach. First 20 from Quaternius, rest need generation.\n"}
+,{"stream_name":"stdout","time":14.907603597,"data":"  ◈ [LOW (fix is trivial)] Material library not real\n"}
+,{"stream_name":"stdout","time":14.907607764,"data":"     CP6 claims 49 materials exist. They don't (zero texture files). ambientCG has 1995 real PBR mats. THE FIX IS FREE: download 30 mats from ambientCG.\n"}
+,{"stream_name":"stdout","time":14.925783893,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.925887472,"data":"CORRECTED HIT LIST — Only verified claims\n"}
+,{"stream_name":"stdout","time":14.925896543,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.925901696,"data":"\n"}
+,{"stream_name":"stdout","time":14.925905478,"data":"  #1 | FIX CP6: Download 30 PBR mats from ambientCG\n"}
+,{"stream_name":"stdout","time":14.925909433,"data":"     Impact: Replace 49 code-only 'materials' with real PBR maps. One-time download, permanent fix. Covers CP6 immediately.\n"}
+,{"stream_name":"stdout","time":14.925913845,"data":"     Effort: 10 min\n"}
+,{"stream_name":"stdout","time":14.925918479,"data":"\n"}
+,{"stream_name":"stdout","time":14.92592277,"data":"  #2 | CP4 Weapons: Download Quaternius Weapon Pack (50 GLBs)\n"}
+,{"stream_name":"stdout","time":14.925927182,"data":"     Impact: Covers all 20 needed weapons + 30 extras. CC0, animated. Covers CP4 completely.\n"}
+,{"stream_name":"stdout","time":14.925931313,"data":"     Effort: 5 min download + integration\n"}
+,{"stream_name":"stdout","time":14.925935523,"data":"\n"}
+,{"stream_name":"stdout","time":14.925939758,"data":"  #3 | CP5 Vehicles: Download Quaternius Vehicle Pack (20 GLBs)\n"}
+,{"stream_name":"stdout","time":14.92594354,"data":"     Impact: Covers all 8 needed vehicles + 12 extras. Covers CP5 completely.\n"}
+,{"stream_name":"stdout","time":14.925947456,"data":"     Effort: 5 min download + physics wiring\n"}
+,{"stream_name":"stdout","time":14.925951907,"data":"\n"}
+,{"stream_name":"stdout","time":14.925956341,"data":"  #4 | CP1 Furniture: Use Quaternius (20) + generate 30 via Blender bpy\n"}
+,{"stream_name":"stdout","time":14.925961222,"data":"     Impact: Quaternius covers 20. Blender bpy script (MT1 already planned) generates remaining 30. Covers CP1.\n"}
+,{"stream_name":"stdout","time":14.925966153,"data":"     Effort: 1 session\n"}
+,{"stream_name":"stdout","time":14.925970967,"data":"\n"}
+,{"stream_name":"stdout","time":14.925975470000001,"data":"  #5 | CP2 Appliances: Generate 12 GLBs via Blender bpy\n"}
+,{"stream_name":"stdout","time":14.925980208,"data":"     Impact: No verified free source for appliances. Blender bpy generation (MT2 planned) is the path. State machine JSON is the GOVERNOR.\n"}
+,{"stream_name":"stdout","time":14.925984796,"data":"     Effort: 1 session\n"}
+,{"stream_name":"stdout","time":14.925988656,"data":"\n"}
+,{"stream_name":"stdout","time":14.925993167,"data":"  #6 | CP3 Tools: Check Kenney Tool Pack contents, then generate gaps\n"}
+,{"stream_name":"stdout","time":14.925997747,"data":"     Impact: Kenney likely covers 15-20 of 25 tools. Blender bpy for remaining 5-10. Verify BEFORE claiming coverage.\n"}
+,{"stream_name":"stdout","time":14.926002115,"data":"     Effort: 30 min verification + 1 session generation\n"}
+,{"stream_name":"stdout","time":14.943604573,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.943715036,"data":"PROPAGATION: Cross-system implications\n"}
+,{"stream_name":"stdout","time":14.943724266,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.943729931,"data":"\n"}
+,{"stream_name":"stdout","time":14.943734138,"data":"  → CHROMA CASCADE:\n"}
+,{"stream_name":"stdout","time":14.943738587,"data":"     CP6 type error (code mats ≠ real PBR) is mod9=0 INFRARED — self-destructive if unaddressed. Fixing it moves to mod9=4 GREEN.\n"}
+,{"stream_name":"stdout","time":14.943743416,"data":"\n"}
+,{"stream_name":"stdout","time":14.943747137999999,"data":"  → FRACTYPE:\n"}
+,{"stream_name":"stdout","time":14.943770042,"data":"     The 10-CP plan compresses to 6 actionable items (4-9 are procedural/data). 40% compression without loss.\n"}
+,{"stream_name":"stdout","time":14.943775467,"data":"\n"}
+,{"stream_name":"stdout","time":14.943779844,"data":"  → MYCELIAL HYPHAE:\n"}
+,{"stream_name":"stdout","time":14.943783752,"data":"     CP6→CP7→CP1-5 forms a dependency chain. Fix CP6 (materials), CP7 (crafting) becomes viable, CP1-5 assets get material assignments.\n"}
+,{"stream_name":"stdout","time":14.943788312,"data":"\n"}
+,{"stream_name":"stdout","time":14.943792014,"data":"  → BUILDING VERBS:\n"}
+,{"stream_name":"stdout","time":14.94379611,"data":"     EXTRUDE (x2): double down on Blender bpy generation for uncovered assets. BEVEL (x3): NEVER assume a free pack covers needs — verify first.\n"}
+,{"stream_name":"stdout","time":14.943800544,"data":"\n"}
+,{"stream_name":"stdout","time":14.943804161,"data":"  → ERDOS:\n"}
+,{"stream_name":"stdout","time":14.94380824,"data":"     Same pattern as Erdos: parametric identities cover 100% of mod24=0, but the HARD problem is the non-parametric corridors. Here: CP4/CP5 are covered (parametric). CP2/CP3 are hard (no verified source).\n"}
+,{"stream_name":"stdout","time":14.943814512,"data":"\n"}
+,{"stream_name":"stdout","time":14.943818152,"data":"  → VINCULUM:\n"}
+,{"stream_name":"stdout","time":14.94382199,"data":"     The vinculum bar between 'plan claims 49 materials' and 'repo has zero texture files' is the deletion test. The plan's claim is GAUGE. The repo is GROUND TRUTH.\n"}
+,{"stream_name":"stdout","time":14.964198438,"data":"\n"}
+,{"stream_name":"stdout","time":14.964236202,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.964265438,"data":"OUTPUT: vinculum_asset_delta.json\n"}
+,{"stream_name":"stdout","time":14.964270507,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":14.964276115,"data":"{\n"}
+,{"stream_name":"stdout","time":14.964280491,"data":"  \"type\": \"GOVERNOR\",\n"}
+,{"stream_name":"stdout","time":14.96428483,"data":"  \"state\": \"SELF-CORRECTED \\u2014 prior claims deleted on test\",\n"}
+,{"stream_name":"stdout","time":14.964290025,"data":"  \"key_finding\": \"CP6 has a GAUGE/GOVERNOR type error: code params \\u2260 real PBR maps\",\n"}
+,{"stream_name":"stdout","time":14.964295082,"data":"  \"top_fix\": \"ambientCG: 1995 real CC0 PBR mats \\u2014 download 30, replace code-only library\",\n"}
+,{"stream_name":"stdout","time":14.964299084,"data":"  \"covered_checkpoints\": \"CP4 (weapons), CP5 (vehicles), CP6 (after fix)\",\n"}
+,{"stream_name":"stdout","time":14.964303496,"data":"  \"blocked_checkpoints\": \"CP2 (appliances \\u2014 no verified source), CP3 (tools \\u2014 unverified)\",\n"}
+,{"stream_name":"stdout","time":14.964309079,"data":"  \"methodology\": \"Every claim deletion-tested against git tree + web_extract ground truth\"\n"}
+,{"stream_name":"stdout","time":14.964313386,"data":"}\n"}
+,{"stream_name":"stderr","time":18.373826549,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":18.373874663,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":18.614307122,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":18.614357112,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":19.439704489,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":19.827174858,"data":"[NbConvertApp] Writing 44332 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":22.980964423,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":24.091546203,"data":"[NbConvertApp] Writing 378247 bytes to __results__.html\n"}
+]

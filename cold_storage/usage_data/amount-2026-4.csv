@@ -1,0 +1,45 @@
+﻿user_id,utc_date,model,api_key_name,api_key,type,price,amount
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-pro,gemini,sk-1ad11***********************54d5,output_tokens,0.00000087,8450
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-pro,gemini,sk-1ad11***********************54d5,request_count,,5
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-pro,gemini,sk-1ad11***********************54d5,input_cache_hit_tokens,0.00000003625,799744
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-pro,gemini,sk-1ad11***********************54d5,input_cache_miss_tokens,0.000000435,800242
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-flash,"$env:DEEPSEEK_API_KEY=""your-api-key""",sk-98d2a***********************7251,output_tokens,0.00000028,378257
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-flash,"$env:DEEPSEEK_API_KEY=""your-api-key""",sk-98d2a***********************7251,request_count,,651
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-flash,"$env:DEEPSEEK_API_KEY=""your-api-key""",sk-98d2a***********************7251,input_cache_hit_tokens,0.000000028,355840
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-flash,"$env:DEEPSEEK_API_KEY=""your-api-key""",sk-98d2a***********************7251,input_cache_miss_tokens,0.00000014,18908588
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,output_tokens,0.00000028,22844
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,request_count,,18
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,input_cache_hit_tokens,0.000000028,512
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-25,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,input_cache_miss_tokens,0.00000014,1002683
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,"$env:DEEPSEEK_API_KEY=""your-api-key""",sk-98d2a***********************7251,output_tokens,0.00000028,83260
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,"$env:DEEPSEEK_API_KEY=""your-api-key""",sk-98d2a***********************7251,request_count,,143
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,"$env:DEEPSEEK_API_KEY=""your-api-key""",sk-98d2a***********************7251,input_cache_miss_tokens,0.00000014,3449741
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,day 2,sk-6c0a6***********************1943,output_tokens,0.00000028,2003
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,day 2,sk-6c0a6***********************1943,request_count,,2
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,day 2,sk-6c0a6***********************1943,input_cache_miss_tokens,0.00000014,1007135
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,dog,sk-31a05***********************c7c7,output_tokens,0.00000028,263255
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,dog,sk-31a05***********************c7c7,request_count,,171
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,dog,sk-31a05***********************c7c7,input_cache_miss_tokens,0.00000014,24953350
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,output_tokens,0.00000028,510544
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,request_count,,177
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,input_cache_hit_tokens,0.0000000028,215936
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-26,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,input_cache_miss_tokens,0.00000014,11458774
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,output_tokens,0.00000028,68656
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,request_count,,15
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,input_cache_miss_tokens,0.00000014,937136
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,hold,sk-197aa***********************d5e1,output_tokens,0.00000028,547882
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,hold,sk-197aa***********************d5e1,request_count,,1127
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,hold,sk-197aa***********************d5e1,input_cache_hit_tokens,0.0000000028,2816
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,hold,sk-197aa***********************d5e1,input_cache_miss_tokens,0.00000014,19975416
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,wete,sk-a7fdb***********************1984,output_tokens,0.00000028,116640
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,wete,sk-a7fdb***********************1984,request_count,,299
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-27,deepseek-v4-flash,wete,sk-a7fdb***********************1984,input_cache_miss_tokens,0.00000014,4995588
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-28,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,output_tokens,0.00000028,29121
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-28,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,request_count,,11
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-28,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,input_cache_miss_tokens,0.00000014,332017
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-28,deepseek-v4-flash,hold,sk-197aa***********************d5e1,output_tokens,0.00000028,282524
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-28,deepseek-v4-flash,hold,sk-197aa***********************d5e1,request_count,,429
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-28,deepseek-v4-flash,hold,sk-197aa***********************d5e1,input_cache_miss_tokens,0.00000014,8597769
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-30,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,output_tokens,0.00000028,6740
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-30,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,request_count,,3
+94d573f4-f031-4d89-a0a3-b6598613b6ef,2026-04-30,deepseek-v4-flash,gemini,sk-1ad11***********************54d5,input_cache_miss_tokens,0.00000014,449

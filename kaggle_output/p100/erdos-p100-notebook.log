@@ -1,0 +1,48 @@
+[{"stream_name":"stderr","time":5.181630254,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.18168861,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":5.944114155,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":5.944167059,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":5.944171432,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":5.944174877,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.535210099,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.535244423,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.535247783,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.535250195,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":7.574523766,"data":"GPU: Tesla P100-PCIE-16GB\n"}
+,{"stream_name":"stdout","time":7.574575841,"data":"Start: 2026-05-20T15:46:45.323611\n"}
+,{"stream_name":"stdout","time":7.583898648,"data":"Target: mod24=0, mod9 in {0, 3, 6}\n"}
+,{"stream_name":"stdout","time":7.583930887,"data":"Chunk: 100,000,000 per run\n"}
+,{"stream_name":"stdout","time":7.597619106,"data":"Solver ready\n"}
+,{"stream_name":"stdout","time":7.608874187,"data":"Fresh start from n=32,000,000\n"}
+,{"stream_name":"stdout","time":7.608891377,"data":"Stride-24: 32,000,016 -\u003e 132,000,000 (4,166,666 candidates)\n"}
+,{"stream_name":"stdout","time":13.477645324,"data":"  [6.0%] n=37,999,992 | 250000 sols | S:0 B:250000 | 44517 cand/s\n"}
+,{"stream_name":"stdout","time":18.891790284,"data":"  [12.0%] n=43,999,992 | 500000 sols | S:0 B:500000 | 46142 cand/s\n"}
+,{"stream_name":"stdout","time":24.481547438,"data":"  [18.0%] n=49,999,992 | 750000 sols | S:0 B:750000 | 44530 cand/s\n"}
+,{"stream_name":"stdout","time":29.92103534,"data":"  [24.0%] n=55,999,992 | 1000000 sols | S:0 B:1000000 | 45972 cand/s\n"}
+,{"stream_name":"stdout","time":35.49952766,"data":"  [30.0%] n=61,999,992 | 1250000 sols | S:0 B:1250000 | 45036 cand/s\n"}
+,{"stream_name":"stdout","time":41.088116108,"data":"  [36.0%] n=67,999,992 | 1500000 sols | S:0 B:1500000 | 44759 cand/s\n"}
+,{"stream_name":"stdout","time":46.271586352,"data":"  [42.0%] n=73,999,992 | 1750000 sols | S:0 B:1750000 | 48079 cand/s\n"}
+,{"stream_name":"stdout","time":51.982517758,"data":"  [48.0%] n=79,999,992 | 2000000 sols | S:0 B:2000000 | 43828 cand/s\n"}
+,{"stream_name":"stdout","time":57.64555135,"data":"  [54.0%] n=85,999,992 | 2250000 sols | S:0 B:2250000 | 48601 cand/s\n"}
+,{"stream_name":"stdout","time":62.940824182,"data":"  [60.0%] n=91,999,992 | 2500000 sols | S:0 B:2500000 | 43065 cand/s\n"}
+,{"stream_name":"stdout","time":68.185169676,"data":"  [66.0%] n=97,999,992 | 2750000 sols | S:0 B:2750000 | 47679 cand/s\n"}
+,{"stream_name":"stdout","time":74.092382107,"data":"  [72.0%] n=103,999,992 | 3000000 sols | S:0 B:3000000 | 42348 cand/s\n"}
+,{"stream_name":"stdout","time":79.171955317,"data":"  [78.0%] n=109,999,992 | 3250000 sols | S:0 B:3250000 | 49001 cand/s\n"}
+,{"stream_name":"stdout","time":84.31573421,"data":"  [84.0%] n=115,999,992 | 3500000 sols | S:0 B:3500000 | 48815 cand/s\n"}
+,{"stream_name":"stdout","time":90.54207978,"data":"  [90.0%] n=121,999,992 | 3750000 sols | S:0 B:3750000 | 40163 cand/s\n"}
+,{"stream_name":"stdout","time":95.687731146,"data":"  [96.0%] n=127,999,992 | 4000000 sols | S:0 B:4000000 | 48452 cand/s\n"}
+,{"stream_name":"stdout","time":107.420776773,"data":"==================================================\n"}
+,{"stream_name":"stdout","time":107.420817219,"data":"ERDOS P100 DONE | 0.03h | 4,166,666 candidates | 4166666 sols (100.0%)\n"}
+,{"stream_name":"stdout","time":107.420821808,"data":"STABLE: 0 | BREACH: 4166666 | ANOMALIES: 0\n"}
+,{"stream_name":"stdout","time":107.420825204,"data":"Last n: 132,000,000\n"}
+,{"stream_name":"stdout","time":107.420828237,"data":"==================================================\n"}
+,{"stream_name":"stdout","time":107.42083173,"data":"{\"stable\": 0, \"breach\": 4166666, \"anomalies\": 0, \"total_solutions\": 4166666, \"candidates_checked\": 4166666, \"hit_rate_pct\": 100.0, \"last_n\": 132000000, \"runtime_h\": 0.03}\n"}
+,{"stream_name":"stderr","time":111.592455462,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":111.592486287,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":111.744258169,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":111.744287388,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":113.579093176,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":113.883110214,"data":"[NbConvertApp] Writing 13103 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":116.251721189,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":117.061143589,"data":"[NbConvertApp] Writing 310929 bytes to __results__.html\n"}
+]

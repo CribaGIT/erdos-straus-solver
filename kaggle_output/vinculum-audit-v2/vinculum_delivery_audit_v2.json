@@ -1,0 +1,187 @@
+{
+  "framework": "VINCULUM DELIVERY AUDIT v2.0",
+  "timestamp": "2026-06-01T18:55:04.582855",
+  "self_audit": {
+    "round_1_accuracy": "1/9 (11%)",
+    "round_2_accuracy": "2/6 (33%)",
+    "new_failure_modes": [
+      "FABRICATED (claimed partial coverage, actual zero)",
+      "HALF-TRUTH (claimed complete, actual GOVERNOR-only)"
+    ],
+    "improvement": "More correct claims but failure modes are evolving, not resolving"
+  },
+  "claims_vs_ground_truth": [
+    {
+      "cp": "CP6 Materials",
+      "verdict": "CORRECT",
+      "overstatement": "0%"
+    },
+    {
+      "cp": "CP5 Vehicles",
+      "verdict": "WRONG",
+      "overstatement": "6.7x (claimed COVERED, actual 37.5%)"
+    },
+    {
+      "cp": "CP4 Weapons",
+      "verdict": "FABRICATED",
+      "overstatement": "INFINITE (claimed partial, actual zero)"
+    },
+    {
+      "cp": "CP2 Appliances",
+      "verdict": "HALF-TRUTH",
+      "overstatement": "2x (GOVERNOR correct, GAUGE placeholder)"
+    },
+    {
+      "cp": "CP1 Furniture",
+      "verdict": "PARTIAL+FORMAT-GAP",
+      "overstatement": "1.5x (didn't mention format mismatch)"
+    },
+    {
+      "cp": "CP3 Tools",
+      "verdict": "CORRECT",
+      "overstatement": "0%"
+    }
+  ],
+  "true_deltas": {
+    "CP6": {
+      "coverage": "85% (assets exist, needs material pipeline wiring)",
+      "verified": true
+    },
+    "CP5": {
+      "coverage": "37.5% (3/8 types). 5 types need Blender bpy or alternate source.",
+      "verified": true
+    },
+    "CP4": {
+      "coverage": "0% (genre mismatch. Blasters are space-themed, plan needs survival-themed)",
+      "verified": true
+    },
+    "CP2": {
+      "coverage": "GOVERNOR: 100%. GAUGE: 10% (scaffolding only)",
+      "verified": true
+    },
+    "CP1": {
+      "coverage": "40% count (20/50). ~30% category (4/10). Format gap: 0 GLB.",
+      "verified": true
+    },
+    "CP3": {
+      "coverage": "0%",
+      "verified": true
+    }
+  },
+  "breaches": [
+    {
+      "what": "CP4 GENRE MISMATCH",
+      "severity": "CRITICAL",
+      "fix": "Generate melee/improvised weapons via Blender bpy (MT4). Keep blasters as bonus sci-fi pack only if user wants them."
+    },
+    {
+      "what": "CP5 VEHICLE OVERCOUNT",
+      "severity": "HIGH",
+      "fix": "Generate bicycle, motorcycle, RV, boat, handcart via Blender bpy (MT5)."
+    },
+    {
+      "what": "CP1 FORMAT GAP",
+      "severity": "MEDIUM",
+      "fix": "Run Blender batch convert: FBX \u2192 GLB (script: convert_furniture_to_glb.py)"
+    },
+    {
+      "what": "CP2 VISUAL PLACEHOLDER",
+      "severity": "LOW",
+      "fix": "Accept for now. Visual refinement is CP2 microtask (MT2) scope \u2014 state machines are the hard part."
+    },
+    {
+      "what": "ambientCG RESOLUTION",
+      "severity": "LOW",
+      "fix": "Re-download at 4K or 8K for production. 1K is fine for prototyping."
+    }
+  ],
+  "corrected_hit_list": [
+    {
+      "rank": 1,
+      "action": "CP6: Wire ambientCG materials into Filament/Trench-Builder material system",
+      "effort": "1 session"
+    },
+    {
+      "rank": 2,
+      "action": "CP1: Batch convert 20 Quaternius FBX furniture \u2192 GLB via Blender",
+      "effort": "1 script, 5 min runtime"
+    },
+    {
+      "rank": 3,
+      "action": "CP5: Generate 5 missing vehicle types via Blender bpy (bicycle, motorcycle, RV, boat, handcart)",
+      "effort": "1 session"
+    },
+    {
+      "rank": 4,
+      "action": "CP4: Generate 20 survival weapons via Blender bpy (MT4 script)",
+      "effort": "1 session"
+    },
+    {
+      "rank": 5,
+      "action": "CP3: Generate 25 hand tools via Blender bpy (MT3 script)",
+      "effort": "1 session"
+    },
+    {
+      "rank": 6,
+      "action": "CP2: Visual refinement of appliance models (currently 2KB boxes)",
+      "effort": "Deferred \u2014 MT2 scope"
+    }
+  ],
+  "lessons": [
+    {
+      "failure": "Keyword matching instead of requirement matching",
+      "rule": "Match against PLAN REQUIREMENTS, not search keywords."
+    },
+    {
+      "failure": "Counting files instead of counting matches",
+      "rule": "Express coverage as: (matched_plan_types / total_plan_types), not (files_downloaded / anything)."
+    },
+    {
+      "failure": "Not checking format compatibility",
+      "rule": "Verify: target_engine_required_format \u2208 delivered_formats."
+    },
+    {
+      "failure": "Equating GOVERNOR completion with overall completion",
+      "rule": "Report GOVERNOR and GAUGE status separately. Don't merge them."
+    },
+    {
+      "failure": "Downloading before verifying plan match",
+      "rule": "Verify plan match BEFORE bulk download. One matched asset > 100 unmatched."
+    }
+  ],
+  "propagation": [
+    {
+      "system": "VINCULUM",
+      "finding": "The first delivery audit (Round 1) had 1/9 correct claims. This audit (Round 2) has 2/6 correct + 2 new failure modes (FABRICATED, HALF-TRUTH). The vinculum deletion test is working \u2014 each round exposes more overstatement. But the failure MODES are evolving, not resolving."
+    },
+    {
+      "system": "ERDOS",
+      "finding": "Same pattern as the sieve: the parametric identity (keyword matching) solves 100% of the trivial corridor (finding 'any weapons'), but the hard corridor (plan-specific requirements) remains unsolved. The real problem is never the easy search \u2014 it's the constraint matching."
+    },
+    {
+      "system": "CHROMA CASCADE",
+      "finding": "CP6 (real PBR) is mod9=4 GREEN \u2014 the only genuinely correct delivery. CP4 (wrong genre) is mod9=0 INFRA \u2014 self-destructive, actively harmful (wrong assets committed). CP5 (partial match) is mod9=3 YELLOW \u2014 caution, works partially but overclaimed."
+    },
+    {
+      "system": "MYCELIAL HYPHAE",
+      "finding": "The dependency chain CP6\u2192CP7\u2192CP1-5 means the ONE correct delivery (CP6 materials) is the root hypha. Fix CP6 properly and CP7 (crafting) becomes viable. The other CPs are leaf nodes that can be regenerated."
+    },
+    {
+      "system": "BUILDING VERBS",
+      "finding": "EXTRUDE (x2): Double down on CP6 wiring \u2014 it's the only verified win. BEVEL (x3): NEVER download before verifying plan match. PAINT (x7): The 5 lessons learned above should become a reusable pre-download checklist."
+    },
+    {
+      "system": "FRACTYPE",
+      "finding": "730 files \u2192 ~100 plan-usable = 7.3x noise. The first-pass download strategy generated 86% waste. A pre-filter step would reduce this to near-zero waste."
+    }
+  ],
+  "vinculum_verdict": {
+    "type": "SELF-CORRECTING",
+    "state": "Second audit exposed deeper overstatement. Failure modes evolving.",
+    "only_verified_win": "CP6 (33 PBR-complete material sets from ambientCG)",
+    "worst_failure": "CP4 (80 sci-fi blasters for survival game \u2014 genre mismatch, zero plan coverage)",
+    "systemic_issue": "Keyword matching replaced requirement matching. Files counted instead of plan types matched.",
+    "corrective_action": "Pre-download checklist: verify plan requirement \u2192 verify genre match \u2192 verify format \u2192 THEN download",
+    "noise_ratio": "730 files downloaded, ~100 plan-usable = 7.3x waste"
+  }
+}

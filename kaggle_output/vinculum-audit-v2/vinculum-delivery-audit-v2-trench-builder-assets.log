@@ -1,0 +1,200 @@
+[{"stream_name":"stderr","time":7.908801176,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.9089016359999995,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":9.189037525,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.189076039,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.189084061,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.189090214,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":10.02000022,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.020052692,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.020059748,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.020064305,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.390976641,"data":"VINCULUM DELIVERY AUDIT v2 — 2026-06-01T18:55:04.432199\n"}
+,{"stream_name":"stdout","time":11.391051242,"data":"Method: filesystem audit + plan requirement matching\n"}
+,{"stream_name":"stdout","time":11.411834151,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.411879592,"data":"CP               VERDICT         OVERSTATEMENT       \n"}
+,{"stream_name":"stdout","time":11.41188377,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.411886771,"data":"CP6 Materials    CORRECT         0%                  \n"}
+,{"stream_name":"stdout","time":11.411889588,"data":"CP5 Vehicles     WRONG           6.7x (claimed COVERED, actual 37.5%)\n"}
+,{"stream_name":"stdout","time":11.411892463,"data":"CP4 Weapons      FABRICATED      INFINITE (claimed partial, actual zero)\n"}
+,{"stream_name":"stdout","time":11.411895275,"data":"CP2 Appliances   HALF-TRUTH      2x (GOVERNOR correct, GAUGE placeholder)\n"}
+,{"stream_name":"stdout","time":11.41189834,"data":"CP1 Furniture    PARTIAL+FORMAT-GAP 1.5x (didn't mention format mismatch)\n"}
+,{"stream_name":"stdout","time":11.411901271,"data":"CP3 Tools        CORRECT         0%                  \n"}
+,{"stream_name":"stdout","time":11.411905209,"data":"\n"}
+,{"stream_name":"stdout","time":11.411931233,"data":"ACCURACY: 2/6 claims correct (33%)\n"}
+,{"stream_name":"stdout","time":11.41193626,"data":"Last audit: 1/9 claims correct (11%)\n"}
+,{"stream_name":"stdout","time":11.411940806,"data":"This audit: 2/6 claims correct (33%)\n"}
+,{"stream_name":"stdout","time":11.411945104,"data":"Improvement: 2 correct out of 6 vs 1 out of 9 — but FABRICATED + HALF-TRUTH are new failure modes\n"}
+,{"stream_name":"stdout","time":11.431495144,"data":"\n"}
+,{"stream_name":"stdout","time":11.431540178,"data":"CP6:\n"}
+,{"stream_name":"stdout","time":11.431544769,"data":"  True coverage: 85% (assets exist, needs material pipeline wiring)\n"}
+,{"stream_name":"stdout","time":11.431547917,"data":"  Need: Real PBR materials to replace code-only library\n"}
+,{"stream_name":"stdout","time":11.431568197,"data":"  Got:  33 ambientCG sets, PBR-complete (Color+Normal+Roughness+AO+Height)\n"}
+,{"stream_name":"stdout","time":11.431571253,"data":"\n"}
+,{"stream_name":"stdout","time":11.431573951,"data":"CP5:\n"}
+,{"stream_name":"stdout","time":11.431576616,"data":"  True coverage: 37.5% (3/8 types). 5 types need Blender bpy or alternate source.\n"}
+,{"stream_name":"stdout","time":11.431579621000001,"data":"  Need: 8 types: bicycle, motorcycle, sedan, pickup, van, RV, boat, handcart\n"}
+,{"stream_name":"stdout","time":11.43158242,"data":"  Got:  sedan(3), pickup(5), van(3) — plus 39 non-matching vehicles\n"}
+,{"stream_name":"stdout","time":11.431585787,"data":"  Missing: ['bicycle', 'motorcycle', 'rv', 'boat', 'handcart']\n"}
+,{"stream_name":"stdout","time":11.431588574,"data":"\n"}
+,{"stream_name":"stdout","time":11.43159112,"data":"CP4:\n"}
+,{"stream_name":"stdout","time":11.431593747,"data":"  True coverage: 0% (genre mismatch. Blasters are space-themed, plan needs survival-themed)\n"}
+,{"stream_name":"stdout","time":11.431596549,"data":"  Need: 20 weapons: 10 melee + 6 ranged + 4 improvised\n"}
+,{"stream_name":"stdout","time":11.43159922,"data":"  Got:  80 sci-fi blasters — WRONG GENRE. 0/20 plan weapons matched.\n"}
+,{"stream_name":"stdout","time":11.431602094,"data":"\n"}
+,{"stream_name":"stdout","time":11.431604703,"data":"CP2:\n"}
+,{"stream_name":"stdout","time":11.431607275,"data":"  True coverage: GOVERNOR: 100%. GAUGE: 10% (scaffolding only)\n"}
+,{"stream_name":"stdout","time":11.431609949,"data":"  Need: 12 types with state machines (off/on/running/overload/broken)\n"}
+,{"stream_name":"stdout","time":11.431612661,"data":"  Got:  12 GLBs (~2KB boxes) + 12 state machine JSONs (all valid, zero dead states)\n"}
+,{"stream_name":"stdout","time":11.431615476,"data":"\n"}
+,{"stream_name":"stdout","time":11.43161802,"data":"CP1:\n"}
+,{"stream_name":"stdout","time":11.431620614,"data":"  True coverage: 40% count (20/50). ~30% category (4/10). Format gap: 0 GLB.\n"}
+,{"stream_name":"stdout","time":11.431623367,"data":"  Need: 50 furniture across 10 categories\n"}
+,{"stream_name":"stdout","time":11.431626009,"data":"  Got:  20 models (Bed, Sofa, Chair, Desk, Bookcase, Closet, Table...)\n"}
+,{"stream_name":"stdout","time":11.431629532,"data":"\n"}
+,{"stream_name":"stdout","time":11.431632337,"data":"CP3:\n"}
+,{"stream_name":"stdout","time":11.431634914,"data":"  True coverage: 0%\n"}
+,{"stream_name":"stdout","time":11.431637616,"data":"  Need: 25 tools: 6 gather + 7 build + 8 repair\n"}
+,{"stream_name":"stdout","time":11.431640306,"data":"  Got:  0 hand tools. 429 factory assets (wrong category).\n"}
+,{"stream_name":"stdout","time":11.449553901,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.449597177,"data":"FRACTYPE: 730+ files → Actually usable\n"}
+,{"stream_name":"stdout","time":11.449602867,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.449634694,"data":"\n"}
+,{"stream_name":"stdout","time":11.449639911,"data":"  Raw download: 967 files\n"}
+,{"stream_name":"stdout","time":11.449644473,"data":"  Plan-usable: 76 items\n"}
+,{"stream_name":"stdout","time":11.449649184,"data":"  Compression: 967 → 76 = 12.7x noise ratio\n"}
+,{"stream_name":"stdout","time":11.449654141,"data":"\n"}
+,{"stream_name":"stdout","time":11.449658348,"data":"  Plan advancement:\n"}
+,{"stream_name":"stdout","time":11.449662434,"data":"    CP6 FIXED (real PBR): advances CP6 → enables CP7 crafting\n"}
+,{"stream_name":"stdout","time":11.449684312,"data":"    CP5 PARTIAL (3/8 vehicles): advances MT5 partially\n"}
+,{"stream_name":"stdout","time":11.449689441,"data":"    CP2 GOVERNOR (state machines): advances CP2 functional layer\n"}
+,{"stream_name":"stdout","time":11.449694025,"data":"    CP1 PARTIAL (20/50 furniture): advances MT1 partially\n"}
+,{"stream_name":"stdout","time":11.449698245,"data":"    CP4 DEAD (wrong genre): zero advancement\n"}
+,{"stream_name":"stdout","time":11.449702307999999,"data":"    CP3 DEAD (no tools): zero advancement\n"}
+,{"stream_name":"stdout","time":11.449706804,"data":"\n"}
+,{"stream_name":"stdout","time":11.449711294,"data":"  Checkpoints advancing: 4/6\n"}
+,{"stream_name":"stdout","time":11.449715919,"data":"  Checkpoints stalled: 2/6\n"}
+,{"stream_name":"stdout","time":11.467831183,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.467894833999999,"data":"x3 BREACH DETECTION: Delivery risks\n"}
+,{"stream_name":"stdout","time":11.467901585,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.467906463,"data":"\n"}
+,{"stream_name":"stdout","time":11.467910498,"data":"  ☠ [CRITICAL  ] CP4 GENRE MISMATCH\n"}
+,{"stream_name":"stdout","time":11.467915504,"data":"     80 sci-fi blasters for a survival game. The blaster-kit was the WRONG answer. A correct answer would have been 'I found zero survival weapons, need Blender bpy.'\n"}
+,{"stream_name":"stdout","time":11.467920256,"data":"     Root: I saw 'weapons' keyword match and downloaded without checking if the weapons match the SURVIVAL theme.\n"}
+,{"stream_name":"stdout","time":11.467928983,"data":"     Fix: Generate melee/improvised weapons via Blender bpy (MT4). Keep blasters as bonus sci-fi pack only if user wants them.\n"}
+,{"stream_name":"stdout","time":11.467931945,"data":"\n"}
+,{"stream_name":"stdout","time":11.467934576,"data":"  ⚠ [HIGH      ] CP5 VEHICLE OVERCOUNT\n"}
+,{"stream_name":"stdout","time":11.46793728,"data":"     Said 'COVERED' when 5/8 types are missing. Kenney Car Kit has 50 vehicles but only 3 match plan types.\n"}
+,{"stream_name":"stdout","time":11.467940056,"data":"     Root: Counted total files instead of matching against plan requirements.\n"}
+,{"stream_name":"stdout","time":11.467942693,"data":"     Fix: Generate bicycle, motorcycle, RV, boat, handcart via Blender bpy (MT5).\n"}
+,{"stream_name":"stdout","time":11.467945492,"data":"\n"}
+,{"stream_name":"stdout","time":11.467948134,"data":"  ◈ [MEDIUM    ] CP1 FORMAT GAP\n"}
+,{"stream_name":"stdout","time":11.46795074,"data":"     20 furniture models are FBX+Blend — trench-builder uses Three.js which needs GLB. Requires Blender batch conversion.\n"}
+,{"stream_name":"stdout","time":11.46795354,"data":"     Root: Didn't check export format against engine requirements.\n"}
+,{"stream_name":"stdout","time":11.46795625,"data":"     Fix: Run Blender batch convert: FBX → GLB (script: convert_furniture_to_glb.py)\n"}
+,{"stream_name":"stdout","time":11.467958954,"data":"\n"}
+,{"stream_name":"stdout","time":11.467961443,"data":"  ◈ [LOW       ] CP2 VISUAL PLACEHOLDER\n"}
+,{"stream_name":"stdout","time":11.46796463,"data":"     All 12 appliances are 2KB box primitives. Functional state machines are correct, but visual quality is scaffolding.\n"}
+,{"stream_name":"stdout","time":11.467981463,"data":"     Root: Prioritized GOVERNOR (state machine) over GAUGE (visual). Correct priority, but didn't acknowledge the gap.\n"}
+,{"stream_name":"stdout","time":11.467986448,"data":"     Fix: Accept for now. Visual refinement is CP2 microtask (MT2) scope — state machines are the hard part.\n"}
+,{"stream_name":"stdout","time":11.468010691,"data":"\n"}
+,{"stream_name":"stdout","time":11.468014976,"data":"  ◈ [LOW       ] ambientCG RESOLUTION\n"}
+,{"stream_name":"stdout","time":11.468035238,"data":"     33 materials at 1K JPG. Production needs 4K-8K. The 1K download anchor means all subsequent work is at prototype resolution.\n"}
+,{"stream_name":"stdout","time":11.468038352,"data":"     Root: Downloaded smallest available (1K) to save bandwidth. Didn't note this limits production readiness.\n"}
+,{"stream_name":"stdout","time":11.468041123,"data":"     Fix: Re-download at 4K or 8K for production. 1K is fine for prototyping.\n"}
+,{"stream_name":"stdout","time":11.486721043,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.486792921,"data":"CORRECTED HIT LIST — Round 2\n"}
+,{"stream_name":"stdout","time":11.486800241,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.486805155,"data":"\n"}
+,{"stream_name":"stdout","time":11.486809753,"data":"  #1 | CP6: Wire ambientCG materials into Filament/Trench-Builder material system\n"}
+,{"stream_name":"stdout","time":11.486814855,"data":"     State: 33 PBR sets on disk. .blend/.mtlx/.usdc files included per set. Need .mat conversion for Filament.\n"}
+,{"stream_name":"stdout","time":11.486819452,"data":"     Effort: 1 session\n"}
+,{"stream_name":"stdout","time":11.486823435,"data":"     Advances: CP6 → CP7 (crafting needs real materials)\n"}
+,{"stream_name":"stdout","time":11.486827988,"data":"\n"}
+,{"stream_name":"stdout","time":11.486831944,"data":"  #2 | CP1: Batch convert 20 Quaternius FBX furniture → GLB via Blender\n"}
+,{"stream_name":"stdout","time":11.486839962,"data":"     State: 20 FBX + 20 Blend + 20 OBJ. Zero GLB. Trench-builder pipeline expects GLB.\n"}
+,{"stream_name":"stdout","time":11.486842921,"data":"     Effort: 1 script, 5 min runtime\n"}
+,{"stream_name":"stdout","time":11.486845606,"data":"     Advances: CP1 (furniture usable in engine)\n"}
+,{"stream_name":"stdout","time":11.486848389,"data":"\n"}
+,{"stream_name":"stdout","time":11.486851004,"data":"  #3 | CP5: Generate 5 missing vehicle types via Blender bpy (bicycle, motorcycle, RV, boat, handcart)\n"}
+,{"stream_name":"stdout","time":11.486853906,"data":"     State: 3/8 types from Kenney. 5 missing. Kenney has FKX/OBJ/GLB formats — usable for car-like vehicles.\n"}
+,{"stream_name":"stdout","time":11.486856841,"data":"     Effort: 1 session\n"}
+,{"stream_name":"stdout","time":11.486859415,"data":"     Advances: CP5 (8/8 vehicle types)\n"}
+,{"stream_name":"stdout","time":11.48686203,"data":"\n"}
+,{"stream_name":"stdout","time":11.486864509,"data":"  #4 | CP4: Generate 20 survival weapons via Blender bpy (MT4 script)\n"}
+,{"stream_name":"stdout","time":11.486867267,"data":"     State: 0/20 plan weapons. 80 sci-fi blasters are wrong genre — keep as optional bonus pack only.\n"}
+,{"stream_name":"stdout","time":11.486870065,"data":"     Effort: 1 session\n"}
+,{"stream_name":"stdout","time":11.486872618,"data":"     Advances: CP4 (20/20 weapon types with stats)\n"}
+,{"stream_name":"stdout","time":11.48687532,"data":"\n"}
+,{"stream_name":"stdout","time":11.486879129,"data":"  #5 | CP3: Generate 25 hand tools via Blender bpy (MT3 script)\n"}
+,{"stream_name":"stdout","time":11.486896108,"data":"     State: 0/25 tools. No free pack has individual hand tools as game-ready assets.\n"}
+,{"stream_name":"stdout","time":11.486901065,"data":"     Effort: 1 session\n"}
+,{"stream_name":"stdout","time":11.486905427,"data":"     Advances: CP3 (25/25 tool types with stats)\n"}
+,{"stream_name":"stdout","time":11.486934546,"data":"\n"}
+,{"stream_name":"stdout","time":11.486938699,"data":"  #6 | CP2: Visual refinement of appliance models (currently 2KB boxes)\n"}
+,{"stream_name":"stdout","time":11.486951338,"data":"     State: 12 functional state machines (GOVERNOR correct). 12 box primitives (GAUGE placeholder).\n"}
+,{"stream_name":"stdout","time":11.486954347,"data":"     Effort: Deferred — MT2 scope\n"}
+,{"stream_name":"stdout","time":11.486957166,"data":"     Advances: CP2 (production-quality appliance models)\n"}
+,{"stream_name":"stdout","time":11.50482846,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.504897012,"data":"WHY I OVERSTATED THE DELIVERY\n"}
+,{"stream_name":"stdout","time":11.5049057,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.504913558,"data":"\n"}
+,{"stream_name":"stdout","time":11.504916380000001,"data":"  #1 Keyword matching instead of requirement matching\n"}
+,{"stream_name":"stdout","time":11.504919351,"data":"     Example: Saw 'weapons' → downloaded blasters. Plan says 'survival melee/ranged/improvised'. Blasters are sci-fi.\n"}
+,{"stream_name":"stdout","time":11.504923303,"data":"     New rule: Match against PLAN REQUIREMENTS, not search keywords.\n"}
+,{"stream_name":"stdout","time":11.504926075,"data":"\n"}
+,{"stream_name":"stdout","time":11.504928615,"data":"  #2 Counting files instead of counting matches\n"}
+,{"stream_name":"stdout","time":11.504931314,"data":"     Example: 50 car models ≠ 50 plan-matching vehicles. 3/8 types matched = 37.5%, not 100%.\n"}
+,{"stream_name":"stdout","time":11.504941172,"data":"     New rule: Express coverage as: (matched_plan_types / total_plan_types), not (files_downloaded / anything).\n"}
+,{"stream_name":"stdout","time":11.504944074,"data":"\n"}
+,{"stream_name":"stdout","time":11.50494659,"data":"  #3 Not checking format compatibility\n"}
+,{"stream_name":"stdout","time":11.504949343,"data":"     Example: FBX+Blend downloaded for Three.js pipeline that needs GLB. Format gap unmentioned.\n"}
+,{"stream_name":"stdout","time":11.504952181,"data":"     New rule: Verify: target_engine_required_format ∈ delivered_formats.\n"}
+,{"stream_name":"stdout","time":11.50495794,"data":"\n"}
+,{"stream_name":"stdout","time":11.504960613,"data":"  #4 Equating GOVERNOR completion with overall completion\n"}
+,{"stream_name":"stdout","time":11.504963437,"data":"     Example: State machines valid → 'CP2 COMPLETE'. But visual models are 2KB boxes.\n"}
+,{"stream_name":"stdout","time":11.504966239,"data":"     New rule: Report GOVERNOR and GAUGE status separately. Don't merge them.\n"}
+,{"stream_name":"stdout","time":11.504969017,"data":"\n"}
+,{"stream_name":"stdout","time":11.504971643,"data":"  #5 Downloading before verifying plan match\n"}
+,{"stream_name":"stdout","time":11.504974405,"data":"     Example: Downloaded 730+ files. Only ~100 are plan-usable. Noise ratio: 7.3x.\n"}
+,{"stream_name":"stdout","time":11.504977202,"data":"     New rule: Verify plan match BEFORE bulk download. One matched asset \u003e 100 unmatched.\n"}
+,{"stream_name":"stdout","time":11.520832581,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.520871328,"data":"PROPAGATION\n"}
+,{"stream_name":"stdout","time":11.520877426,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":11.520881644,"data":"\n"}
+,{"stream_name":"stdout","time":11.520913353,"data":"  → VINCULUM:\n"}
+,{"stream_name":"stdout","time":11.520918692,"data":"     The first delivery audit (Round 1) had 1/9 correct claims. This audit (Round 2) has 2/6 correct + 2 new failure modes (FABRICATED, HALF-TRUTH). The vinculum deletion test is working — each round exposes more overstatement. But the failure MODES are evolving, not resolving.\n"}
+,{"stream_name":"stdout","time":11.520924491,"data":"\n"}
+,{"stream_name":"stdout","time":11.520928325,"data":"  → ERDOS:\n"}
+,{"stream_name":"stdout","time":11.52093227,"data":"     Same pattern as the sieve: the parametric identity (keyword matching) solves 100% of the trivial corridor (finding 'any weapons'), but the hard corridor (plan-specific requirements) remains unsolved. The real problem is never the easy search — it's the constraint matching.\n"}
+,{"stream_name":"stdout","time":11.520937077,"data":"\n"}
+,{"stream_name":"stdout","time":11.520940729,"data":"  → CHROMA CASCADE:\n"}
+,{"stream_name":"stdout","time":11.520944682,"data":"     CP6 (real PBR) is mod9=4 GREEN — the only genuinely correct delivery. CP4 (wrong genre) is mod9=0 INFRA — self-destructive, actively harmful (wrong assets committed). CP5 (partial match) is mod9=3 YELLOW — caution, works partially but overclaimed.\n"}
+,{"stream_name":"stdout","time":11.520949607,"data":"\n"}
+,{"stream_name":"stdout","time":11.520953926,"data":"  → MYCELIAL HYPHAE:\n"}
+,{"stream_name":"stdout","time":11.520958639,"data":"     The dependency chain CP6→CP7→CP1-5 means the ONE correct delivery (CP6 materials) is the root hypha. Fix CP6 properly and CP7 (crafting) becomes viable. The other CPs are leaf nodes that can be regenerated.\n"}
+,{"stream_name":"stdout","time":11.520964538,"data":"\n"}
+,{"stream_name":"stdout","time":11.520968542,"data":"  → BUILDING VERBS:\n"}
+,{"stream_name":"stdout","time":11.520972459,"data":"     EXTRUDE (x2): Double down on CP6 wiring — it's the only verified win. BEVEL (x3): NEVER download before verifying plan match. PAINT (x7): The 5 lessons learned above should become a reusable pre-download checklist.\n"}
+,{"stream_name":"stdout","time":11.520977194,"data":"\n"}
+,{"stream_name":"stdout","time":11.520980953,"data":"  → FRACTYPE:\n"}
+,{"stream_name":"stdout","time":11.520985728,"data":"     730 files → ~100 plan-usable = 7.3x noise. The first-pass download strategy generated 86% waste. A pre-filter step would reduce this to near-zero waste.\n"}
+,{"stream_name":"stdout","time":11.542308925,"data":"\n"}
+,{"stream_name":"stdout","time":11.542343308,"data":"OUTPUT: vinculum_delivery_audit_v2.json\n"}
+,{"stream_name":"stdout","time":11.542349646,"data":"{\n"}
+,{"stream_name":"stdout","time":11.542353944,"data":"  \"type\": \"SELF-CORRECTING\",\n"}
+,{"stream_name":"stdout","time":11.542359939,"data":"  \"state\": \"Second audit exposed deeper overstatement. Failure modes evolving.\",\n"}
+,{"stream_name":"stdout","time":11.542365053,"data":"  \"only_verified_win\": \"CP6 (33 PBR-complete material sets from ambientCG)\",\n"}
+,{"stream_name":"stdout","time":11.542369594,"data":"  \"worst_failure\": \"CP4 (80 sci-fi blasters for survival game \\u2014 genre mismatch, zero plan coverage)\",\n"}
+,{"stream_name":"stdout","time":11.542374088,"data":"  \"systemic_issue\": \"Keyword matching replaced requirement matching. Files counted instead of plan types matched.\",\n"}
+,{"stream_name":"stdout","time":11.542379245,"data":"  \"corrective_action\": \"Pre-download checklist: verify plan requirement \\u2192 verify genre match \\u2192 verify format \\u2192 THEN download\",\n"}
+,{"stream_name":"stdout","time":11.54238873,"data":"  \"noise_ratio\": \"730 files downloaded, ~100 plan-usable = 7.3x waste\"\n"}
+,{"stream_name":"stdout","time":11.542407355,"data":"}\n"}
+,{"stream_name":"stderr","time":14.964059845,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":14.964103178,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":15.176102054,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":15.176132209,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":15.992462534,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":16.399028573,"data":"[NbConvertApp] Writing 42303 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":19.591739749,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":20.721937532,"data":"[NbConvertApp] Writing 354111 bytes to __results__.html\n"}
+]

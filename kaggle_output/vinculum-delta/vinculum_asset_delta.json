@@ -1,0 +1,270 @@
+{
+  "framework": "VINCULUM ASSET DELTA v1.0",
+  "timestamp": "2026-06-01T18:04:33.490519",
+  "ground_truth": {
+    "total_3d_models_in_repos": 52,
+    "model_types": {
+      "mechanical_STL": 33,
+      "parametric_gears_GLB": 19
+    },
+    "pbr_textures_in_repos": 0,
+    "hdr_is_in_repos": 0,
+    "plan_claimed_materials": 49,
+    "actual_material_files": 0,
+    "type_error": "plan claims 49 materials in code; zero texture files on disk"
+  },
+  "self_audit": {
+    "total_claims": 9,
+    "wrong": 5,
+    "unverified": 3,
+    "close": 1,
+    "accuracy": "1/9"
+  },
+  "deletion_test": [
+    {
+      "cp": "CP1",
+      "name": "Furniture Library",
+      "current": 5,
+      "target": 50,
+      "gap": 45,
+      "x3_mod9": 6,
+      "type": "BREACH",
+      "note": "10x expansion \u2014 verify source exists"
+    },
+    {
+      "cp": "CP2",
+      "name": "Appliance System",
+      "current": 0,
+      "target": 12,
+      "gap": 12,
+      "x3_mod9": 0,
+      "type": "BREACH",
+      "note": "12x expansion \u2014 verify source exists"
+    },
+    {
+      "cp": "CP3",
+      "name": "Tool Library",
+      "current": 0,
+      "target": 25,
+      "gap": 25,
+      "x3_mod9": 3,
+      "type": "BREACH",
+      "note": "25x expansion \u2014 verify source exists"
+    },
+    {
+      "cp": "CP4",
+      "name": "Weapon System",
+      "current": 0,
+      "target": 20,
+      "gap": 20,
+      "x3_mod9": 6,
+      "type": "BREACH",
+      "note": "20x expansion \u2014 verify source exists"
+    },
+    {
+      "cp": "CP5",
+      "name": "Vehicle System",
+      "current": 0,
+      "target": 8,
+      "gap": 8,
+      "x3_mod9": 6,
+      "type": "BREACH",
+      "note": "8x expansion \u2014 verify source exists"
+    },
+    {
+      "cp": "CP6",
+      "name": "Resource System",
+      "current": 49,
+      "target": 30,
+      "gap": -19,
+      "x3_mod9": 0,
+      "type": "GAUGE-ERR",
+      "note": "49 'materials' are code params, zero PBR files \u2014 TYPE ERROR"
+    },
+    {
+      "cp": "CP7",
+      "name": "Crafting System",
+      "current": 0,
+      "target": 40,
+      "gap": 40,
+      "x3_mod9": 3,
+      "type": "GOVERNOR",
+      "note": "gates all CP1-6 \u2014 delete CP7, crafting breaks"
+    },
+    {
+      "cp": "CP8",
+      "name": "Infrastructure",
+      "current": 0,
+      "target": 15,
+      "gap": 15,
+      "x3_mod9": 0,
+      "type": "BREACH",
+      "note": "15x expansion \u2014 verify source exists"
+    },
+    {
+      "cp": "CP9",
+      "name": "Underground",
+      "current": 0,
+      "target": 3,
+      "gap": 3,
+      "x3_mod9": 0,
+      "type": "BREACH",
+      "note": "3x expansion \u2014 verify source exists"
+    },
+    {
+      "cp": "CP10",
+      "name": "Cross-Game Ref",
+      "current": 0,
+      "target": 100,
+      "gap": 100,
+      "x3_mod9": 3,
+      "type": "GAUGE",
+      "note": "catalog is display; gap ranking is GOVERNOR"
+    }
+  ],
+  "verified_delta": {
+    "CP1 Furniture": {
+      "need": 45,
+      "source": "Quaternius Furniture",
+      "covers": 20,
+      "gap": 25,
+      "status": "PARTIAL"
+    },
+    "CP2 Appliances": {
+      "need": 12,
+      "source": "OS3A (UNVERIFIED)",
+      "covers": "?",
+      "gap": 12,
+      "status": "NO SOURCE"
+    },
+    "CP3 Tools": {
+      "need": 25,
+      "source": "Kenney (UNVERIFIED)",
+      "covers": "?",
+      "gap": 25,
+      "status": "NO SOURCE"
+    },
+    "CP4 Weapons": {
+      "need": 20,
+      "source": "Quaternius Weapons",
+      "covers": 50,
+      "gap": 0,
+      "status": "COVERED"
+    },
+    "CP5 Vehicles": {
+      "need": 8,
+      "source": "Quaternius Vehicles",
+      "covers": 20,
+      "gap": 0,
+      "status": "COVERED"
+    },
+    "CP6 Resources": {
+      "need": "PBR_maps",
+      "source": "ambientCG",
+      "covers": 1995,
+      "gap": 0,
+      "status": "COVERED \u2014 but plan has code-only mats"
+    },
+    "CP7 Crafting": {
+      "need": "data_only",
+      "source": "N/A",
+      "covers": "N/A",
+      "gap": 0,
+      "status": "PURE LOGIC"
+    },
+    "CP8 Infrastructure": {
+      "need": "generators",
+      "source": "Poly Haven (reference)",
+      "covers": 300,
+      "gap": 0,
+      "status": "PROCEDURAL \u2014 no direct asset need"
+    },
+    "CP9 Underground": {
+      "need": "generators",
+      "source": "N/A",
+      "covers": "N/A",
+      "gap": 0,
+      "status": "PURE PROCEDURAL"
+    },
+    "CP10 Cross-Ref": {
+      "need": "data_only",
+      "source": "N/A",
+      "covers": "N/A",
+      "gap": 0,
+      "status": "PURE RESEARCH"
+    }
+  },
+  "corrected_hit_list": [
+    {
+      "rank": 1,
+      "action": "FIX CP6: Download 30 PBR mats from ambientCG",
+      "impact": "Replace 49 code-only 'materials' with real PBR maps. One-time download, permanent fix. Covers CP6 immediately.",
+      "effort": "10 min"
+    },
+    {
+      "rank": 2,
+      "action": "CP4 Weapons: Download Quaternius Weapon Pack (50 GLBs)",
+      "impact": "Covers all 20 needed weapons + 30 extras. CC0, animated. Covers CP4 completely.",
+      "effort": "5 min download + integration"
+    },
+    {
+      "rank": 3,
+      "action": "CP5 Vehicles: Download Quaternius Vehicle Pack (20 GLBs)",
+      "impact": "Covers all 8 needed vehicles + 12 extras. Covers CP5 completely.",
+      "effort": "5 min download + physics wiring"
+    },
+    {
+      "rank": 4,
+      "action": "CP1 Furniture: Use Quaternius (20) + generate 30 via Blender bpy",
+      "impact": "Quaternius covers 20. Blender bpy script (MT1 already planned) generates remaining 30. Covers CP1.",
+      "effort": "1 session"
+    },
+    {
+      "rank": 5,
+      "action": "CP2 Appliances: Generate 12 GLBs via Blender bpy",
+      "impact": "No verified free source for appliances. Blender bpy generation (MT2 planned) is the path. State machine JSON is the GOVERNOR.",
+      "effort": "1 session"
+    },
+    {
+      "rank": 6,
+      "action": "CP3 Tools: Check Kenney Tool Pack contents, then generate gaps",
+      "impact": "Kenney likely covers 15-20 of 25 tools. Blender bpy for remaining 5-10. Verify BEFORE claiming coverage.",
+      "effort": "30 min verification + 1 session generation"
+    }
+  ],
+  "propagation": [
+    {
+      "system": "CHROMA CASCADE",
+      "finding": "CP6 type error (code mats \u2260 real PBR) is mod9=0 INFRARED \u2014 self-destructive if unaddressed. Fixing it moves to mod9=4 GREEN."
+    },
+    {
+      "system": "FRACTYPE",
+      "finding": "The 10-CP plan compresses to 6 actionable items (4-9 are procedural/data). 40% compression without loss."
+    },
+    {
+      "system": "MYCELIAL HYPHAE",
+      "finding": "CP6\u2192CP7\u2192CP1-5 forms a dependency chain. Fix CP6 (materials), CP7 (crafting) becomes viable, CP1-5 assets get material assignments."
+    },
+    {
+      "system": "BUILDING VERBS",
+      "finding": "EXTRUDE (x2): double down on Blender bpy generation for uncovered assets. BEVEL (x3): NEVER assume a free pack covers needs \u2014 verify first."
+    },
+    {
+      "system": "ERDOS",
+      "finding": "Same pattern as Erdos: parametric identities cover 100% of mod24=0, but the HARD problem is the non-parametric corridors. Here: CP4/CP5 are covered (parametric). CP2/CP3 are hard (no verified source)."
+    },
+    {
+      "system": "VINCULUM",
+      "finding": "The vinculum bar between 'plan claims 49 materials' and 'repo has zero texture files' is the deletion test. The plan's claim is GAUGE. The repo is GROUND TRUTH."
+    }
+  ],
+  "vinculum_verdict": {
+    "type": "GOVERNOR",
+    "state": "SELF-CORRECTED \u2014 prior claims deleted on test",
+    "key_finding": "CP6 has a GAUGE/GOVERNOR type error: code params \u2260 real PBR maps",
+    "top_fix": "ambientCG: 1995 real CC0 PBR mats \u2014 download 30, replace code-only library",
+    "covered_checkpoints": "CP4 (weapons), CP5 (vehicles), CP6 (after fix)",
+    "blocked_checkpoints": "CP2 (appliances \u2014 no verified source), CP3 (tools \u2014 unverified)",
+    "methodology": "Every claim deletion-tested against git tree + web_extract ground truth"
+  }
+}

@@ -1,0 +1,1125 @@
+{
+  "metadata": {
+    "source": "TRENCH_COLD_STORAGE",
+    "anomalies_file": "erdos_v104_anomalies_20260408_000503.json",
+    "bridge_file": "erdos_v106_bridge_report_20260408_005439.json",
+    "generated": "2026-05-10T13:07:11.144530",
+    "total_anomalies": 333333,
+    "total_bridge_candidates": 1666667,
+    "total_outliers": 552,
+    "total_delta_pairs": 0
+  },
+  "residue_stats": {
+    "1": {
+      "count": 83333,
+      "mu": 5.24,
+      "sigma": 192.7,
+      "p95": 9.3,
+      "max": 31191.885153675306,
+      "outlier_count": 65,
+      "outlier_pct": 0.1
+    },
+    "9": {
+      "count": 83333,
+      "mu": 3.81,
+      "sigma": 42.87,
+      "p95": 9.17,
+      "max": 5862.983633540416,
+      "outlier_count": 313,
+      "outlier_pct": 0.4
+    },
+    "10": {
+      "count": 83333,
+      "mu": 1.51,
+      "sigma": 50.57,
+      "p95": 3.26,
+      "max": 13760.21631992418,
+      "outlier_count": 82,
+      "outlier_pct": 0.1
+    },
+    "17": {
+      "count": 83334,
+      "mu": 4.91,
+      "sigma": 145.98,
+      "p95": 9.13,
+      "max": 30585.097432412378,
+      "outlier_count": 92,
+      "outlier_pct": 0.1
+    }
+  },
+  "bridge_stats": {
+    "1": {
+      "count": 416666,
+      "mu_ri": 6.681,
+      "sigma_ri": 2.429
+    },
+    "9": {
+      "count": 416667,
+      "mu_ri": 6.678,
+      "sigma_ri": 2.425
+    },
+    "10": {
+      "count": 416667,
+      "mu_ri": 6.172,
+      "sigma_ri": 2.325
+    },
+    "17": {
+      "count": 416667,
+      "mu_ri": 6.671,
+      "sigma_ri": 2.415
+    }
+  },
+  "outliers_by_residue": {
+    "17": [
+      {
+        "n": 10001153,
+        "mod24": 17,
+        "torsion": 610.6119,
+        "steps": 213,
+        "z_score": 4.149,
+        "is_leviathan": false
+      },
+      {
+        "n": 10011137,
+        "mod24": 17,
+        "torsion": 1067.4394,
+        "steps": 230,
+        "z_score": 7.279,
+        "is_leviathan": false
+      },
+      {
+        "n": 10050113,
+        "mod24": 17,
+        "torsion": 594.4495,
+        "steps": 238,
+        "z_score": 4.038,
+        "is_leviathan": false
+      },
+      {
+        "n": 10071713,
+        "mod24": 17,
+        "torsion": 333.9147,
+        "steps": 350,
+        "z_score": 2.254,
+        "is_leviathan": false
+      },
+      {
+        "n": 10075985,
+        "mod24": 17,
+        "torsion": 955.1463,
+        "steps": 487,
+        "z_score": 6.509,
+        "is_leviathan": false
+      },
+      {
+        "n": 10089113,
+        "mod24": 17,
+        "torsion": 325.6534,
+        "steps": 230,
+        "z_score": 2.197,
+        "is_leviathan": false
+      },
+      {
+        "n": 10110257,
+        "mod24": 17,
+        "torsion": 422.5639,
+        "steps": 487,
+        "z_score": 2.861,
+        "is_leviathan": false
+      },
+      {
+        "n": 10110977,
+        "mod24": 17,
+        "torsion": 1878.302,
+        "steps": 362,
+        "z_score": 12.833,
+        "is_leviathan": false
+      },
+      {
+        "n": 10131353,
+        "mod24": 17,
+        "torsion": 549.221,
+        "steps": 251,
+        "z_score": 3.729,
+        "is_leviathan": false
+      },
+      {
+        "n": 10170713,
+        "mod24": 17,
+        "torsion": 3663.6695,
+        "steps": 456,
+        "z_score": 25.063,
+        "is_leviathan": false
+      },
+      {
+        "n": 10235201,
+        "mod24": 17,
+        "torsion": 387.5955,
+        "steps": 319,
+        "z_score": 2.621,
+        "is_leviathan": false
+      },
+      {
+        "n": 10248449,
+        "mod24": 17,
+        "torsion": 3685.6968,
+        "steps": 274,
+        "z_score": 25.214,
+        "is_leviathan": false
+      },
+      {
+        "n": 10301537,
+        "mod24": 17,
+        "torsion": 1905.4887,
+        "steps": 473,
+        "z_score": 13.019,
+        "is_leviathan": false
+      },
+      {
+        "n": 10306145,
+        "mod24": 17,
+        "torsion": 3211.3782,
+        "steps": 313,
+        "z_score": 21.965,
+        "is_leviathan": false
+      },
+      {
+        "n": 10327553,
+        "mod24": 17,
+        "torsion": 434.1843,
+        "steps": 468,
+        "z_score": 2.941,
+        "is_leviathan": false
+      },
+      {
+        "n": 10335137,
+        "mod24": 17,
+        "torsion": 640.6312,
+        "steps": 468,
+        "z_score": 4.355,
+        "is_leviathan": false
+      },
+      {
+        "n": 10340705,
+        "mod24": 17,
+        "torsion": 728.0226,
+        "steps": 300,
+        "z_score": 4.954,
+        "is_leviathan": false
+      },
+      {
+        "n": 10359041,
+        "mod24": 17,
+        "torsion": 928.6818,
+        "steps": 288,
+        "z_score": 6.328,
+        "is_leviathan": false
+      },
+      {
+        "n": 10361921,
+        "mod24": 17,
+        "torsion": 430.5034,
+        "steps": 468,
+        "z_score": 2.915,
+        "is_leviathan": false
+      },
+      {
+        "n": 10398905,
+        "mod24": 17,
+        "torsion": 354.3666,
+        "steps": 189,
+        "z_score": 2.394,
+        "is_leviathan": false
+      }
+    ],
+    "9": [
+      {
+        "n": 10016769,
+        "mod24": 9,
+        "torsion": 142.3832,
+        "steps": 182,
+        "z_score": 3.232,
+        "is_leviathan": false
+      },
+      {
+        "n": 10018065,
+        "mod24": 9,
+        "torsion": 153.3937,
+        "steps": 336,
+        "z_score": 3.489,
+        "is_leviathan": false
+      },
+      {
+        "n": 10033305,
+        "mod24": 9,
+        "torsion": 94.7784,
+        "steps": 213,
+        "z_score": 2.122,
+        "is_leviathan": false
+      },
+      {
+        "n": 10035777,
+        "mod24": 9,
+        "torsion": 121.2593,
+        "steps": 256,
+        "z_score": 2.74,
+        "is_leviathan": false
+      },
+      {
+        "n": 10038273,
+        "mod24": 9,
+        "torsion": 182.8204,
+        "steps": 199,
+        "z_score": 4.176,
+        "is_leviathan": false
+      },
+      {
+        "n": 10044153,
+        "mod24": 9,
+        "torsion": 182.9145,
+        "steps": 350,
+        "z_score": 4.178,
+        "is_leviathan": false
+      },
+      {
+        "n": 10045449,
+        "mod24": 9,
+        "torsion": 99.4856,
+        "steps": 336,
+        "z_score": 2.232,
+        "is_leviathan": false
+      },
+      {
+        "n": 10047873,
+        "mod24": 9,
+        "torsion": 100.5786,
+        "steps": 213,
+        "z_score": 2.257,
+        "is_leviathan": false
+      },
+      {
+        "n": 10049025,
+        "mod24": 9,
+        "torsion": 137.7959,
+        "steps": 213,
+        "z_score": 3.125,
+        "is_leviathan": false
+      },
+      {
+        "n": 10050105,
+        "mod24": 9,
+        "torsion": 350.5981,
+        "steps": 375,
+        "z_score": 8.089,
+        "is_leviathan": false
+      },
+      {
+        "n": 10053177,
+        "mod24": 9,
+        "torsion": 102.0232,
+        "steps": 350,
+        "z_score": 2.291,
+        "is_leviathan": false
+      },
+      {
+        "n": 10054209,
+        "mod24": 9,
+        "torsion": 189.9453,
+        "steps": 275,
+        "z_score": 4.342,
+        "is_leviathan": false
+      },
+      {
+        "n": 10064025,
+        "mod24": 9,
+        "torsion": 161.034,
+        "steps": 182,
+        "z_score": 3.667,
+        "is_leviathan": false
+      },
+      {
+        "n": 10064577,
+        "mod24": 9,
+        "torsion": 145.2216,
+        "steps": 213,
+        "z_score": 3.299,
+        "is_leviathan": false
+      },
+      {
+        "n": 10065921,
+        "mod24": 9,
+        "torsion": 148.1356,
+        "steps": 350,
+        "z_score": 3.367,
+        "is_leviathan": false
+      },
+      {
+        "n": 10084353,
+        "mod24": 9,
+        "torsion": 113.543,
+        "steps": 213,
+        "z_score": 2.56,
+        "is_leviathan": false
+      },
+      {
+        "n": 10087065,
+        "mod24": 9,
+        "torsion": 96.6303,
+        "steps": 256,
+        "z_score": 2.165,
+        "is_leviathan": false
+      },
+      {
+        "n": 10088265,
+        "mod24": 9,
+        "torsion": 204.3142,
+        "steps": 336,
+        "z_score": 4.677,
+        "is_leviathan": false
+      },
+      {
+        "n": 10091673,
+        "mod24": 9,
+        "torsion": 121.1895,
+        "steps": 213,
+        "z_score": 2.738,
+        "is_leviathan": false
+      },
+      {
+        "n": 10094433,
+        "mod24": 9,
+        "torsion": 239.4346,
+        "steps": 213,
+        "z_score": 5.496,
+        "is_leviathan": false
+      }
+    ],
+    "10": [
+      {
+        "n": 10038274,
+        "mod24": 10,
+        "torsion": 180.4941,
+        "steps": 199,
+        "z_score": 3.539,
+        "is_leviathan": false
+      },
+      {
+        "n": 10055938,
+        "mod24": 10,
+        "torsion": 13760.2163,
+        "steps": 350,
+        "z_score": 272.072,
+        "is_leviathan": false
+      },
+      {
+        "n": 10064578,
+        "mod24": 10,
+        "torsion": 144.8224,
+        "steps": 213,
+        "z_score": 2.834,
+        "is_leviathan": false
+      },
+      {
+        "n": 10088266,
+        "mod24": 10,
+        "torsion": 204.256,
+        "steps": 336,
+        "z_score": 4.009,
+        "is_leviathan": false
+      },
+      {
+        "n": 10158082,
+        "mod24": 10,
+        "torsion": 138.5441,
+        "steps": 305,
+        "z_score": 2.71,
+        "is_leviathan": false
+      },
+      {
+        "n": 10174978,
+        "mod24": 10,
+        "torsion": 198.0924,
+        "steps": 344,
+        "z_score": 3.887,
+        "is_leviathan": false
+      },
+      {
+        "n": 10311202,
+        "mod24": 10,
+        "torsion": 134.6287,
+        "steps": 313,
+        "z_score": 2.632,
+        "is_leviathan": false
+      },
+      {
+        "n": 10313410,
+        "mod24": 10,
+        "torsion": 172.0357,
+        "steps": 212,
+        "z_score": 3.372,
+        "is_leviathan": false
+      },
+      {
+        "n": 10387234,
+        "mod24": 10,
+        "torsion": 111.6911,
+        "steps": 243,
+        "z_score": 2.179,
+        "is_leviathan": false
+      },
+      {
+        "n": 10410250,
+        "mod24": 10,
+        "torsion": 443.5208,
+        "steps": 257,
+        "z_score": 8.741,
+        "is_leviathan": false
+      },
+      {
+        "n": 10429186,
+        "mod24": 10,
+        "torsion": 102.9594,
+        "steps": 319,
+        "z_score": 2.006,
+        "is_leviathan": false
+      },
+      {
+        "n": 10443298,
+        "mod24": 10,
+        "torsion": 164.3025,
+        "steps": 182,
+        "z_score": 3.219,
+        "is_leviathan": false
+      },
+      {
+        "n": 10452682,
+        "mod24": 10,
+        "torsion": 110.606,
+        "steps": 282,
+        "z_score": 2.157,
+        "is_leviathan": false
+      },
+      {
+        "n": 10460866,
+        "mod24": 10,
+        "torsion": 524.5373,
+        "steps": 282,
+        "z_score": 10.343,
+        "is_leviathan": false
+      },
+      {
+        "n": 10482274,
+        "mod24": 10,
+        "torsion": 221.4068,
+        "steps": 295,
+        "z_score": 4.348,
+        "is_leviathan": false
+      },
+      {
+        "n": 10524466,
+        "mod24": 10,
+        "torsion": 208.7533,
+        "steps": 257,
+        "z_score": 4.098,
+        "is_leviathan": false
+      },
+      {
+        "n": 10587778,
+        "mod24": 10,
+        "torsion": 321.7382,
+        "steps": 388,
+        "z_score": 6.332,
+        "is_leviathan": false
+      },
+      {
+        "n": 10587802,
+        "mod24": 10,
+        "torsion": 321.5278,
+        "steps": 388,
+        "z_score": 6.328,
+        "is_leviathan": false
+      },
+      {
+        "n": 10601602,
+        "mod24": 10,
+        "torsion": 221.4306,
+        "steps": 226,
+        "z_score": 4.349,
+        "is_leviathan": false
+      },
+      {
+        "n": 10614106,
+        "mod24": 10,
+        "torsion": 249.8524,
+        "steps": 226,
+        "z_score": 4.911,
+        "is_leviathan": false
+      }
+    ],
+    "1": [
+      {
+        "n": 10102849,
+        "mod24": 1,
+        "torsion": 421.7381,
+        "steps": 288,
+        "z_score": 2.161,
+        "is_leviathan": false
+      },
+      {
+        "n": 10142209,
+        "mod24": 1,
+        "torsion": 613.5981,
+        "steps": 168,
+        "z_score": 3.157,
+        "is_leviathan": false
+      },
+      {
+        "n": 10178833,
+        "mod24": 1,
+        "torsion": 1228.2888,
+        "steps": 481,
+        "z_score": 6.347,
+        "is_leviathan": false
+      },
+      {
+        "n": 10184545,
+        "mod24": 1,
+        "torsion": 425.7214,
+        "steps": 344,
+        "z_score": 2.182,
+        "is_leviathan": false
+      },
+      {
+        "n": 10195609,
+        "mod24": 1,
+        "torsion": 536.8414,
+        "steps": 411,
+        "z_score": 2.759,
+        "is_leviathan": false
+      },
+      {
+        "n": 10231249,
+        "mod24": 1,
+        "torsion": 2283.2958,
+        "steps": 494,
+        "z_score": 11.822,
+        "is_leviathan": false
+      },
+      {
+        "n": 10255729,
+        "mod24": 1,
+        "torsion": 437.6176,
+        "steps": 319,
+        "z_score": 2.244,
+        "is_leviathan": false
+      },
+      {
+        "n": 10294729,
+        "mod24": 1,
+        "torsion": 525.5444,
+        "steps": 463,
+        "z_score": 2.7,
+        "is_leviathan": false
+      },
+      {
+        "n": 10336153,
+        "mod24": 1,
+        "torsion": 615.5651,
+        "steps": 313,
+        "z_score": 3.167,
+        "is_leviathan": false
+      },
+      {
+        "n": 10371073,
+        "mod24": 1,
+        "torsion": 1462.0849,
+        "steps": 243,
+        "z_score": 7.56,
+        "is_leviathan": false
+      },
+      {
+        "n": 10378753,
+        "mod24": 1,
+        "torsion": 1614.8036,
+        "steps": 288,
+        "z_score": 8.353,
+        "is_leviathan": false
+      },
+      {
+        "n": 10434793,
+        "mod24": 1,
+        "torsion": 31191.8852,
+        "steps": 344,
+        "z_score": 161.84,
+        "is_leviathan": false
+      },
+      {
+        "n": 10438033,
+        "mod24": 1,
+        "torsion": 618.0927,
+        "steps": 344,
+        "z_score": 3.18,
+        "is_leviathan": false
+      },
+      {
+        "n": 10457473,
+        "mod24": 1,
+        "torsion": 406.5998,
+        "steps": 349,
+        "z_score": 2.083,
+        "is_leviathan": false
+      },
+      {
+        "n": 10469209,
+        "mod24": 1,
+        "torsion": 476.0863,
+        "steps": 437,
+        "z_score": 2.443,
+        "is_leviathan": false
+      },
+      {
+        "n": 10486081,
+        "mod24": 1,
+        "torsion": 1083.4487,
+        "steps": 313,
+        "z_score": 5.595,
+        "is_leviathan": false
+      },
+      {
+        "n": 10531897,
+        "mod24": 1,
+        "torsion": 453.563,
+        "steps": 257,
+        "z_score": 2.327,
+        "is_leviathan": false
+      },
+      {
+        "n": 10617217,
+        "mod24": 1,
+        "torsion": 618.9637,
+        "steps": 388,
+        "z_score": 3.185,
+        "is_leviathan": false
+      },
+      {
+        "n": 10671001,
+        "mod24": 1,
+        "torsion": 5581.4629,
+        "steps": 318,
+        "z_score": 28.937,
+        "is_leviathan": false
+      },
+      {
+        "n": 10701697,
+        "mod24": 1,
+        "torsion": 409.3782,
+        "steps": 357,
+        "z_score": 2.097,
+        "is_leviathan": false
+      }
+    ]
+  },
+  "top_outliers": [
+    {
+      "n": 10055938,
+      "mod24": 10,
+      "torsion": 13760.2163,
+      "steps": 350,
+      "z_score": 272.072,
+      "is_leviathan": false
+    },
+    {
+      "n": 10803329,
+      "mod24": 17,
+      "torsion": 30585.0974,
+      "steps": 517,
+      "z_score": 209.482,
+      "is_leviathan": false
+    },
+    {
+      "n": 10434793,
+      "mod24": 1,
+      "torsion": 31191.8852,
+      "steps": 344,
+      "z_score": 161.84,
+      "is_leviathan": false
+    },
+    {
+      "n": 11143009,
+      "mod24": 1,
+      "torsion": 30822.0834,
+      "steps": 326,
+      "z_score": 159.921,
+      "is_leviathan": false
+    },
+    {
+      "n": 10367841,
+      "mod24": 9,
+      "torsion": 5862.9836,
+      "steps": 288,
+      "z_score": 136.673,
+      "is_leviathan": false
+    },
+    {
+      "n": 11899033,
+      "mod24": 1,
+      "torsion": 26145.8182,
+      "steps": 520,
+      "z_score": 135.654,
+      "is_leviathan": false
+    },
+    {
+      "n": 10635353,
+      "mod24": 17,
+      "torsion": 17534.0969,
+      "steps": 419,
+      "z_score": 120.079,
+      "is_leviathan": false
+    },
+    {
+      "n": 10309473,
+      "mod24": 9,
+      "torsion": 3877.1815,
+      "steps": 425,
+      "z_score": 90.352,
+      "is_leviathan": false
+    },
+    {
+      "n": 10880865,
+      "mod24": 9,
+      "torsion": 3641.7649,
+      "steps": 332,
+      "z_score": 84.86,
+      "is_leviathan": false
+    },
+    {
+      "n": 11209985,
+      "mod24": 17,
+      "torsion": 11450.7727,
+      "steps": 282,
+      "z_score": 78.407,
+      "is_leviathan": false
+    },
+    {
+      "n": 10796721,
+      "mod24": 9,
+      "torsion": 3340.2911,
+      "steps": 287,
+      "z_score": 77.828,
+      "is_leviathan": false
+    },
+    {
+      "n": 11809697,
+      "mod24": 17,
+      "torsion": 10390.6147,
+      "steps": 295,
+      "z_score": 71.145,
+      "is_leviathan": false
+    },
+    {
+      "n": 11760537,
+      "mod24": 9,
+      "torsion": 3007.6863,
+      "steps": 277,
+      "z_score": 70.069,
+      "is_leviathan": false
+    },
+    {
+      "n": 10796722,
+      "mod24": 10,
+      "torsion": 3340.1746,
+      "steps": 287,
+      "z_score": 66.021,
+      "is_leviathan": false
+    },
+    {
+      "n": 11650745,
+      "mod24": 17,
+      "torsion": 9531.9361,
+      "steps": 326,
+      "z_score": 65.263,
+      "is_leviathan": false
+    },
+    {
+      "n": 11312929,
+      "mod24": 1,
+      "torsion": 12408.5449,
+      "steps": 345,
+      "z_score": 64.366,
+      "is_leviathan": false
+    },
+    {
+      "n": 11927553,
+      "mod24": 9,
+      "torsion": 2702.1802,
+      "steps": 313,
+      "z_score": 62.943,
+      "is_leviathan": false
+    },
+    {
+      "n": 10107873,
+      "mod24": 9,
+      "torsion": 2490.9802,
+      "steps": 261,
+      "z_score": 58.017,
+      "is_leviathan": false
+    },
+    {
+      "n": 10798593,
+      "mod24": 9,
+      "torsion": 2388.4597,
+      "steps": 238,
+      "z_score": 55.625,
+      "is_leviathan": false
+    },
+    {
+      "n": 11059105,
+      "mod24": 1,
+      "torsion": 10458.0845,
+      "steps": 313,
+      "z_score": 54.244,
+      "is_leviathan": false
+    },
+    {
+      "n": 10910257,
+      "mod24": 1,
+      "torsion": 9645.7621,
+      "steps": 344,
+      "z_score": 50.029,
+      "is_leviathan": false
+    },
+    {
+      "n": 10653249,
+      "mod24": 9,
+      "torsion": 2143.6615,
+      "steps": 269,
+      "z_score": 49.915,
+      "is_leviathan": false
+    },
+    {
+      "n": 10406241,
+      "mod24": 9,
+      "torsion": 1966.5082,
+      "steps": 300,
+      "z_score": 45.783,
+      "is_leviathan": false
+    },
+    {
+      "n": 11875233,
+      "mod24": 9,
+      "torsion": 1741.1557,
+      "steps": 344,
+      "z_score": 40.526,
+      "is_leviathan": false
+    },
+    {
+      "n": 11305217,
+      "mod24": 17,
+      "torsion": 5848.8069,
+      "steps": 619,
+      "z_score": 40.032,
+      "is_leviathan": false
+    },
+    {
+      "n": 10833849,
+      "mod24": 9,
+      "torsion": 1521.8596,
+      "steps": 313,
+      "z_score": 35.411,
+      "is_leviathan": false
+    },
+    {
+      "n": 11875234,
+      "mod24": 10,
+      "torsion": 1740.9985,
+      "steps": 344,
+      "z_score": 34.398,
+      "is_leviathan": false
+    },
+    {
+      "n": 10705473,
+      "mod24": 9,
+      "torsion": 1455.2688,
+      "steps": 212,
+      "z_score": 33.857,
+      "is_leviathan": false
+    },
+    {
+      "n": 11953185,
+      "mod24": 9,
+      "torsion": 1428.4111,
+      "steps": 406,
+      "z_score": 33.231,
+      "is_leviathan": false
+    },
+    {
+      "n": 11341713,
+      "mod24": 9,
+      "torsion": 1408.9323,
+      "steps": 326,
+      "z_score": 32.776,
+      "is_leviathan": false
+    },
+    {
+      "n": 11843297,
+      "mod24": 17,
+      "torsion": 4649.3532,
+      "steps": 344,
+      "z_score": 31.816,
+      "is_leviathan": false
+    },
+    {
+      "n": 11749217,
+      "mod24": 17,
+      "torsion": 4594.706,
+      "steps": 314,
+      "z_score": 31.441,
+      "is_leviathan": false
+    },
+    {
+      "n": 10671001,
+      "mod24": 1,
+      "torsion": 5581.4629,
+      "steps": 318,
+      "z_score": 28.937,
+      "is_leviathan": false
+    },
+    {
+      "n": 11953186,
+      "mod24": 10,
+      "torsion": 1428.2779,
+      "steps": 406,
+      "z_score": 28.214,
+      "is_leviathan": false
+    },
+    {
+      "n": 11202081,
+      "mod24": 9,
+      "torsion": 1144.1735,
+      "steps": 277,
+      "z_score": 26.601,
+      "is_leviathan": false
+    },
+    {
+      "n": 10821889,
+      "mod24": 1,
+      "torsion": 5065.8138,
+      "steps": 301,
+      "z_score": 26.261,
+      "is_leviathan": false
+    },
+    {
+      "n": 10248449,
+      "mod24": 17,
+      "torsion": 3685.6968,
+      "steps": 274,
+      "z_score": 25.214,
+      "is_leviathan": false
+    },
+    {
+      "n": 10170713,
+      "mod24": 17,
+      "torsion": 3663.6695,
+      "steps": 456,
+      "z_score": 25.063,
+      "is_leviathan": false
+    },
+    {
+      "n": 11337729,
+      "mod24": 9,
+      "torsion": 1038.792,
+      "steps": 264,
+      "z_score": 24.142,
+      "is_leviathan": false
+    },
+    {
+      "n": 11457297,
+      "mod24": 9,
+      "torsion": 1011.4819,
+      "steps": 215,
+      "z_score": 23.505,
+      "is_leviathan": false
+    },
+    {
+      "n": 10833921,
+      "mod24": 9,
+      "torsion": 980.2379,
+      "steps": 380,
+      "z_score": 22.776,
+      "is_leviathan": false
+    },
+    {
+      "n": 10607169,
+      "mod24": 9,
+      "torsion": 978.8193,
+      "steps": 363,
+      "z_score": 22.743,
+      "is_leviathan": false
+    },
+    {
+      "n": 11202082,
+      "mod24": 10,
+      "torsion": 1143.9784,
+      "steps": 277,
+      "z_score": 22.592,
+      "is_leviathan": false
+    },
+    {
+      "n": 10546713,
+      "mod24": 9,
+      "torsion": 959.3679,
+      "steps": 243,
+      "z_score": 22.29,
+      "is_leviathan": false
+    },
+    {
+      "n": 11932689,
+      "mod24": 9,
+      "torsion": 954.2718,
+      "steps": 358,
+      "z_score": 22.171,
+      "is_leviathan": false
+    },
+    {
+      "n": 10306145,
+      "mod24": 17,
+      "torsion": 3211.3782,
+      "steps": 313,
+      "z_score": 21.965,
+      "is_leviathan": false
+    },
+    {
+      "n": 10995993,
+      "mod24": 9,
+      "torsion": 877.5902,
+      "steps": 407,
+      "z_score": 20.382,
+      "is_leviathan": false
+    },
+    {
+      "n": 11081249,
+      "mod24": 17,
+      "torsion": 2829.7939,
+      "steps": 270,
+      "z_score": 19.351,
+      "is_leviathan": false
+    },
+    {
+      "n": 11736033,
+      "mod24": 9,
+      "torsion": 825.4674,
+      "steps": 277,
+      "z_score": 19.166,
+      "is_leviathan": false
+    },
+    {
+      "n": 10581689,
+      "mod24": 17,
+      "torsion": 2801.4821,
+      "steps": 238,
+      "z_score": 19.157,
+      "is_leviathan": false
+    }
+  ],
+  "delta_pairs": []
+}
