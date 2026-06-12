@@ -88,7 +88,7 @@ print(f"DONE: {total:,} solutions | STABLE:{stable} BREACH:{breach}")
 def launch_studio():
     """Launch Lightning AI Studio with the sieve script."""
     # Write the script to a temp file
-    script_path = Path.home() / "Projects/erdos-straus/lightning_sieve.py"
+    script_path = Path(__file__).resolve().parent / "lightning_sieve.py"
     script_path.write_text(SIEVE_SCRIPT)
     
     print(f"═══ LIGHTNING AI WORKER ═══")
@@ -123,7 +123,7 @@ def check_status():
 
 def update_manifest(output_path=None):
     """Update work_manifest.json with Lightning results."""
-    manifest_path = Path.home() / "Projects/erdos-straus/work_manifest.json"
+    manifest_path = Path(__file__).resolve().parent / "work_manifest.json"
     
     if not manifest_path.exists():
         print("No manifest found")
@@ -136,15 +136,31 @@ def update_manifest(output_path=None):
         with open(output_path) as f:
             result = json.load(f)
         
+        from datetime import datetime
+        target = result.get("last_n", result.get("target", 0))
+        sols_raw = result.get("solutions", 0)
+        
+        if isinstance(sols_raw, list):
+            sols_count = len(sols_raw)
+            stats = result.get("stats", {})
+            stable_count = stats.get("stable", 0)
+            breach_count = stats.get("breach", 0)
+        else:
+            sols_count = sols_raw
+            stable_count = result.get("stable", 0)
+            breach_count = result.get("breach", 0)
+            
+        timestamp = result.get("timestamp", result.get("ts", datetime.now().isoformat()))
+        
         node = manifest["nodes"]["lightning_l40s"]
         node["status"] = "active"
-        node["last_chunk"] = result.get("target", 0)
-        node["total_solutions"] += result.get("solutions", 0)
-        node["last_run"] = result.get("ts")
+        node["last_chunk"] = target
+        node["total_solutions"] = node.get("total_solutions", 0) + sols_count
+        node["last_run"] = timestamp
         
-        manifest["solutions_total"] += result.get("solutions", 0)
-        manifest["stable_regions"] += result.get("stable", 0)
-        manifest["breach_regions"] += result.get("breach", 0)
+        manifest["solutions_total"] = manifest.get("solutions_total", 0) + sols_count
+        manifest["stable_regions"] = manifest.get("stable_regions", 0) + stable_count
+        manifest["breach_regions"] = manifest.get("breach_regions", 0) + breach_count
     
     with open(manifest_path, 'w') as f:
         json.dump(manifest, f, indent=2)
