@@ -30,6 +30,8 @@ Every quantified claim the solver makes, tracked against measurement.
 | A=7 dominates at ~49.5% | `sweep_100m.py` | Stable fraction across all scales | 2026-06-09 | 2026-06-10 | 143,145 (49.47%) | ✅ PASS |
 | Skipped A-values are structural | `sweep_100m.py` | A ∈ {3,27,35,55,63,75,91,99,115…} never minimal | 2026-06-09 | 2026-06-10 | Confirmed for all m ≤ 39 | ✅ PASS |
 | No new A-values beyond candidate set | `sweep_100m.py` | 289,372 primes, all in 22-value set | 2026-06-09 | 2026-06-10 | 0 outliers | ✅ PASS |
+| Erdos-Straus conjecture verified n=2..100K | `verify_correct.py` | Standard identities (mod 4=0,2,3) + Omega (mod 4=1) | 2026-06-10 | 2026-06-10 | 99,999/99,999 (100%) | ✅ PASS |
+| Method distribution: 75% standard, 25% omega | `verify_correct.py` | All 24 residue classes mod 24 covered | 2026-06-10 | 2026-06-10 | 75K standard, 25K omega | ✅ PASS |
 
 ---
 

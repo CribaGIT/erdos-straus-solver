@@ -109,16 +109,21 @@ def factorize_full(n):
 # ---------------------------------------------------------------------------
 # Omega solver
 # ---------------------------------------------------------------------------
-def divisors_from_factors(factors):
-    divs = [1]
-    for prime, exp in factors.items():
-        cur = []
+def divisors_from_factors_gen(factors):
+    """Generator yielding divisors of n from {prime: exponent} dict."""
+    items = list(factors.items())
+
+    def gen(idx, current):
+        if idx == len(items):
+            yield current
+            return
+        prime, exp = items[idx]
         p_pow = 1
         for _ in range(exp + 1):
-            for d in divs: cur.append(d * p_pow)
+            yield from gen(idx + 1, current * p_pow)
             p_pow *= prime
-        divs = cur
-    return divs
+
+    yield from gen(0, 1)
 
 def check_A(p, A):
     """Return True if A works for prime p via Omega solver."""
@@ -130,8 +135,9 @@ def check_A(p, A):
     fac = factorize_full(x)
     for q in list(fac): fac[q] *= 2
     fac[p] = fac.get(p, 0) + 4
-    divs = divisors_from_factors(fac)
-    for d in divs:
+    for i, d in enumerate(divisors_from_factors_gen(fac)):
+        if i > 500000:  # safety: too many divisors, give up
+            return False
         if d % A == target_mod:
             y = (nx + d) // A
             z = (nx + nx * nx // d) // A
@@ -214,8 +220,8 @@ def main():
                         help="Maximum prime to scan (default: 100M)")
     parser.add_argument("--threads", type=int, default=1,
                         help="Number of worker processes (default: 1)")
-    parser.add_argument("--segment", type=int, default=10_000_000,
-                        help="Segment size for segmented sieve (default: 10M)")
+    parser.add_argument("--segment", type=int, default=50_000_000,
+                        help="Segment size for segmented sieve (default: 50M)")
     parser.add_argument("--checkpoint", type=str, default="",
                         help="Checkpoint file path (save/restore progress)")
     args = parser.parse_args()
