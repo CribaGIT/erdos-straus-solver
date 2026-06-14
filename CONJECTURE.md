@@ -118,7 +118,21 @@ p mod 7 ∈ {1, 2, 4}:
     p mod 5 distinguishes A ∈ {15, 19, 23, 31, 39, 43, 47, 51, 59, 67, 71, 79, 83, 87, 95, 103, 107, 111, 127, 159}
 ```
 
-**Computational evidence for Bounded-A conjecture:** ALL 289,372 exceptional primes up to 10⁸ are solved with A ≤ 159 (max m = 39). Mean minimal m = 2.25. Zero failures across all tested ranges. The full distribution:
+**Computational evidence for Bounded-A conjecture:** ALL 289,372 exceptional primes up to 10⁸ are solved with A ≤ 159 (max m = 39). Mean minimal m = 2.25. Zero failures across all tested ranges.
+
+**Note on scale-dependence:** The VINCULUM_FIX_REPORT (June 2026) found a different distribution at the 10K scale for *all* n ≡ 1 (mod 24), not just exceptional primes. After the `d|x → d|nx²` constraint fix, A=3 (m=0) dominates at 66.1% for composite and prime-square n up to 10K. The 10⁸ table below covers only exceptional primes (p² where p ≡ 1 mod 12), where A=3 is never minimal — the populations differ. Both distributions are correct for their respective domains.
+
+**10K scale (all n ≡ 1 mod 24):**
+
+| A | m | Count (10K) | % |
+|---|---|---|---|
+| 3 | 0 | 275 | 66.1% |
+| 7 | 1 | 122 | 29.3% |
+| 11 | 2 | 12 | 2.9% |
+| 15 | 3 | 3 | 0.7% |
+| 19+ | 4+ | 4 | 1.0% |
+
+**10⁸ scale (exceptional primes only):**
 
 | A | m | Count (10⁸) | % | Trend from 10⁷ |
 |---|---|---|---|---|

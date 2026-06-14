@@ -1,3 +1,10 @@
-# Large files that exceed GitHub 100MB limit
-# erdos_history.json filter=lfs diff=lfs merge=lfs -text
-# erdos_output.json and erdos_full_log.json are now gitignored (operational data)
+# Large data files — track with Git LFS
+# These files are already committed as regular blobs;
+# LFS rules apply to future commits and rewrites.
+# To migrate existing blobs: git lfs migrate import --include="sieve_data/*.txt,cold_storage/*.txt,cold_storage/*.json"
+
+sieve_data/*.txt filter=lfs diff=lfs merge=lfs -text
+cold_storage/*.txt filter=lfs diff=lfs merge=lfs -text
+cold_storage/*.json filter=lfs diff=lfs merge=lfs -text
+cold_storage/**/*.json filter=lfs diff=lfs merge=lfs -text
+cold_storage/**/*.log filter=lfs diff=lfs merge=lfs -text

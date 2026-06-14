@@ -22,6 +22,8 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: pip install -r requirements.txt
     - name: Syntax check
       run: |
         python -m py_compile sieve_l40s_hot_corridor.py
@@ -29,3 +31,5 @@ jobs:
         python -m py_compile progression.py
     - name: Import check
       run: python -c "import sys; sys.path.insert(0, '.'); import atomic_writer; print('OK')"
+    - name: Run pytest
+      run: python -m pytest tests/ -x -v

@@ -26,11 +26,20 @@ except ImportError:
     HAS_GMPY2 = False
 
 # Import SubstrateDeltaSieve for dynamic modular pruning
+# Path resolution priority: SUBSTRATE_SIEVE_PATH env var > sibling directory > parent repo
 try:
     from pathlib import Path
-    sieve_dir = Path("C:/Users/dasha/Projects/SubstrateDeltaSieve")
+    import os as _os
+    if _os.environ.get("SUBSTRATE_SIEVE_PATH"):
+        sieve_dir = Path(_os.environ["SUBSTRATE_SIEVE_PATH"])
+    else:
+        # Look for SubstrateDeltaSieve alongside erdos-straus-solver
+        sieve_dir = Path(__file__).resolve().parents[1] / "SubstrateDeltaSieve"
+        if not sieve_dir.exists():
+            # Fall back to absolute sibling under Projects
+            sieve_dir = Path(__file__).resolve().parents[1].parent / "SubstrateDeltaSieve"
     if str(sieve_dir) not in sys.path:
-        sys.path.append(str(sieve_dir))
+        sys.path.insert(0, str(sieve_dir))
     from SUBSTRATE_DELTA_SIEVE import SubstrateDeltaSieve
     SIEVE = SubstrateDeltaSieve()
 except Exception as e:
