@@ -3,10 +3,23 @@
 ERDOS–STRAUS AUTOMATION AUDIT
 What can and can't be automated — May 2026
 DaShawn / Guinea Pig Trench LLC
+
+Usage:
+  python automation_audit.py              # print audit table + save manifest
+  python automation_audit.py --sync-issues  # also sync dormant nodes to GitHub issues
 """
-import json, os, hashlib
+import json, os, subprocess, sys, hashlib
 from datetime import datetime
 from pathlib import Path
+
+# ═══════════════════════════════════════════════════════
+# CONFIG
+# ═══════════════════════════════════════════════════════
+
+REPO = "COMMENCINGTHESCOURGE/erdos-straus-solver"
+ISSUE_LABEL_PREFIX = "compute"  # produces labels like "compute:kaggle_t4"
+AUTO_LABEL = "audit-auto"       # marks issues created by this script
+DRY_RUN = "--dry-run" in sys.argv
 
 # ═══════════════════════════════════════════════════════
 # 6 POTENTIAL COMPUTE NODES
@@ -196,6 +209,129 @@ Each cron job should include:
   6. Cross-node: always read manifest BEFORE computing to avoid overlap
 """
 
+# ═══════════════════════════════════════════════════════
+# GITHUB ISSUE SYNC — auto-create issues for dormant nodes
+# ═══════════════════════════════════════════════════════
+
+def _run_gh(args, check=True):
+    """Run gh CLI command, return stdout or None on failure."""
+    try:
+        result = subprocess.run(
+            ["gh"] + args,
+            capture_output=True, text=True, timeout=15
+        )
+        if check and result.returncode != 0:
+            print(f"  [!] gh {' '.join(args[:3])}... failed: {result.stderr.strip()[:200]}")
+            return None
+        return result.stdout.strip()
+    except (FileNotFoundError, subprocess.TimeoutExpired) as e:
+        print(f"  [!] gh not available or timed out: {e}")
+        return None
+
+def _is_dormant(status_str):
+    """Detect dormancy from status string patterns."""
+    dormant_markers = ["DORMANT", "⚠️", "0%", "completely dormant"]
+    return any(m in status_str for m in dormant_markers)
+
+def _is_running(status_str):
+    """Detect active/running nodes."""
+    return "✅" in status_str or "RUNNING" in status_str
+
+def _make_label(node_name):
+    """Generate a unique label per compute node."""
+    return f"{ISSUE_LABEL_PREFIX}:{node_name}"
+
+def _issue_exists(node_name):
+    """Check if an open issue already exists for this compute node."""
+    label = _make_label(node_name)
+    out = _run_gh([
+        "issue", "list",
+        "--repo", REPO,
+        "--label", label,
+        "--state", "open",
+        "--json", "number",
+        "--jq", ".[0].number"
+    ], check=False)
+    if out and out.isdigit():
+        return int(out)
+    return None
+
+def _close_issue(issue_number, node_name, status):
+    """Close a dormant issue when the node recovers."""
+    msg = f"✅ {node_name} recovered — current status: {status}"
+    print(f"  [close] #{issue_number}: {msg}")
+    if DRY_RUN:
+        print(f"  [DRY RUN] would close #{issue_number}")
+        return
+    _run_gh([
+        "issue", "close", str(issue_number),
+        "--repo", REPO,
+        "--comment", msg
+    ])
+
+def _create_issue(node_name, node):
+    """Create a GitHub issue for a dormant compute node."""
+    title = f"{node_name} dormant — {node['automation_level']}"
+    body = f"""**Auto-detected:** {datetime.now().strftime('%Y-%m-%d %H:%M')}
+**Status:** {node['status']}
+**Type:** {node['type']}
+**GPU:** {node['gpu']}
+**Limit:** {node['limit']}
+
+**Bottleneck:** {node['bottleneck']}
+
+**Suggested fix:** {node['fix']}
+
+---
+*Issue auto-created by `automation_audit.py --sync-issues`. 
+Closes automatically when node status changes to RUNNING.*
+"""
+    label = _make_label(node_name)
+    
+    # Ensure labels exist
+    for lbl in [label, AUTO_LABEL]:
+        _run_gh(["label", "create", lbl, "--repo", REPO,
+                 "--color", "FBCA04", "--force"], check=False)
+    
+    print(f"  [create] issue for {node_name}")
+    if DRY_RUN:
+        print(f"  [DRY RUN] would create: {title}")
+        return
+    
+    _run_gh([
+        "issue", "create",
+        "--repo", REPO,
+        "--title", title,
+        "--body", body,
+        "--label", f"{label},{AUTO_LABEL}"
+    ])
+
+def sync_issues():
+    """Sync compute node status to GitHub issues.
+    
+    For each dormant node: create an issue if none exists.
+    For each recovered node: close the issue if one exists.
+    Nodes with pre-existing manual issues (no AUTO_LABEL) are skipped.
+    """
+    print("═══ SYNCING COMPUTE NODE ISSUES ═══")
+    
+    for node_name, node in NODES.items():
+        status = node.get("status", "")
+        existing = _issue_exists(node_name)
+        
+        if _is_dormant(status):
+            if existing:
+                print(f"  [skip] {node_name}: issue #{existing} already open")
+            else:
+                _create_issue(node_name, node)
+        elif _is_running(status):
+            if existing:
+                _close_issue(existing, node_name, status)
+            else:
+                print(f"  [ok] {node_name}: running, no issue to close")
+        else:
+            print(f"  [warn] {node_name}: unclear status — {status[:60]}")
+
 if __name__ == "__main__":
     print(AUTOMATION_POTENTIAL)
     
@@ -207,3 +343,8 @@ if __name__ == "__main__":
     print(f"  Nodes: {len(manifest['nodes'])}")
     print(f"  Current progress: {manifest['current_progress']:,}")
     print(f"  Ultimate target: {manifest['total_range']:,}")
+    
+    if "--sync-issues" in sys.argv:
+        if DRY_RUN:
+            print("\n  [DRY RUN MODE — no issues will be created/closed]")
+        sync_issues()
