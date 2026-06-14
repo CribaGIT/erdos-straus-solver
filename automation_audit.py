@@ -337,12 +337,16 @@ if __name__ == "__main__":
     
     manifest = create_manifest()
     manifest_path = Path.home() / "Projects/erdos-straus/work_manifest.json"
-    with open(manifest_path, 'w') as f:
-        json.dump(manifest, f, indent=2)
-    print(f"\n✓ Manifest saved to {manifest_path}")
-    print(f"  Nodes: {len(manifest['nodes'])}")
-    print(f"  Current progress: {manifest['current_progress']:,}")
-    print(f"  Ultimate target: {manifest['total_range']:,}")
+    try:
+        manifest_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(manifest_path, 'w') as f:
+            json.dump(manifest, f, indent=2)
+        print(f"\n✓ Manifest saved to {manifest_path}")
+        print(f"  Nodes: {len(manifest['nodes'])}")
+        print(f"  Current progress: {manifest['current_progress']:,}")
+        print(f"  Ultimate target: {manifest['total_range']:,}")
+    except (OSError, PermissionError) as e:
+        print(f"\n⚠ Manifest not saved: {e}")
     
     if "--sync-issues" in sys.argv:
         if DRY_RUN:
