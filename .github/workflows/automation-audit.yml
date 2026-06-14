@@ -1,0 +1,25 @@
+name: Automation Audit — Issue Sync
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run automation audit with issue sync
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python automation_audit.py --sync-issues
