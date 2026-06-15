@@ -1,7 +1,7 @@
 # Large data files — track with Git LFS
 # These files are already committed as regular blobs;
 # LFS rules apply to future commits and rewrites.
-# To migrate existing blobs: git lfs migrate import --include="sieve_data/*.txt,cold_storage/*.txt,cold_storage/*.json"
+# To migrate existing blobs: git lfs migrate import --include="sieve_data/*.txt,cold_storage/*.txt,cold_storage/*.json,cold_storage/**/*.json,cold_storage/**/*.log"
 
 sieve_data/*.txt filter=lfs diff=lfs merge=lfs -text
 cold_storage/*.txt filter=lfs diff=lfs merge=lfs -text

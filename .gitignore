@@ -48,6 +48,3 @@ desktop.ini
 
 # Patch files (applied and discarded)
 *.patch
-
-cold_storage/**/*.json
-cold_storage/*.json
